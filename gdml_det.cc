@@ -103,6 +103,7 @@ int main(int argc,char **argv)
 
    // User action initialization
    runManager->SetUserInitialization(new ActionInitialization());
+   runManager->SetNumberOfThreads(1);
    runManager->Initialize();
 
    // Initialize visualization
