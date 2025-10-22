@@ -1,5 +1,4 @@
------------ GEANT4 with GDML + Opticks Simulation Example -----------
-# GEANT4 with GDML + Opticks Simulation Framework
+# GEANT4 with GDML + Opticks Simulation Example
 
 ## Overview
 This repository provides a **hybrid CPU–GPU simulation environment** integrating:
@@ -34,6 +33,6 @@ make -j2
 ### 3. Run in Interactive Mode
 ./gdml_det i GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac
 
-![dune10kt_v5_refactored_1x2x6_nowires.gdml] (dune10kt.png)
+![dune10kt_v5_refactored_1x2x6_nowires.gdml](dune10kt.png)
 ### 3. Run in Batch Mode
 ./gdml_det GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac
