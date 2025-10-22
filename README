@@ -1,34 +1,39 @@
--------------------------------------------------------------------
+----------- GEANT4 with GDML + Opticks Simulation Example -----------
+# GEANT4 with GDML + Opticks Simulation Framework
 
-     =========================================================
-     Geant4 - an Object-Oriented Toolkit for Simulation in HEP
-     =========================================================
+## Overview
+This repository provides a **hybrid CPU–GPU simulation environment** integrating:
+- **[Geant4](https://geant4.web.cern.ch/):** Particle transport and detector simulation
+- **[Opticks](https://bitbucket.org/simoncblyth/opticks/src/master/):** GPU-accelerated optical photon simulation
 
-                     GDML detector sensitivity
-                     -------------------------
+The workflow enables **fast optical photon propagation on GPUs** while retaining Geant4’s CPU-based handling of all other particles.
 
-This example demonstrates the usage of the GDML auxiliary information for
-associating a sensitive detector to a volume.
+---
 
-The detector construction consists of a call to GDMLProcessor which parses a
-GDML file and returns the pointer to the world volume. The user can also write
-her/his own GDML file and use it as the primary input format for her/his Geant4
-application.
+## ⚙️ Prerequisites
+- **CUDA Toolkit 11.7 (Tested)
+- **NVIDIA GPU with OptiX support (7.5) (Tested)**
+- **Geant4 (with GDML support enabled)**
+- **Opticks (built with Geant4 integration)**
+- **ROOT (for output handling and visualization)
 
-A simple GDML files is provided:
-- auxiliary.gdml, showing association of a volume with the auxiliary
-  information, related to the sensitive detector.
+---
 
-HOW TO BUILD THE EXAMPLE ?
+## 🛠️ Installation
 
-- You need to have built the persistency/gdml module by having
-  set the -DGEANT4_USE_GDML=ON flag during the CMAKE configuration step, 
-  as well as the -DXERCESC_ROOT_DIR=<path_to_xercesc> flag pointing to 
-  the path where the XercesC XML parser package is installed in your system.
- 
-- Compile and link to generate the executable (in your CMAKE build directory):
- 	      % make
+### 1. Clone Repositories
+```bash
+git clone https://github.com/nuRiceLab/OpticalSims
+cd OpticalSims
+```
+### 2. Compile
+```bash
+mkdir build && cd build && cmake -DWith_Opticks=true -DWITH_GEANT4_VIS=true ..
+make -j2
+```
+### 3. Run in Interactive Mode
+./gdml_det i GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac
 
-- Execute the application.
-  o For parsing interactively the GDML file:
- 	      % gdml_det auxiliary.gdml
+![dune10kt_v5_refactored_1x2x6_nowires.gdml] (dune10kt.png)
+### 3. Run in Batch Mode
+./gdml_det GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac
