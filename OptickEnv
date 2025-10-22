@@ -1,0 +1,4 @@
+export GEOM=OpticksTest
+:L::qexport G4CXOpticks__setGeometry_saveGeometry=$HOME/.opticks/GEOM/$GEOM
+export G4CXOpticks__saveGeometry_saveGGeo=1
+export GGeo__postDirectTranslation_save=1

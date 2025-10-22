@@ -23,8 +23,8 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-/// \file persistency/gdml/G04/gdml_det.cc
-/// \brief Main program of the persistency/gdml/G04 example
+/// \file persistency/gdml//gdml_det.cc
+/// \brief Main program of the persistency/gdml/ example
 //
 //
 //
@@ -36,9 +36,9 @@
 
 #include <vector>
 
-#include "G04ActionInitialization.hh"
-#include "G04DetectorConstruction.hh"
-#include "G04SensitiveDetector.hh"
+#include "ActionInitialization.hh"
+#include "DetectorConstruction.hh"
+#include "SensitiveDetector.hh"
 
 #include "G4RunManagerFactory.hh"
 
@@ -47,7 +47,7 @@
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
 #include "G4GDMLParser.hh"
-
+#include "ColorReader.hh"
 // macro loader
 #include  "include/config.h"
 
@@ -81,22 +81,26 @@ int main(int argc,char **argv)
    }
 
    // Detect interactive mode (if only one argument) and define UI session
-   //
+   auto * fReader=new ColorReader;
+   auto parser= new G4GDMLParser(fReader);
    G4UIExecutive* ui = 0;
-   if ( argc == 2 ) {
+   if ( strcmp(argv[1],"i") == 0 ) {
      ui = new G4UIExecutive(argc, argv);
+     parser->Read(argv[2],false);
+   } else
+   {
+     parser->Read(argv[1],false);
    }
 
-   G4GDMLParser parser;
-   parser.Read(argv[1]);
+
 
    auto* runManager = G4RunManagerFactory::CreateRunManager();
 
-   runManager->SetUserInitialization(new G04DetectorConstruction(parser));
+   runManager->SetUserInitialization(new DetectorConstruction(parser));
    runManager->SetUserInitialization(new FTFP_BERT);
 
    // User action initialization
-   runManager->SetUserInitialization(new G04ActionInitialization());
+   runManager->SetUserInitialization(new ActionInitialization());
    runManager->Initialize();
 
    // Initialize visualization
@@ -115,11 +119,16 @@ int main(int argc,char **argv)
    }
    else           // interactive mode
    {
+     G4String command = "/control/execute ";
+     G4String fileName = argv[3];
+     UImanager->ApplyCommand(command+fileName);
+
      UImanager->ApplyCommand("/control/execute vis.mac");
      ui->SessionStart();
      delete ui;
    }
-
    delete visManager;
    delete runManager;
+   delete parser;
+   delete fReader;
 }

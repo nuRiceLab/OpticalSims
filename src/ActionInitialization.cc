@@ -23,37 +23,42 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-/// \file persistency/gdml/G04/include/G04PrimaryGeneratorAction.hh
-/// \brief Definition of the G04PrimaryGeneratorAction class
 //
-//
-//
-//
+/// \file ActionInitialization.cc
+/// \brief Implementation of the ActionInitialization class
 
-#ifndef _G04PRIMARYGENERATORACTION_H_
-#define _G04PRIMARYGENERATORACTION_H_
+#include "ActionInitialization.hh"
+#include "PrimaryGeneratorAction.hh"
 
-#include "G4VUserPrimaryGeneratorAction.hh"
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#include "globals.hh"
+ActionInitialization::ActionInitialization()
+ : G4VUserActionInitialization()
+{}
 
-class G4Event;
-class G4ParticleGun;
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-/// Primary generator action for GDML sensitive detector example
+ActionInitialization::~ActionInitialization()
+{}
 
-class G04PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+void ActionInitialization::BuildForMaster() const
 {
-  public:
+  //  SetUserAction(new RunAction);
+}
 
-    G04PrimaryGeneratorAction();
-   ~G04PrimaryGeneratorAction();
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-   virtual void GeneratePrimaries(G4Event* anEvent);
+void ActionInitialization::Build() const
+{
+  SetUserAction(new PrimaryGeneratorAction);
+  //  SetUserAction(new RunAction);
+  
+  //  EventAction* eventAction = new EventAction;
+  //  SetUserAction(eventAction);
+  
+  //  SetUserAction(new SteppingAction(eventAction));
+}  
 
-  private:
-
-    G4ParticleGun* fParticleGun;
-};
-
-#endif
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -63,15 +63,13 @@ endif ()
 
 configure_file(config.h.in ${CMAKE_BINARY_DIR}/include/config.h)
 
+
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
 # build G04. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory.
 #
-set(G04_SCRIPTS
-    auxiliary.gdml g04.mac vis.mac dunevd10kt_3view_30deg_v6_refactored_1x8x14_nowires.gdml dune10kt_v5_refactored_1x2x6_nowires.gdml
-  )
-
+set(G04_SCRIPTS g04.mac vis.mac GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml GDML/LArTPC.gdml )
 foreach(_script ${G04_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}

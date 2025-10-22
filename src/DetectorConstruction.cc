@@ -24,13 +24,18 @@
 // ********************************************************************
 //
 //
-/// \file G04DetectorConstruction.cc
-/// \brief Implementation of the G04DetectorConstruction class
+/// \file DetectorConstruction.cc
+/// \brief Implementation of the DetectorConstruction class
  
-#include "G04DetectorConstruction.hh"
-#include "G04SensitiveDetector.hh"
+#include "DetectorConstruction.hh"
+#include "G4VisAttributes.hh"
+#include <G4Color.hh>
+#include <G4VPhysicalVolume.hh>
+#include <G4LogicalVolume.hh>
+#include "SensitiveDetector.hh"
 #include "G4SDManager.hh"
 #include "G4GDMLParser.hh"
+
 
 #include "include/config.h"
 #ifdef With_Opticks
@@ -39,26 +44,27 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G04DetectorConstruction::G04DetectorConstruction(const G4GDMLParser& parser)
+DetectorConstruction::DetectorConstruction(const G4GDMLParser * parser)
  : G4VUserDetectorConstruction(),
    fParser(parser)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G4VPhysicalVolume* G04DetectorConstruction::Construct()
+G4VPhysicalVolume* DetectorConstruction::Construct()
 {
   // Pass the World Volume to Opticks
   #ifdef With_Opticks
     std::cout << "Setting up detector construction for Opticks" << std::endl;
-    G4CXOpticks::SetGeometry(fParser.GetWorldVolume());
+    G4CXOpticks::SetGeometry(fParser->GetWorldVolume());
   #endif
-  return fParser.GetWorldVolume();
+
+  return fParser->GetWorldVolume();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void G04DetectorConstruction::ConstructSDandField()
+void DetectorConstruction::ConstructSDandField()
 {
   //------------------------------------------------ 
   // Sensitive detectors
@@ -67,20 +73,20 @@ void G04DetectorConstruction::ConstructSDandField()
   G4SDManager* SDman = G4SDManager::GetSDMpointer();
   
   G4String trackerChamberSDname = "Tracker";
-  G04SensitiveDetector* aTrackerSD = 
-    new G04SensitiveDetector(trackerChamberSDname);
+  SensitiveDetector* aTrackerSD =
+    new SensitiveDetector(trackerChamberSDname);
   SDman->AddNewDetector( aTrackerSD );
    
   ///////////////////////////////////////////////////////////////////////
   //
   // Example how to retrieve Auxiliary Information for sensitive detector
   //
-  const G4GDMLAuxMapType* auxmap = fParser.GetAuxMap();
+  const G4GDMLAuxMapType* auxmap = fParser->GetAuxMap();
   G4cout << "Found " << auxmap->size()
             << " volume(s) with auxiliary information."
             << G4endl << G4endl;
   for(G4GDMLAuxMapType::const_iterator iter=auxmap->begin();
-      iter!=auxmap->end(); iter++) 
+      iter!=auxmap->end(); iter++)
   {
     G4cout << "Volume " << ((*iter).first)->GetName()
            << " has the following list of auxiliary information: "
@@ -98,11 +104,12 @@ void G04DetectorConstruction::ConstructSDandField()
   // sensitive detectors setting them for the volumes
 
   for(G4GDMLAuxMapType::const_iterator iter=auxmap->begin();
-      iter!=auxmap->end(); iter++) 
+      iter!=auxmap->end(); iter++)
   {
-    G4cout << "Volume " << ((*iter).first)->GetName()
+    /*G4cout << "Volume " << ((*iter).first)->GetName()
            << " has the following list of auxiliary information: "
            << G4endl << G4endl;
+    */
     for (G4GDMLAuxListType::const_iterator vit=(*iter).second.begin();
          vit!=(*iter).second.end();vit++)
     {
@@ -112,9 +119,9 @@ void G04DetectorConstruction::ConstructSDandField()
                << " to volume " << ((*iter).first)->GetName()
                <<  G4endl << G4endl;
 
-        G4VSensitiveDetector* mydet = 
+        G4VSensitiveDetector* mydet =
           SDman->FindSensitiveDetector((*vit).value);
-        if(mydet) 
+        if(mydet)
         {
           G4LogicalVolume* myvol = (*iter).first;
           myvol->SetSensitiveDetector(mydet);
@@ -124,6 +131,18 @@ void G04DetectorConstruction::ConstructSDandField()
           G4cout << (*vit).value << " detector not found" << G4endl;
         }
       }
+      else if((*vit).type == "Solid")
+      {
+        if((*vit).value == "True")
+        {
+          G4VisAttributes* visatt = new G4VisAttributes(
+            ((*iter).first)->GetVisAttributes()->GetColour());
+          visatt->SetVisibility(true);
+          visatt->SetForceSolid(true);
+          visatt->SetForceAuxEdgeVisible(true);
+          ((*iter).first)->SetVisAttributes(visatt);
+         }
+       }
     }
   }
 }

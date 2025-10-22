@@ -23,48 +23,44 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-/// \file persistency/gdml/G04/src/G04SensitiveDetector.cc
-/// \brief Implementation of the G04SensitiveDetector class
+/// \file persistency/gdml//src/PrimaryGeneratorAction.cc
+/// \brief Implementation of the PrimaryGeneratorAction class
 //
 //
 //
+//
 
-#include "G04SensitiveDetector.hh"
-#include "G4HCofThisEvent.hh"
-#include "G4Step.hh"
-#include "G4ThreeVector.hh"
-#include "G4SDManager.hh"
-#include "G4ios.hh"
+#include "PrimaryGeneratorAction.hh"
+#include "G4Event.hh"
+#include "G4ParticleGun.hh"
+#include "G4ParticleTable.hh"
+#include "G4AnalysisManager.hh"
+#include "G4ParticleDefinition.hh"
+#include "G4GeneralParticleSource.hh"
+#include "G4SystemOfUnits.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G04SensitiveDetector::G04SensitiveDetector(const G4String& name)
-  : G4VSensitiveDetector(name)
+PrimaryGeneratorAction::PrimaryGeneratorAction()
+ : G4VUserPrimaryGeneratorAction(), 
+   fParticleGun(0)
 {
+  G4int n_particle = 1;
+  fParticleGun = new G4GeneralParticleSource();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G04SensitiveDetector::~G04SensitiveDetector()
+PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
+  delete fParticleGun;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void G04SensitiveDetector::Initialize(G4HCofThisEvent*)
+void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
-}
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-G4bool G04SensitiveDetector::ProcessHits(G4Step*, G4TouchableHistory*)
-{
-  G4cout << "Processing hits ...." << G4endl; 
-  return true;
-}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void G04SensitiveDetector::EndOfEvent(G4HCofThisEvent*)
-{
+  fParticleGun->GeneratePrimaryVertex(anEvent);
+  // Add Analysis Manager
 }

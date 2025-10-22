@@ -23,34 +23,33 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-/// \file persistency/gdml/G04/include/G04SensitiveDetector.hh
-/// \brief Definition of the G04SensitiveDetector class
+/// \file persistency/gdml//include/DetectorConstruction.hh
+/// \brief Definition of the DetectorConstruction class
 //
 //
 //
+//
 
-#ifndef G04SensitiveDetector_h
-#define G04SensitiveDetector_h 1
+#ifndef _DETECTORCONSTRUCTION_H_
+#define _DETECTORCONSTRUCTION_H_
 
-#include "G4VSensitiveDetector.hh"
+#include "G4VUserDetectorConstruction.hh"
 
-class G4Step;
+class G4GDMLParser;
 
-/// Sensitive detector to be attached to the GDML geometry
+/// Detector construction for laoding GDML geometry
 
-class G04SensitiveDetector : public G4VSensitiveDetector
+class DetectorConstruction : public G4VUserDetectorConstruction
 {
-  public:
-      G04SensitiveDetector(const G4String&);
-     ~G04SensitiveDetector();
+  public: 
+    DetectorConstruction( const G4GDMLParser* parser);
 
-      virtual void Initialize(G4HCofThisEvent*);
-      virtual G4bool ProcessHits(G4Step*, G4TouchableHistory*);
-      virtual void EndOfEvent(G4HCofThisEvent*);
-
+    virtual G4VPhysicalVolume *Construct();  
+    virtual void ConstructSDandField();
+  
   private:
+    const G4GDMLParser * fParser;
 
 };
 
 #endif
-

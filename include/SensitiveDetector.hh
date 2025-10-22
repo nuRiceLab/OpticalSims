@@ -23,61 +23,34 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-/// \file persistency/gdml/G04/src/G04PrimaryGeneratorAction.cc
-/// \brief Implementation of the G04PrimaryGeneratorAction class
-//
+/// \file persistency/gdml/G04/include/SensitiveDetector.hh
+/// \brief Definition of the G04SensitiveDetector class
 //
 //
 //
 
-#include "G04PrimaryGeneratorAction.hh"
-#include "G4Event.hh"
-#include "G4ParticleGun.hh"
-#include "G4ParticleTable.hh"
-#include "G4ParticleDefinition.hh"
-#include "G4SystemOfUnits.hh"
+#ifndef SensitiveDetector_h
+#define SensitiveDetector_h 1
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+#include "G4VSensitiveDetector.hh"
 
-G04PrimaryGeneratorAction::G04PrimaryGeneratorAction()
- : G4VUserPrimaryGeneratorAction(), 
-   fParticleGun(0)
+class G4Step;
+
+/// Sensitive detector to be attached to the GDML geometry
+
+class SensitiveDetector : public G4VSensitiveDetector
 {
-  G4int n_particle = 1;
-  fParticleGun = new G4ParticleGun(n_particle);
+  public:
+      SensitiveDetector(const G4String&);
+     ~SensitiveDetector();
 
-  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-  G4String particleName;
-  fParticleGun->SetParticleDefinition(
-               particleTable->FindParticle(particleName="geantino"));
-  fParticleGun->SetParticleEnergy(1.0*GeV);
-  fParticleGun->SetParticlePosition(G4ThreeVector(-2.0*m, 0.1, 0.1));
-}
+      virtual void Initialize(G4HCofThisEvent*);
+      virtual G4bool ProcessHits(G4Step*, G4TouchableHistory*);
+      virtual void EndOfEvent(G4HCofThisEvent*);
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+  private:
 
-G04PrimaryGeneratorAction::~G04PrimaryGeneratorAction()
-{
-  delete fParticleGun;
-}
+};
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+#endif
 
-void G04PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
-{
-  G4int i = anEvent->GetEventID() % 3;
-  G4ThreeVector v(1.0,0.0,0.0);
-  switch(i)
-  {
-    case 0:
-      break;
-    case 1:
-      v.setY(0.1);
-      break;
-    case 2:
-      v.setZ(0.1);
-      break;
-  }
-  fParticleGun->SetParticleMomentumDirection(v);
-  fParticleGun->GeneratePrimaryVertex(anEvent);
-}

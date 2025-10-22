@@ -23,32 +23,48 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-/// \file persistency/gdml/G04/include/G04DetectorConstruction.hh
-/// \brief Definition of the G04DetectorConstruction class
+/// \file persistency/gdml//src/SensitiveDetector.cc
+/// \brief Implementation of the SensitiveDetector class
 //
 //
 //
-//
 
-#ifndef _G04DETECTORCONSTRUCTION_H_
-#define _G04DETECTORCONSTRUCTION_H_
+#include "SensitiveDetector.hh"
+#include "G4HCofThisEvent.hh"
+#include "G4Step.hh"
+#include "G4ThreeVector.hh"
+#include "G4SDManager.hh"
+#include "G4ios.hh"
 
-#include "G4VUserDetectorConstruction.hh"
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-class G4GDMLParser;
-
-/// Detector construction for laoding GDML geometry
-
-class G04DetectorConstruction : public G4VUserDetectorConstruction
+SensitiveDetector::SensitiveDetector(const G4String& name)
+  : G4VSensitiveDetector(name)
 {
-  public: 
-    G04DetectorConstruction(const G4GDMLParser& parser);
+}
 
-    virtual G4VPhysicalVolume *Construct();  
-    virtual void ConstructSDandField();
-  
-  private:
-    const G4GDMLParser& fParser;
-};
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#endif
+SensitiveDetector::~SensitiveDetector()
+{
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+void SensitiveDetector::Initialize(G4HCofThisEvent*)
+{
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+G4bool SensitiveDetector::ProcessHits(G4Step*, G4TouchableHistory*)
+{
+  G4cout << "Processing hits ...." << G4endl; 
+  return true;
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+void SensitiveDetector::EndOfEvent(G4HCofThisEvent*)
+{
+}

@@ -24,41 +24,28 @@
 // ********************************************************************
 //
 //
-/// \file G04ActionInitialization.cc
-/// \brief Implementation of the G04ActionInitialization class
+/// \file ActionInitialization.hh
+/// \brief Definition of the G04ActionInitialization class
 
-#include "G04ActionInitialization.hh"
-#include "G04PrimaryGeneratorAction.hh"
+#ifndef G04ActionInitialization_h
+#define G04ActionInitialization_h 1
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+#include "G4VUserActionInitialization.hh"
 
-G04ActionInitialization::G04ActionInitialization()
- : G4VUserActionInitialization()
-{}
+/// Action initialization class.
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-G04ActionInitialization::~G04ActionInitialization()
-{}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void G04ActionInitialization::BuildForMaster() const
+class ActionInitialization : public G4VUserActionInitialization
 {
-  //  SetUserAction(new G04RunAction);
-}
+  public:
+    ActionInitialization();
+    virtual ~ActionInitialization();
+
+    virtual void BuildForMaster() const;
+    virtual void Build() const;
+};
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void G04ActionInitialization::Build() const
-{
-  SetUserAction(new G04PrimaryGeneratorAction);
-  //  SetUserAction(new G04RunAction);
-  
-  //  G04EventAction* eventAction = new G04EventAction;
-  //  SetUserAction(eventAction);
-  
-  //  SetUserAction(new G04SteppingAction(eventAction));
-}  
+#endif
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+    

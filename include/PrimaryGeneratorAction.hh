@@ -23,29 +23,37 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
+/// \file persistency/gdml//include/PrimaryGeneratorAction.hh
+/// \brief Definition of the PrimaryGeneratorAction class
 //
-/// \file G04ActionInitialization.hh
-/// \brief Definition of the G04ActionInitialization class
+//
+//
+//
 
-#ifndef G04ActionInitialization_h
-#define G04ActionInitialization_h 1
+#ifndef _G04PRIMARYGENERATORACTION_H_
+#define _G04PRIMARYGENERATORACTION_H_
 
-#include "G4VUserActionInitialization.hh"
+#include "G4VUserPrimaryGeneratorAction.hh"
+#include "G4GeneralParticleSource.hh"
 
-/// Action initialization class.
+#include "globals.hh"
 
-class G04ActionInitialization : public G4VUserActionInitialization
+class G4Event;
+class G4GeneralParticleSource;
+
+/// Primary generator action for GDML sensitive detector example
+
+class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
   public:
-    G04ActionInitialization();
-    virtual ~G04ActionInitialization();
 
-    virtual void BuildForMaster() const;
-    virtual void Build() const;
+    PrimaryGeneratorAction();
+   ~PrimaryGeneratorAction();
+    void GeneratePrimaries(G4Event* anEvent) override;
+
+  private:
+
+    G4GeneralParticleSource* fParticleGun;
 };
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 #endif
-
-    
