@@ -10,11 +10,11 @@ The workflow enables **fast optical photon propagation on GPUs** while retaining
 ---
 
 ## ⚙️ Prerequisites
-- **CUDA Toolkit 11.7 (Tested)
+- **CUDA Toolkit 11.7 (Tested)**
 - **NVIDIA GPU with OptiX support (7.5) (Tested)**
 - **Geant4 (with GDML support enabled)**
 - **Opticks (built with Geant4 integration)**
-- **ROOT (for output handling and visualization)
+- **ROOT (for output handling and visualization)**
 
 ---
 

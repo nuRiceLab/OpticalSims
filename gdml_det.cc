@@ -69,9 +69,11 @@ int main(int argc,char **argv)
   #endif
 
    G4cout << G4endl;
-   G4cout << "Usage: gdml_det <intput_gdml_file:mandatory>"
+   G4cout <<" Usage : " << G4endl;
+   G4cout << "Interactive Mode : ./gdml_det i GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac"
           << G4endl;
-   G4cout << G4endl;
+   G4cout << "Batch Mode : ./gdml_det i GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac"
+          << G4endl;
 
    if (argc<2)
    {
