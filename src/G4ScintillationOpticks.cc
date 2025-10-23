@@ -263,7 +263,6 @@ G4VParticleChange* G4ScintillationOpticks::PostStepDoIt(const G4Track& aTrack,
             MeanNumberOfPhotons *= TotalEnergyDeposit;
     }
     sum_yields = yield1 + yield2 + yield3;
-    std::cout <<" Total Photons Opticks " << sum_yields << std::endl;
     if(MeanNumberOfPhotons > 10.)
     {
         G4double sigma = ResolutionScale * std::sqrt(MeanNumberOfPhotons);
@@ -355,15 +354,14 @@ G4VParticleChange* G4ScintillationOpticks::PostStepDoIt(const G4Track& aTrack,
                     (G4PhysicsFreeVector*) ((*fIntegralTable3)(materialIndex));
 
         }
-#ifdef With_Opticks
-        std::cout <<"G4ScintillationOpticks_HERE "<< numPhot<<"\n";
-        if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 )
-                U4::CollectGenstep_DsG4Scintillation_r4695(&aTrack, &aStep, numPhot, scnt, scintTime);
-            if(SEventConfig::IntegrationMode()==1) continue;
-#endif
+
         if(!scintIntegral)
             continue;
-
+    #ifdef With_Opticks
+            if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and numPhot>0 )
+                U4::CollectGenstep_DsG4Scintillation_r4695(&aTrack, &aStep, numPhot, scnt, scintTime);
+            if(SEventConfig::IntegrationMode()==1) continue;
+    #endif
         G4double CIImax = scintIntegral->GetMaxValue();
         for(std::size_t i = 0; i < numPhot; ++i)
         {

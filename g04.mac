@@ -3,7 +3,7 @@
 ###################################################
 
 # verbosity
-/tracking/verbose 1
+/tracking/verbose 0
 /control/verbose 0
 /run/verbose 0
 
