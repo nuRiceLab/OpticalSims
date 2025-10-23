@@ -13,4 +13,11 @@
 /vis/viewer/flush
 
 # (if you prefer not refreshing each event, uncomment next line)
-# /vis/scene/endOfEventAction accumulate
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate
+
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set e- red
+/vis/modeling/trajectories/drawByParticleID-0/set e+ yellow
+/vis/modeling/trajectories/drawByParticleID-0/set opticalphoton green
+/vis/modeling/trajectories/drawByParticleID-0/set gamma blue

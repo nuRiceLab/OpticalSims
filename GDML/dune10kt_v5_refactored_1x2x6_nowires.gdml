@@ -329,6 +329,10 @@
        <property name="bisMSBREEMISSIONPROB" ref="bisMSBREEMISSIONPROB0x4b7a3a0"/>
        <property name="bisMSBCOMPONENT" ref="bisMSBCOMPONENT0x4b7a690"/>
        <property name="bisMSBTIMECONSTANT" ref="bisMSBTIMECONSTANT0x4b7b8f0"/>
+       <property name="SCINTILLATIONCOMPONENT1" ref="FASTCOMPONENT0x4b710b0"/>
+       <property name="SCINTILLATIONCOMPONENT2" ref="SLOWCOMPONENT0x4b72290"/>
+       <property name="SCINTILLATIONTIMECONSTANT1" ref="FTC"/>
+       <property name="SCINTILLATIONTIMECONSTANT2" ref="STC"/>
   </material>
 
   <material name="ArGas" formula="ArGas">

@@ -24,44 +24,52 @@
 // ********************************************************************
 //
 //
-/// \file ActionInitialization.cc
-/// \brief Implementation of the ActionInitialization class
+//
+//---------------------------------------------------------------------------
+//
+// ClassName:   G4OpticalPhysics
+//
+// Author:      P.Gumplinger 30.09.2009
+//
+// Modified:    P.Gumplinger 29.09.2011
+//              (based on code from I. Hrivnacova)
+//
+//
+//              Modified by Ilker Parmaksiz on 3/5/25.
+//              Opticks S1 Photons Implementation
+//
+////////////////////////////////////////////////////////////////////////
+//---------------------------------------------------------------------------
+//
+// This class provides construction of default optical physics
 
-#include "ActionInitialization.hh"
-#include "PrimaryGeneratorAction.hh"
-#include "EventAction.hh"
-#include "RunAction.hh"
-#include "SteppingAction.hh"
-#include "TrackingAction.hh"
+#ifndef G4OpticalPhysics_h
+#define G4OpticalPhysics_h 1
+
+#include "G4VPhysicsConstructor.hh"
+#include "G4OpticalParameters.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-ActionInitialization::ActionInitialization()
- : G4VUserActionInitialization()
-{}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-ActionInitialization::~ActionInitialization()
-{}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void ActionInitialization::BuildForMaster() const
+class G4OpticalPhysicsOpticks : public G4VPhysicsConstructor
 {
+public:
+    G4OpticalPhysicsOpticks(G4int verbose = 0, const G4String& name = "Optical");
+    ~G4OpticalPhysicsOpticks() override;
+    void PrintStatistics() const;
 
-}
+    G4OpticalPhysicsOpticks(const G4OpticalPhysicsOpticks& right) = delete;
+    G4OpticalPhysicsOpticks& operator=(const G4OpticalPhysicsOpticks& right) = delete;
+
+protected:
+    // construct particle and physics
+    void ConstructParticle() override;
+    void ConstructProcess() override;
+
+private:
+    void PrintWarning(G4ExceptionDescription&) const;
+};
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void ActionInitialization::Build() const
-{
-    SetUserAction(new PrimaryGeneratorAction);
-    SetUserAction(new RunAction);
-    EventAction* eventAction = new EventAction;
-    SetUserAction(eventAction);
-    SetUserAction(new SteppingAction());
-    SetUserAction(new TrackingAction());
-
-}  
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+#endif  // G4OpticalPhysicsOpticks_h

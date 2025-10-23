@@ -3,9 +3,9 @@
 ###################################################
 
 # verbosity
-/tracking/verbose 0
-/control/verbose 1
-/run/verbose 2
+/tracking/verbose 1
+/control/verbose 0
+/run/verbose 0
 
 
 # GPS Particle Generation
@@ -15,8 +15,4 @@
 /gps/ang/type iso
 /gps/energy 1 MeV
 
-
-# Shoot along Z direction
 /run/beamOn 1
-
-exit

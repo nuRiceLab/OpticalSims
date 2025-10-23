@@ -17,8 +17,8 @@ public:
   RunAction();
   // Destruct
   ~RunAction();
-  virtual void BeginRun(const G4Run*);
-  virtual void EndRun(const G4Run*);
+  void BeginOfRunAction(const G4Run*) override;
+  void EndOfRunAction(const G4Run*) override;
   vector<double> RunTimes;
   vector<double> NPhotons;
   double RunTime;

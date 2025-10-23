@@ -42,12 +42,14 @@
 
 #include "G4RunManagerFactory.hh"
 
-#include "FTFP_BERT.hh"
 #include "G4UImanager.hh"
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
 #include "G4GDMLParser.hh"
 #include "ColorReader.hh"
+// PhysicsList
+#include "G4EmStandardPhysics_option4.hh"
+#include "PhysicsList.hh"
 // macro loader
 #include  "include/config.h"
 
@@ -56,6 +58,9 @@
 #include "SEventConfig.hh"
 #include "OPTICKS_LOG.hh"
 #include <cuda_runtime.h>
+#include "G4OpticalPhysicsOpticks.hh"
+#else
+#include "G4OpticalPhysics.hh"
 #endif
 
 int main(int argc,char **argv)
@@ -94,13 +99,20 @@ int main(int argc,char **argv)
      parser->Read(argv[1],false);
    }
 
-
-
    auto* runManager = G4RunManagerFactory::CreateRunManager();
 
-   runManager->SetUserInitialization(new DetectorConstruction(parser));
-   runManager->SetUserInitialization(new FTFP_BERT);
+  // Physics list
+  G4VModularPhysicsList* physics_list = new PhysicsList();
 
+  #ifdef With_Opticks
+    std::cout << "Defining Opticks Physics List" << std::endl;
+    physics_list->RegisterPhysics(new G4OpticalPhysicsOpticks());
+  #else
+    physics_list->RegisterPhysics(new G4OpticalPhysics());
+  #endif
+
+   runManager->SetUserInitialization(new DetectorConstruction(parser));
+   runManager->SetUserInitialization(physics_list);
    // User action initialization
    runManager->SetUserInitialization(new ActionInitialization());
    runManager->SetNumberOfThreads(1);

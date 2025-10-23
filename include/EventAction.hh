@@ -15,8 +15,8 @@ class EventAction : public G4UserEventAction
 public:
     EventAction();
     ~EventAction();
-    void BeginEvent(const G4Event*);
-    void EndEvent(const G4Event*);
+    void BeginOfEventAction(const G4Event*) override;
+    void EndOfEventAction(const G4Event*) override;
 private:
     chrono::time_point<chrono::high_resolution_clock> startTime;
 };
