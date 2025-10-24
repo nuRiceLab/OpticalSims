@@ -40,7 +40,7 @@
 
 #include "G4OpticalPhysicsOpticks.hh"
 
-#include "G4Cerenkov.hh"
+#include "G4CerenkovOpticks.hh"
 #include "G4EmSaturation.hh"
 #include "G4LossTableManager.hh"
 #include "G4OpAbsorption.hh"
@@ -129,7 +129,7 @@ void G4OpticalPhysicsOpticks::ConstructProcess()
     G4EmSaturation* emSaturation = G4LossTableManager::Instance()->EmSaturation();
     scint->AddSaturation(emSaturation);
 
-    G4Cerenkov* cerenkov = new G4Cerenkov();
+    G4CerenkovOpticks* cerenkov = new G4CerenkovOpticks();
 
     auto myParticleIterator = GetParticleIterator();
     myParticleIterator->reset();

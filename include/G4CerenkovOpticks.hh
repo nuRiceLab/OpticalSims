@@ -40,8 +40,8 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#ifndef G4Cerenkov_h
-#define G4Cerenkov_h 1
+#ifndef G4CerenkovOpticks_h
+#define G4CerenkovOpticks_h 1
 
 #include "globals.hh"
 #include "G4DynamicParticle.hh"

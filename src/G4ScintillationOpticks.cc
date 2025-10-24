@@ -92,9 +92,8 @@
 #include "include/config.h"
 #ifdef With_Opticks
 #include "G4CXOpticks.hh"
-    #include "SEvt.hh"
-    #include "U4.hh"
-    #include "omp.h"
+#include "SEvt.hh"
+#include "U4.hh"
 #endif
 using namespace CLHEP;
 

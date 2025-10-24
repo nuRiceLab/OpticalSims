@@ -57,7 +57,7 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#include "G4Cerenkov.hh"
+#include "G4CerenkovOpticks.hh"
 
 #include "G4ios.hh"
 #include "G4LossTableManager.hh"
@@ -76,7 +76,11 @@
 #include "Randomize.hh"
 #include "G4PhysicsModelCatalog.hh"
 #include "include/config.h"
-
+#ifdef With_Opticks
+#include "G4CXOpticks.hh"
+#include "SEvt.hh"
+#include "U4.hh"
+#endif
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 G4CerenkovOpticks::G4CerenkovOpticks(const G4String& processName, G4ProcessType type)
@@ -297,7 +301,23 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
   G4double MeanNumberOfPhotons2 =
     GetAverageNumberOfPhotons(charge, beta2, aMaterial, Rindex);
 
-// Integrate it to here.
+  // Integrating Opticks to handle Cherenkov photons
+  // Simulate Photons in devices you like
+  // GPU Only, IntegrationMode == 1
+  // CPU Only, IntegrationMode == 2
+  // CPU and GPU Together, Integration Mode == 3
+  #ifdef With_Opticks
+        if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and fNumPhotons>0 )
+			U4::CollectGenstep_G4Cerenkov_modified(&aTrack, &aStep, fNumPhotons,BetaInverse,Pmin,Pmax,maxCos,maxSin2,MeanNumberOfPhotons1,MeanNumberOfPhotons2);
+
+		// Simulate Photons only in GPU
+		if(SEventConfig::IntegrationMode()==1) {
+			  aParticleChange.SetNumberOfSecondaries(0);
+			  return pParticleChange;
+		};
+  #endif
+
+
   for(G4int i = 0; i < fNumPhotons; ++i)
   {
     // Determine photon energy

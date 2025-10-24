@@ -67,10 +67,17 @@ int main(int argc,char **argv)
 {
     // Opticks Initialization
   #ifdef With_Opticks
+      int device;
+
       OPTICKS_LOG(argc,argv); // This is needed for opticks
       cudaDeviceSynchronize();
       SEventConfig::Initialize();
-      //std::cout<< SEventConfig::Desc() << std::endl;
+      cudaGetDevice(&device);
+      std::cout<<"GPU Device ID "<<device<< std::endl;
+      /*
+        if(device == 1) { cudaSetDevice(0); }
+        std::cout<<"Device "<<device<< std::endl;
+      */
   #endif
 
    G4cout << G4endl;
