@@ -38,6 +38,7 @@
 #include "G4ParticleDefinition.hh"
 #include "G4GeneralParticleSource.hh"
 #include "G4SystemOfUnits.hh"
+#include "G4AnalysisManager.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -60,7 +61,18 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
-
+  auto analysisManager =  G4AnalysisManager::Instance();
+  analysisManager->FillNtupleSColumn(0,0,fParticleGun->GetParticleDefinition()->GetParticleName());
+  analysisManager->FillNtupleIColumn(0,1,fParticleGun->GetParticleDefinition()->GetParticleDefinitionID());
+  analysisManager->FillNtupleDColumn(0,2,fParticleGun->GetParticleEnergy());
+  analysisManager->FillNtupleDColumn(0,3,fParticleGun->GetParticlePosition().x());
+  analysisManager->FillNtupleDColumn(0,4,fParticleGun->GetParticlePosition().y());
+  analysisManager->FillNtupleDColumn(0,5,fParticleGun->GetParticlePosition().z());
+  analysisManager->FillNtupleDColumn(0,6,fParticleGun->GetParticleTime());
+  analysisManager->FillNtupleDColumn(0,7,fParticleGun->GetParticleMomentumDirection().x());
+  analysisManager->FillNtupleDColumn(0,8,fParticleGun->GetParticleMomentumDirection().y());
+  analysisManager->FillNtupleDColumn(0,9,fParticleGun->GetParticleMomentumDirection().z());
+  analysisManager->AddNtupleRow();
   fParticleGun->GeneratePrimaryVertex(anEvent);
   // Add Analysis Manager
 }
