@@ -35,7 +35,10 @@
 #include "G4ThreeVector.hh"
 #include "G4SDManager.hh"
 #include "G4ios.hh"
-
+#include  "G4AnalysisManager.hh"
+#include "G4OpticalPhoton.hh"
+#include "G4Track.hh"
+#include "G4VHit.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 SensitiveDetector::SensitiveDetector(const G4String& name)
@@ -51,14 +54,23 @@ SensitiveDetector::~SensitiveDetector()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void SensitiveDetector::Initialize(G4HCofThisEvent*)
+void SensitiveDetector::Initialize(G4HCofThisEvent* G4HCofThi)
 {
+  if (G4HCofThi)
+    G4cout << G4HCofThi->GetNumberOfCollections() <<G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G4bool SensitiveDetector::ProcessHits(G4Step*, G4TouchableHistory*)
+G4bool SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*th)
 {
+  auto analysisManager = G4AnalysisManager::Instance();
+  auto aTrack = aStep->GetTrack();
+  G4String detectName=aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName();
+  if (aTrack->GetParticleDefinition()==G4OpticalPhoton::OpticalPhoton())
+  {
+
+  }
   G4cout << "Processing hits ...." << G4endl; 
   return true;
 }

@@ -18,7 +18,7 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
     // Open an output file
-    G4String file = "out.csv";
+    G4String file = "out.root";
     if (analysisManager)
         analysisManager->OpenFile(file);
     cout << "Generating " << file << G4endl;
@@ -38,7 +38,7 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
 
     //Opticks Hits
     analysisManager->CreateNtuple("OpticksHits","Opticks Hits");
-    analysisManager->CreateNtupleSColumn("SensorID");
+    analysisManager->CreateNtupleIColumn("SensorID");
     analysisManager->CreateNtupleDColumn("x");
     analysisManager->CreateNtupleDColumn("y");
     analysisManager->CreateNtupleDColumn("z");
@@ -47,8 +47,9 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->FinishNtuple();
 
     //Geant4 Hits
-    analysisManager->CreateNtuple("Geant4Hits","Opticks Hits");
-    analysisManager->CreateNtupleSColumn("SensorID");
+    analysisManager->CreateNtuple("Geant4Hits","Geant4 Hits");
+    analysisManager->CreateNtupleIColumn("SensorID");
+    analysisManager->CreateNtupleSColumn("SensorName");
     analysisManager->CreateNtupleDColumn("x");
     analysisManager->CreateNtupleDColumn("y");
     analysisManager->CreateNtupleDColumn("z");

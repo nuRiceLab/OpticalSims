@@ -72,7 +72,7 @@ void DetectorConstruction::ConstructSDandField()
 
   G4SDManager* SDman = G4SDManager::GetSDMpointer();
   
-  G4String trackerChamberSDname = "Tracker";
+  G4String trackerChamberSDname = "PhotonSD";
   SensitiveDetector* aTrackerSD =
     new SensitiveDetector(trackerChamberSDname);
   SDman->AddNewDetector( aTrackerSD );
@@ -113,7 +113,7 @@ void DetectorConstruction::ConstructSDandField()
     for (G4GDMLAuxListType::const_iterator vit=(*iter).second.begin();
          vit!=(*iter).second.end();vit++)
     {
-      if ((*vit).type=="SensDet")
+      if ((*vit).type=="SensDet" and (*vit).value=="PhotonSD")
       {
         G4cout << "Attaching sensitive detector " << (*vit).value
                << " to volume " << ((*iter).first)->GetName()

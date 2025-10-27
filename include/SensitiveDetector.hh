@@ -33,10 +33,16 @@
 #define SensitiveDetector_h 1
 
 #include "G4VSensitiveDetector.hh"
+#include "ArapucaHit.hh"
+#include "G4TouchableHistory.hh"
+#include "G4PhysicalConstants.hh"
+#include "G4Types.hh"
 
 class G4Step;
 
 /// Sensitive detector to be attached to the GDML geometry
+using namespace std;
+
 
 class SensitiveDetector : public G4VSensitiveDetector
 {
@@ -47,10 +53,15 @@ class SensitiveDetector : public G4VSensitiveDetector
       virtual void Initialize(G4HCofThisEvent*);
       virtual G4bool ProcessHits(G4Step*, G4TouchableHistory*);
       virtual void EndOfEvent(G4HCofThisEvent*);
-
   private:
-
+    PhotonHitsCollection* fPhotonHitsCollection{ 0 };
 };
-
+inline G4double EtoWavelength(G4double E)
+{
+    // input photon energy in eV
+    // return wavelength in nm:
+    // lambda = h c/e
+    return ((CLHEP::h_Planck*CLHEP::c_light) / (CLHEP::eV * CLHEP::nm)) / E;
+}
 #endif
 

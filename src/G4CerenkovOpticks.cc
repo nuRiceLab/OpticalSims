@@ -307,16 +307,14 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
   // CPU Only, IntegrationMode == 2
   // CPU and GPU Together, Integration Mode == 3
   #ifdef With_Opticks
-        if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and fNumPhotons>0 )
+    if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and fNumPhotons>0 )
 			U4::CollectGenstep_G4Cerenkov_modified(&aTrack, &aStep, fNumPhotons,BetaInverse,Pmin,Pmax,maxCos,maxSin2,MeanNumberOfPhotons1,MeanNumberOfPhotons2);
-
 		// Simulate Photons only in GPU
 		if(SEventConfig::IntegrationMode()==1) {
 			  aParticleChange.SetNumberOfSecondaries(0);
 			  return pParticleChange;
 		};
   #endif
-
 
   for(G4int i = 0; i < fNumPhotons; ++i)
   {
