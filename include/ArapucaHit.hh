@@ -16,7 +16,7 @@ class ArapucaHit : public G4VHit
     public:
     ArapucaHit();
     ~ArapucaHit();
-    ArapucaHit(unsigned iid, G4String iname, G4double iwave, G4double itime,
+    ArapucaHit(G4int ipid, G4int isid , G4String iname, G4double iwave, G4double itime,
       G4ThreeVector ipos, G4ThreeVector idire,G4ThreeVector ipol);
     ArapucaHit(const ArapucaHit&);
     const ArapucaHit& operator=(const ArapucaHit&);
@@ -28,7 +28,8 @@ class ArapucaHit : public G4VHit
 
 
     private:
-    unsigned int fid{ 0 };
+    G4int fpid{ 0 };
+    G4int fsid{ 0 };
     G4String fname{"None"};
     G4double fwave{ 0 };
     G4double ft{ 0 };

@@ -17,12 +17,13 @@ ArapucaHit::~ArapucaHit()
 
 }
 
-ArapucaHit::ArapucaHit(unsigned iid, G4String iname, G4double iwave,
+ArapucaHit::ArapucaHit(G4int ipid,G4int isid, G4String iname, G4double iwave,
                      G4double itime, G4ThreeVector ipos,
                      G4ThreeVector idir, G4ThreeVector ipol)
   : G4VHit()
 {
-    fid     = iid;
+    fpid    = ipid;
+    fsid    = isid;
     fname   = iname;
     fwave   = iwave;
     ft      = itime;
@@ -32,7 +33,8 @@ ArapucaHit::ArapucaHit(unsigned iid, G4String iname, G4double iwave,
 }ArapucaHit::ArapucaHit(const ArapucaHit& p)
   : G4VHit()
 {
-    fid     = p.fid;
+    fpid    = p.fpid;
+    fsid    = p.fsid;
     fname   = p.fname;
     fwave   = p.fwave;
     ft      = p.ft;
@@ -43,7 +45,8 @@ ArapucaHit::ArapucaHit(unsigned iid, G4String iname, G4double iwave,
 
 const ArapucaHit& ArapucaHit::operator=(const ArapucaHit& p)
 {
-    fid     = p.fid;
+    fpid    = p.fpid;
+    fsid    = p.fsid;
     fname   = p.fname;
     fwave   = p.fwave;
     ft      = p.ft;
@@ -76,8 +79,9 @@ void ArapucaHit::Draw()
 void ArapucaHit::Print()
 {
     G4cout << "------ Printing Hit Info ------"<<G4endl;
+    G4cout << "Process ID : " << fpid << G4endl;
     G4cout << "Detector Name : " << fname << G4endl;
-    G4cout << "Detector ID : " << fid << G4endl;
+    G4cout << "Detector ID : " << fsid << G4endl;
     G4cout << "Hit Position : " << fpos.getX() << " " << fpos.getY() << " " << fpos.getZ() << G4endl;
     G4cout << "Hit Time : " << ft << G4endl;
     G4cout << "Hit Wavelength : " << fwave << G4endl;

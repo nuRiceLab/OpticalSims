@@ -54,13 +54,14 @@ class SensitiveDetector : public G4VSensitiveDetector
       virtual G4bool ProcessHits(G4Step*, G4TouchableHistory*);
       virtual void EndOfEvent(G4HCofThisEvent*);
   private:
-    PhotonHitsCollection* fPhotonHitsCollection{ 0 };
+    G4int fHCid{0};
+    ArapucaHitsCollection* fArapucaHitsCollection{ 0 };
 };
 inline G4double EtoWavelength(G4double E)
 {
     // input photon energy in eV
     // return wavelength in nm:
-    // lambda = h c/e
+    // Wavelength = h*c/e
     return ((CLHEP::h_Planck*CLHEP::c_light) / (CLHEP::eV * CLHEP::nm)) / E;
 }
 #endif
