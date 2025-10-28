@@ -57,11 +57,11 @@ void EventAction::EndOfEventAction(const G4Event* event)
 #endif
 
 
+
     /////// GEANT4 HITS ///////
     G4HCofThisEvent * hcPhoton= event->GetHCofThisEvent();
 
     if (hcPhoton)
-    {
 
         G4int n=hcPhoton->GetNumberOfCollections();
         G4VHitsCollection * hc = hcPhoton->GetHC(0);

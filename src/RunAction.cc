@@ -65,6 +65,7 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     G4cout << "### Run started ###" << G4endl;
 }
 
+
 void RunAction::EndOfRunAction(const G4Run* run) {
     auto duration = chrono::high_resolution_clock::now() - startTime;
     auto RunTime = chrono::duration_cast<chrono::duration<double>>(duration).count();
@@ -73,7 +74,7 @@ void RunAction::EndOfRunAction(const G4Run* run) {
     // Write and Close File
     auto analysisManager = G4AnalysisManager::Instance();
     if (analysisManager){
-        cout << "Saving root file .." << G4endl;
+        cout << "Saving Events to " << analysisManager->GetFileName() <<" root file .." << G4endl;
         analysisManager->Write();
         analysisManager->CloseFile();
         analysisManager->Clear();
