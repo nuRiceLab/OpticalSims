@@ -4,12 +4,14 @@
 
 #include "EventAction.hh"
 
+#include <G4AnalysisManager.hh>
 #include <G4AutoLock.hh>
-
 #include "G4Event.hh"
 #include "include/config.h"
 #include "globals.hh"
 #include "G4Threading.hh"
+#include "SensitiveDetector.hh"
+#include "ArapucaHit.hh"
 #include "include/config.h"
 #ifdef With_Opticks
     #include "SEvt.hh"
@@ -26,6 +28,7 @@ void EventAction::BeginOfEventAction(const G4Event* event) {
 void EventAction::EndOfEventAction(const G4Event* event)
 {
     G4int evtID=event->GetEventID();
+    auto analysisManager = G4AnalysisManager::Instance();
 #ifdef With_Opticks
     // Force Single Thread
     G4AutoLock lock(&opticks_mt);
@@ -52,6 +55,34 @@ void EventAction::EndOfEventAction(const G4Event* event)
         g4cx->reset(evtID);
     }
 #endif
+
+
+    /////// GEANT4 HITS ///////
+    G4HCofThisEvent * hcPhoton= event->GetHCofThisEvent();
+
+    if (hcPhoton)
+    {
+
+        G4int n=hcPhoton->GetNumberOfCollections();
+        G4VHitsCollection * hc = hcPhoton->GetHC(0);
+        G4int numbHits=hc->GetSize();
+        for (G4int i=0;i<numbHits;i++)
+        {
+            ArapucaHit * hit = dynamic_cast<ArapucaHit*>(hc->GetHit(i));
+            analysisManager->FillNtupleIColumn(2,0,evtID);
+            analysisManager->FillNtupleIColumn(2,1,hit->GetSid());
+            analysisManager->FillNtupleSColumn(2,2,hit->GetDetName());
+            analysisManager->FillNtupleDColumn(2,3,hit->GetPos().getX());
+            analysisManager->FillNtupleDColumn(2,4,hit->GetPos().getY());
+            analysisManager->FillNtupleDColumn(2,5,hit->GetPos().getZ());
+            analysisManager->FillNtupleDColumn(2,6,hit->GetTime());
+            analysisManager->FillNtupleDColumn(2,7,hit->GetWave());
+            analysisManager->FillNtupleIColumn(2,8,hit->GetPid());
+            analysisManager->AddNtupleRow(2);
+        }
+
+    }
+
     auto duration = chrono::high_resolution_clock::now() - startTime;
     auto EventTime = chrono::duration_cast<chrono::duration<double>>(duration).count();
     cout << "Event " <<  evtID <<", End Time " << EventTime << " seconds" << endl;

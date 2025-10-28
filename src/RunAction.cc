@@ -18,7 +18,7 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
     // Open an output file
-    G4String file = "out.root";
+    G4String file = "out.csv";
     if (analysisManager)
         analysisManager->OpenFile(file);
     cout << "Generating " << file << G4endl;
@@ -34,10 +34,12 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtupleDColumn("mx");
     analysisManager->CreateNtupleDColumn("my");
     analysisManager->CreateNtupleDColumn("mz");
+    analysisManager->CreateNtupleIColumn("evtID");
     analysisManager->FinishNtuple();
 
     //Opticks Hits
     analysisManager->CreateNtuple("OpticksHits","Opticks Hits");
+    analysisManager->CreateNtupleIColumn("evtID");
     analysisManager->CreateNtupleIColumn("SensorID");
     analysisManager->CreateNtupleDColumn("x");
     analysisManager->CreateNtupleDColumn("y");
@@ -48,6 +50,7 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
 
     //Geant4 Hits
     analysisManager->CreateNtuple("Geant4Hits","Geant4 Hits");
+    analysisManager->CreateNtupleIColumn("evtID");
     analysisManager->CreateNtupleIColumn("SensorID");
     analysisManager->CreateNtupleSColumn("SensorName");
     analysisManager->CreateNtupleDColumn("x");
@@ -55,10 +58,10 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtupleDColumn("z");
     analysisManager->CreateNtupleDColumn("t");
     analysisManager->CreateNtupleDColumn("wavelength");
+    analysisManager->CreateNtupleIColumn("ProcessID");
     analysisManager->FinishNtuple();
     startTime = chrono::high_resolution_clock::now();
     RunTime =0;
-
     G4cout << "### Run started ###" << G4endl;
 }
 
@@ -73,5 +76,6 @@ void RunAction::EndOfRunAction(const G4Run* run) {
         cout << "Saving root file .." << G4endl;
         analysisManager->Write();
         analysisManager->CloseFile();
+        analysisManager->Clear();
     }
  }

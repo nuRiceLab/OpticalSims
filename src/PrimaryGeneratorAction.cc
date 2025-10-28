@@ -62,6 +62,9 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
   auto analysisManager =  G4AnalysisManager::Instance();
+
+
+  fParticleGun->GeneratePrimaryVertex(anEvent);
   analysisManager->FillNtupleSColumn(0,0,fParticleGun->GetParticleDefinition()->GetParticleName());
   analysisManager->FillNtupleIColumn(0,1,fParticleGun->GetParticleDefinition()->GetParticleDefinitionID());
   analysisManager->FillNtupleDColumn(0,2,fParticleGun->GetParticleEnergy());
@@ -72,7 +75,8 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   analysisManager->FillNtupleDColumn(0,7,fParticleGun->GetParticleMomentumDirection().x());
   analysisManager->FillNtupleDColumn(0,8,fParticleGun->GetParticleMomentumDirection().y());
   analysisManager->FillNtupleDColumn(0,9,fParticleGun->GetParticleMomentumDirection().z());
-  analysisManager->AddNtupleRow();
-  fParticleGun->GeneratePrimaryVertex(anEvent);
+  analysisManager->FillNtupleIColumn(0,10,anEvent->GetEventID());
+  analysisManager->AddNtupleRow(0);
+
   // Add Analysis Manager
 }

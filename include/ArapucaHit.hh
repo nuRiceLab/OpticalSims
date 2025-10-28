@@ -25,6 +25,14 @@ class ArapucaHit : public G4VHit
     inline void operator delete(void*);
     void Draw() final;
     void Print();
+    G4int GetPid();
+    G4int GetSid();
+    G4String GetDetName();
+    G4double GetWave();
+    G4double GetTime();
+    G4ThreeVector GetPos();
+    G4ThreeVector GetDir();
+    G4ThreeVector GetPol();
 
 
     private:
@@ -56,5 +64,13 @@ inline void ArapucaHit::operator delete(void* aHit)
     ArapucaHitA->FreeSingle((ArapucaHit*) aHit);
 }
 
+inline G4int ArapucaHit::GetPid(){return fpid ;}
+inline G4int ArapucaHit::GetSid(){return fsid ;}
+inline G4String ArapucaHit::GetDetName(){return fname ;}
+inline G4double ArapucaHit::GetWave(){return fwave ;}
+inline G4double ArapucaHit::GetTime(){return ft ;}
+inline G4ThreeVector ArapucaHit::GetPos(){return fpos ;}
+inline G4ThreeVector ArapucaHit::GetDir(){return fdir ;}
+inline G4ThreeVector ArapucaHit::GetPol(){return fpol ;}
 
 #endif //GDMLOPTICKS_ARAPUCAHIT_HH
