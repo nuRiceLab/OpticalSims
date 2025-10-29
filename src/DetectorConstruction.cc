@@ -54,15 +54,8 @@ DetectorConstruction::DetectorConstruction(const G4GDMLParser * parser)
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
-  // Pass the World Volume to Opticks
-  #ifdef With_Opticks
-    std::cout << "Setting up detector construction for Opticks" << std::endl;
-
-    G4CXOpticks::SetSensorIdentifier(new MySensorIdentifier());
-    G4CXOpticks::SetGeometry(fParser->GetWorldVolume());
-  #endif
-
-  return fParser->GetWorldVolume();
+  fDetector=fParser->GetWorldVolume();
+  return fDetector;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -80,29 +73,13 @@ void DetectorConstruction::ConstructSDandField()
   SensitiveDetector* aTrackerSD =
     new SensitiveDetector(trackerChamberSDname);
   SDman->AddNewDetector( aTrackerSD );
-   
+
   ///////////////////////////////////////////////////////////////////////
   //
   // Example how to retrieve Auxiliary Information for sensitive detector
   //
   const G4GDMLAuxMapType* auxmap = fParser->GetAuxMap();
-  G4cout << "Found " << auxmap->size()
-            << " volume(s) with auxiliary information."
-            << G4endl << G4endl;
-  for(G4GDMLAuxMapType::const_iterator iter=auxmap->begin();
-      iter!=auxmap->end(); iter++)
-  {
-    G4cout << "Volume " << ((*iter).first)->GetName()
-           << " has the following list of auxiliary information: "
-           << G4endl << G4endl;
-    for (G4GDMLAuxListType::const_iterator vit=(*iter).second.begin();
-         vit!=(*iter).second.end(); vit++)
-    {
-      G4cout << "--> Type: " << (*vit).type
-                << " Value: " << (*vit).value << G4endl;
-    }
-  }
-  G4cout << G4endl;
+
 
   // The same as above, but now we are looking for
   // sensitive detectors setting them for the volumes
@@ -149,5 +126,36 @@ void DetectorConstruction::ConstructSDandField()
        }
     }
   }
+
+      // Pass the World Volume to Opticks
+    #ifdef With_Opticks
+      // run it only in master thread
+      if (fDetector and G4Threading::IsMasterThread())
+      {
+        std::cout << "Setting up detector construction for Opticks" << std::endl;
+        G4CXOpticks::SetSensorIdentifier(new MySensorIdentifier());
+        G4CXOpticks::SetGeometry(fDetector);
+      }
+
+    #endif
+
 }
 
+
+std::vector< std::string_view > DetectorConstruction::Split(const std::string_view & s,char del)
+{
+  std::vector< std::string_view > result;
+  size_t start=0;
+  while (true)
+  {
+    size_t pos=s.find(del,start);
+    if (pos==std::string::npos)
+    {
+      result.emplace_back(std::string(s.begin()+start));
+      break;
+    }
+    result.emplace_back(s.substr(start,pos-start));
+    start=pos+1;
+  }
+  return result;
+}
