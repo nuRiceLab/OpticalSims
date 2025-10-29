@@ -35,11 +35,12 @@
 #include "SensitiveDetector.hh"
 #include "G4SDManager.hh"
 #include "G4GDMLParser.hh"
-
+#include "MySensorIdentifier.hh"
 
 #include "include/config.h"
 #ifdef With_Opticks
 #include "G4CXOpticks.hh"
+#include "U4SensorIdentifier.h"
 #endif
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -56,6 +57,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
   // Pass the World Volume to Opticks
   #ifdef With_Opticks
     std::cout << "Setting up detector construction for Opticks" << std::endl;
+
+    G4CXOpticks::SetSensorIdentifier(new MySensorIdentifier());
     G4CXOpticks::SetGeometry(fParser->GetWorldVolume());
   #endif
 
@@ -66,6 +69,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 void DetectorConstruction::ConstructSDandField()
 {
+
   //------------------------------------------------ 
   // Sensitive detectors
   //------------------------------------------------ 

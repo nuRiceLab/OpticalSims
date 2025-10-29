@@ -18,6 +18,7 @@
     #include "G4CXOpticks.hh"
 namespace {G4Mutex opticks_mt=G4MUTEX_INITIALIZER;}
 #endif
+
 EventAction::EventAction(): G4UserEventAction() {}
 EventAction::~EventAction(){}
 
@@ -61,7 +62,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
     /////// GEANT4 HITS ///////
     G4HCofThisEvent * hcPhoton= event->GetHCofThisEvent();
 
-    if (hcPhoton)
+    if (hcPhoton){
 
         G4int n=hcPhoton->GetNumberOfCollections();
         G4VHitsCollection * hc = hcPhoton->GetHC(0);
@@ -85,6 +86,6 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     auto duration = chrono::high_resolution_clock::now() - startTime;
     auto EventTime = chrono::duration_cast<chrono::duration<double>>(duration).count();
-    cout << "Event " <<  evtID <<", End Time " << EventTime << " seconds" << endl;
+    G4cout << "Event " <<  evtID <<", End Time " << EventTime << " seconds" << G4endl;
 
 }
