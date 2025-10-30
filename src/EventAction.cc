@@ -16,6 +16,7 @@
 #ifdef With_Opticks
     #include "SEvt.hh"
     #include "G4CXOpticks.hh"
+    #include "OpticksHitHandler.hh"
 namespace {G4Mutex opticks_mt=G4MUTEX_INITIALIZER;}
 #endif
 
@@ -30,6 +31,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 {
     G4int evtID=event->GetEventID();
     auto analysisManager = G4AnalysisManager::Instance();
+
 #ifdef With_Opticks
     // Force Single Thread
     G4AutoLock lock(&opticks_mt);
@@ -51,7 +53,12 @@ void EventAction::EndOfEventAction(const G4Event* event)
         cudaDeviceSynchronize();
         // get number of hits
         hits=SEvt::GetNumHit(0);
-        if (hits>0) std::cout << hits << " hits" << std::endl;
+        std::cout << "Number of Hits " << hits << std::endl;
+
+        if (hits>0) {
+            OpticksHitHandler *hitHandler=OpticksHitHandler::getInstance();
+            hitHandler->CollectHits();
+        }
         else std::cout << "No hits" << std::endl;
         g4cx->reset(evtID);
     }
@@ -84,8 +91,10 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     }
 
+    // Save Opticks Hits
+    OpticksHitHandler *hitHandler=OpticksHitHandler::getInstance();
+    hitHandler->SaveHits();
     auto duration = chrono::high_resolution_clock::now() - startTime;
     auto EventTime = chrono::duration_cast<chrono::duration<double>>(duration).count();
     G4cout << "Event " <<  evtID <<", End Time " << EventTime << " seconds" << G4endl;
-
 }

@@ -94,6 +94,8 @@
 #include "G4CXOpticks.hh"
 #include "SEvt.hh"
 #include "U4.hh"
+#include "OpticksHitHandler.hh"
+#include "G4RunManager.hh"
 #endif
 using namespace CLHEP;
 
@@ -358,7 +360,26 @@ G4VParticleChange* G4ScintillationOpticks::PostStepDoIt(const G4Track& aTrack,
             continue;
     #ifdef With_Opticks
             if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and numPhot>0 )
+            {
                 U4::CollectGenstep_DsG4Scintillation_r4695(&aTrack, &aStep, numPhot, scnt, scintTime);
+                int CollectedPhotons=SEvt::GetNumPhotonCollected(0);
+                int maxPhoton=SEventConfig::MaxPhoton();
+                auto run= G4RunManager::GetRunManager();
+                G4int eventID=run->GetCurrentEvent()->GetEventID();
+                OpticksHitHandler *handler=OpticksHitHandler::getInstance();
+                if(CollectedPhotons>=(maxPhoton*0.97)){
+
+                    std::cout<<"Simulating Photons in GPU [Scintillation]" <<std::endl;
+                    G4CXOpticks * g4xc=G4CXOpticks::Get();
+                    g4xc->simulate(eventID,0);
+                    cudaDeviceSynchronize();
+
+                    if(SEvt::GetNumHit(0)>0){
+                        handler->CollectHits();
+                    }
+                    g4xc->reset(eventID);
+                }
+            }
             if(SEventConfig::IntegrationMode()==1) continue;
     #endif
         G4double CIImax = scintIntegral->GetMaxValue();

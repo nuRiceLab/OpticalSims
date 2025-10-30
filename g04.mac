@@ -11,8 +11,8 @@
 # GPS Particle Generation
 /gps/particle e-
 /gps/pos/type Point
-/gps/pos/centre 0 0 0
+/gps/pos/centre 0 200 650
 /gps/ang/type iso
-/gps/energy 1 GeV
+/gps/energy 5 GeV
 
 /run/beamOn 1
