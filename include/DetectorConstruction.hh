@@ -48,10 +48,10 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     virtual void ConstructSDandField();
     std::vector<std::string_view> Split(const std::string_view & s,char del);
 
-  
   private:
     const G4GDMLParser * fParser;
     G4VPhysicalVolume* fDetector;
+    std::map<G4String,G4int> fDetectIds;
 
 };
 

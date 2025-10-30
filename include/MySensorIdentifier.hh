@@ -6,12 +6,18 @@
 #define GDMLOPTICKS_MYSENSORIDENTIFIER_HH
 #include <string>
 #include <vector>
+#include <map>
 #include "U4SensorIdentifier.h"
+#include "G4String.hh"
 class MySensorIdentifier : public U4SensorIdentifier{
+
+public:
+    MySensorIdentifier(std::map<G4String, G4int> &ids);
+    ~MySensorIdentifier();
     int getGlobalIdentity(const G4VPhysicalVolume*,const G4VPhysicalVolume*) override;
     int getInstanceIdentity(const G4VPhysicalVolume* ) const override ;
-    int sid{-1};
-    std::vector<std::string_view> Split( std::string_view s,char del);
+private:
+    std::map<G4String,G4int> &fDetectIds;
 };
 
 

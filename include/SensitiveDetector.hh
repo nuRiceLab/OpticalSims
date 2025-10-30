@@ -53,9 +53,12 @@ class SensitiveDetector : public G4VSensitiveDetector
       virtual void Initialize(G4HCofThisEvent*);
       virtual G4bool ProcessHits(G4Step*, G4TouchableHistory*);
       virtual void EndOfEvent(G4HCofThisEvent*);
-  private:
+      void SetDetectIds(std::map<G4String,G4int> * fIDs);
+
+private:
     G4int fHCid{0};
     ArapucaHitsCollection* fArapucaHitsCollection{ 0 };
+    std::map<G4String,G4int> * fDetectIds;
 };
 inline G4double EtoWavelength(G4double E)
 {
@@ -63,6 +66,9 @@ inline G4double EtoWavelength(G4double E)
     // return wavelength in nm:
     // Wavelength = h*c/e
     return ((CLHEP::h_Planck*CLHEP::c_light) / (CLHEP::eV * CLHEP::nm)) / E;
+}
+inline void SensitiveDetector::SetDetectIds(std::map<G4String, G4int> *fIDs) {
+    fDetectIds=fIDs;
 }
 #endif
 

@@ -36,7 +36,7 @@
 #include "G4SDManager.hh"
 #include "G4GDMLParser.hh"
 #include "MySensorIdentifier.hh"
-
+#include <map>
 #include "include/config.h"
 #ifdef With_Opticks
 #include "G4CXOpticks.hh"
@@ -106,6 +106,22 @@ void DetectorConstruction::ConstructSDandField()
         {
           G4LogicalVolume* myvol = (*iter).first;
           myvol->SetSensitiveDetector(mydet);
+          if(G4Threading::IsMasterThread()){
+              (*iter).first->GetName();
+              //std::cout << "Testing_GlobalIdentiy " << std::endl;
+              std::string_view name = std::string_view ((*iter).first->GetName().c_str(),(*iter).first->GetName().size());
+              std::vector<std::string_view> spfirst=Split(name,'_');
+              std::vector<std::string_view> spsecond=Split(spfirst[1],'-');
+              int first,second,third,sid=0;
+
+              first=std::stoi(std::string(spsecond[2]));
+              second=std::stoi(std::string(spsecond[1]));
+              third=std::stoi(std::string(spsecond[0]));
+              sid=third*(10*4)+second*4+first;
+              fDetectIds.insert(std::pair<G4String,G4int>((*iter).first->GetName()+"_PV",sid));
+
+          }
+
         }
         else
         {
@@ -125,6 +141,7 @@ void DetectorConstruction::ConstructSDandField()
          }
        }
     }
+      aTrackerSD->SetDetectIds(&fDetectIds);
   }
 
       // Pass the World Volume to Opticks
@@ -133,7 +150,9 @@ void DetectorConstruction::ConstructSDandField()
       if (fDetector and G4Threading::IsMasterThread())
       {
         std::cout << "Setting up detector construction for Opticks" << std::endl;
-        G4CXOpticks::SetSensorIdentifier(new MySensorIdentifier());
+        MySensorIdentifier * OpticksSensor= new MySensorIdentifier(fDetectIds);
+
+        G4CXOpticks::SetSensorIdentifier(OpticksSensor);
         G4CXOpticks::SetGeometry(fDetector);
       }
 
@@ -144,18 +163,18 @@ void DetectorConstruction::ConstructSDandField()
 
 std::vector< std::string_view > DetectorConstruction::Split(const std::string_view & s,char del)
 {
-  std::vector< std::string_view > result;
-  size_t start=0;
-  while (true)
-  {
-    size_t pos=s.find(del,start);
-    if (pos==std::string::npos)
+    std::vector< std::string_view > result;
+    size_t start=0;
+    while (true)
     {
-      result.emplace_back(std::string(s.begin()+start));
-      break;
+        size_t pos=s.find(del,start);
+        if (pos==std::string::npos)
+        {
+            result.emplace_back(s.substr(start));
+            break;
+        }
+        result.emplace_back(s.substr(start,pos-start));
+        start=pos+1;
     }
-    result.emplace_back(s.substr(start,pos-start));
-    start=pos+1;
-  }
-  return result;
+    return result;
 }

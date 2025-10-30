@@ -74,32 +74,40 @@ void SensitiveDetector::Initialize(G4HCofThisEvent* G4hc)
 
 G4bool SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*th)
 {
-  // Only Optical Photons
-  auto aTrack = aStep->GetTrack();
-  if (aTrack->GetParticleDefinition()!=G4OpticalPhoton::OpticalPhoton())  return false;
-  auto analysisManager = G4AnalysisManager::Instance();
+    // Only Optical Photons
+    auto aTrack = aStep->GetTrack();
+    if (aTrack->GetParticleDefinition()!=G4OpticalPhoton::OpticalPhoton())  return false;
+    auto analysisManager = G4AnalysisManager::Instance();
 
-  G4String detectName=aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName();
-  G4ThreeVector PPosition = aTrack->GetPosition();
-  G4ThreeVector PMomentDir = aTrack->GetMomentumDirection();
-  G4ThreeVector PPolar = aTrack->GetPolarization();
-  G4double time=aTrack->GetGlobalTime();
+    G4String detectName=aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName();
+    G4ThreeVector PPosition = aTrack->GetPosition();
+    G4ThreeVector PMomentDir = aTrack->GetMomentumDirection();
+    G4ThreeVector PPolar = aTrack->GetPolarization();
+    G4double time=aTrack->GetGlobalTime();
 
-  G4double Wavelength=EtoWavelength(aTrack->GetTotalEnergy()/CLHEP::eV);
-  G4String processName;
-  G4int Procid=-1;
-  G4int Sid=0;
-  const G4VProcess * proc=aTrack->GetCreatorProcess();
+    G4double Wavelength=EtoWavelength(aTrack->GetTotalEnergy()/CLHEP::eV);
+    G4String processName;
+    G4int Procid=-1;
+    G4int Sid=-1;
+    auto it =fDetectIds->find(detectName);
+    if(it != fDetectIds->end()){
+        Sid=it->second ;
+    }
+    assert(Sid!=-1);
+    const G4VProcess * proc=aTrack->GetCreatorProcess();
 
-  if (proc!=NULL) processName=proc->GetProcessName();
-  else processName="None";
-  if (processName.compare("Scintillation")==0)  Procid=0;
-  else if (processName.compare("Cerenkov")==0)  Procid=1;
+    if (proc!=NULL) processName=proc->GetProcessName();
+    else processName="None";
+    if (processName.compare("Scintillation")==0)  Procid=0;
+    else if (processName.compare("Cerenkov")==0)  Procid=1;
 
-  ArapucaHit *Hit= new ArapucaHit(Procid,Sid,detectName,Wavelength,time,PPosition,PMomentDir,PPolar);
-  fArapucaHitsCollection->insert(Hit);
-  aTrack->SetTrackStatus(fStopAndKill);
-  return true;
+
+
+
+    ArapucaHit *Hit= new ArapucaHit(Procid,Sid,detectName,Wavelength,time,PPosition,PMomentDir,PPolar);
+    fArapucaHitsCollection->insert(Hit);
+    aTrack->SetTrackStatus(fStopAndKill);
+    return true;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
