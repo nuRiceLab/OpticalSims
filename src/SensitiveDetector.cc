@@ -74,8 +74,10 @@ void SensitiveDetector::Initialize(G4HCofThisEvent* G4hc)
 
 G4bool SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*th)
 {
+
     // Only Optical Photons
     auto aTrack = aStep->GetTrack();
+
     if (aTrack->GetParticleDefinition()!=G4OpticalPhoton::OpticalPhoton())  return false;
     auto analysisManager = G4AnalysisManager::Instance();
 

@@ -56,8 +56,9 @@ void OpticksHitHandler::SaveHits(){
         analysisManager->FillNtupleIColumn(1,2,it.sensor_id);
         analysisManager->FillNtupleDColumn(1,3,it.x);
         analysisManager->FillNtupleDColumn(1,4,it.y);
-        analysisManager->FillNtupleDColumn(1,5,it.time);
-        analysisManager->FillNtupleDColumn(1,6,it.wavelength);
+        analysisManager->FillNtupleDColumn(1,5,it.z);
+        analysisManager->FillNtupleDColumn(1,6,it.time);
+        analysisManager->FillNtupleDColumn(1,7,it.wavelength);
         analysisManager->AddNtupleRow(1);
     }
    hits.clear();

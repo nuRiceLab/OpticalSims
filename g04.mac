@@ -13,6 +13,6 @@
 /gps/pos/type Point
 /gps/pos/centre 0 200 650
 /gps/ang/type iso
-/gps/energy 5 GeV
+/gps/energy 1 GeV
 
 /run/beamOn 1

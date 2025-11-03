@@ -38,6 +38,7 @@
 #include "MySensorIdentifier.hh"
 #include <map>
 #include "include/config.h"
+#include "G4UserLimits.hh"
 #ifdef With_Opticks
 #include "G4CXOpticks.hh"
 #include "U4SensorIdentifier.h"
@@ -62,6 +63,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 void DetectorConstruction::ConstructSDandField()
 {
+  // UserLimits
+  G4UserLimits* limits = new G4UserLimits(0.01*CLHEP::mm); // or smaller
+
 
   //------------------------------------------------ 
   // Sensitive detectors
@@ -138,6 +142,9 @@ void DetectorConstruction::ConstructSDandField()
           visatt->SetForceSolid(true);
           visatt->SetForceAuxEdgeVisible(true);
           ((*iter).first)->SetVisAttributes(visatt);
+
+          ((*iter).first)->SetUserLimits(limits);
+
          }
        }
     }

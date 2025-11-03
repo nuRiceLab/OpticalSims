@@ -40,6 +40,7 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     //Opticks Hits
     analysisManager->CreateNtuple("OpticksHits","Opticks Hits");
     analysisManager->CreateNtupleIColumn("evtID");
+    analysisManager->CreateNtupleIColumn("hit_Id");
     analysisManager->CreateNtupleIColumn("SensorID");
     analysisManager->CreateNtupleDColumn("x");
     analysisManager->CreateNtupleDColumn("y");

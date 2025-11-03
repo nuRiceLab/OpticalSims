@@ -69,7 +69,7 @@ configure_file(config.h.in ${CMAKE_BINARY_DIR}/include/config.h)
 # build G04. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory.
 #
-set(G04_SCRIPTS g04.mac vis.mac GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml GDML/LArTPC.gdml )
+set(G04_SCRIPTS g04.mac vis.mac GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires-v2.gdml GDML/LArTPC.gdml )
 foreach(_script ${G04_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}
