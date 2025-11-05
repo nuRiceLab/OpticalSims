@@ -88,7 +88,7 @@
 #include "Randomize.hh"
 #include "G4PhysicsModelCatalog.hh"
 #include "G4ScintillationOpticks.hh"
-
+#include "AnalysisManagerHelper.hh"
 #include "include/config.h"
 #ifdef With_Opticks
 #include "G4CXOpticks.hh"
@@ -358,9 +358,12 @@ G4VParticleChange* G4ScintillationOpticks::PostStepDoIt(const G4Track& aTrack,
 
         if(!scintIntegral)
             continue;
+
+    AnalysisManagerHelper * anaHelper = AnalysisManagerHelper::getInstance();
     #ifdef With_Opticks
             if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and numPhot>0 )
             {
+                anaHelper->AddOpticksScintPhotons(numPhot);
                 U4::CollectGenstep_DsG4Scintillation_r4695(&aTrack, &aStep, numPhot, scnt, scintTime);
                 int CollectedPhotons=SEvt::GetNumPhotonCollected(0);
                 int maxPhoton=SEventConfig::MaxPhoton();
@@ -382,6 +385,7 @@ G4VParticleChange* G4ScintillationOpticks::PostStepDoIt(const G4Track& aTrack,
             }
             if(SEventConfig::IntegrationMode()==1) continue;
     #endif
+        anaHelper->AddG4ScintPhotons(numPhot);
         G4double CIImax = scintIntegral->GetMaxValue();
         for(std::size_t i = 0; i < numPhot; ++i)
         {

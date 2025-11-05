@@ -12,7 +12,10 @@
 #include "G4Threading.hh"
 #include "SensitiveDetector.hh"
 #include "ArapucaHit.hh"
+#include "AnalysisManagerHelper.hh"
+
 #include "include/config.h"
+
 #ifdef With_Opticks
     #include "SEvt.hh"
     #include "G4CXOpticks.hh"
@@ -24,13 +27,17 @@ EventAction::EventAction(): G4UserEventAction() {}
 EventAction::~EventAction(){}
 
 void EventAction::BeginOfEventAction(const G4Event* event) {
- startTime = chrono::high_resolution_clock::now();
- cout << "Begin event " << event->GetEventID() << endl;
+     startTime = chrono::high_resolution_clock::now();
+     AnalysisManagerHelper * anaHelper = AnalysisManagerHelper::getInstance();
+     anaHelper->Reset();
+     cout << "Begin event " << event->GetEventID() << endl;
 }
 void EventAction::EndOfEventAction(const G4Event* event)
 {
+
     G4int evtID=event->GetEventID();
     auto analysisManager = G4AnalysisManager::Instance();
+
 
 #ifdef With_Opticks
     // Force Single Thread
@@ -64,6 +71,9 @@ void EventAction::EndOfEventAction(const G4Event* event)
     }
 #endif
 
+    auto duration = chrono::high_resolution_clock::now() - startTime;
+    auto EventTime = chrono::duration_cast<chrono::duration<double>>(duration).count();
+
 
 
     /////// GEANT4 HITS ///////
@@ -91,10 +101,16 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     }
 
+
+
     // Save Opticks Hits
     OpticksHitHandler *hitHandler=OpticksHitHandler::getInstance();
     hitHandler->SaveHits();
-    auto duration = chrono::high_resolution_clock::now() - startTime;
-    auto EventTime = chrono::duration_cast<chrono::duration<double>>(duration).count();
+
+    // Instance for AnalysisHelper
+    AnalysisManagerHelper * anaHelper=AnalysisManagerHelper::getInstance();
+    anaHelper->SetDuration(EventTime);
+    anaHelper->SavetoFile();
+
     G4cout << "Event " <<  evtID <<", End Time " << EventTime << " seconds" << G4endl;
 }

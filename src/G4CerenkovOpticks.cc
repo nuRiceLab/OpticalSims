@@ -83,6 +83,7 @@
 #include "OpticksHitHandler.hh"
 #include "G4RunManager.hh"
 #endif
+#include "AnalysisManagerHelper.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 G4CerenkovOpticks::G4CerenkovOpticks(const G4String& processName, G4ProcessType type)
@@ -308,9 +309,14 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
   // GPU Only, IntegrationMode == 1
   // CPU Only, IntegrationMode == 2
   // CPU and GPU Together, Integration Mode == 3
+  // turning off Cerenkov
+  aParticleChange.SetNumberOfSecondaries(0);
+  return pParticleChange;
+  AnalysisManagerHelper *anaHelper=AnalysisManagerHelper::getInstance();
+
   #ifdef With_Opticks
     if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and fNumPhotons>0 ){
-			U4::CollectGenstep_G4Cerenkov_modified(&aTrack, &aStep, fNumPhotons,BetaInverse,Pmin,Pmax,maxCos,maxSin2,MeanNumberOfPhotons1,MeanNumberOfPhotons2);
+      U4::CollectGenstep_G4Cerenkov_modified(&aTrack, &aStep, fNumPhotons,BetaInverse,Pmin,Pmax,maxCos,maxSin2,MeanNumberOfPhotons1,MeanNumberOfPhotons2);
             int CollectedPhotons=SEvt::GetNumPhotonCollected(0);
             int maxPhoton=SEventConfig::MaxPhoton();
             auto run= G4RunManager::GetRunManager();
@@ -327,6 +333,7 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
                 }
                 g4xc->reset(eventID);
             }
+      anaHelper->AddOpticksCerenkovPhotons(fNumPhotons);
     }
             // Simulate Photons only in GPU
             if(SEventConfig::IntegrationMode()==1) {
@@ -334,7 +341,7 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
                   return pParticleChange;
             };
   #endif
-
+  anaHelper->AddG4CerenkovPhotons(fNumPhotons);
   for(G4int i = 0; i < fNumPhotons; ++i)
   {
     // Determine photon energy

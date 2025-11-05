@@ -8,6 +8,7 @@
 #include "G4Threading.hh"
 #include "G4AutoLock.hh"
 #include "G4ThreeVector.hh"
+
 // Opticks headers
 #include "SEvt.hh"
 #include "G4CXOpticks.hh"

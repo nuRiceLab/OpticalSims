@@ -61,6 +61,17 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtupleDColumn("wavelength");
     analysisManager->CreateNtupleIColumn("ProcessID");
     analysisManager->FinishNtuple();
+
+    //PhotonInfo
+    analysisManager->CreateNtuple("PhotonInfo","PhotonInfo");
+    analysisManager->CreateNtupleIColumn("G4ScintPhotons");
+    analysisManager->CreateNtupleIColumn("G4CernPhotons");
+    analysisManager->CreateNtupleIColumn("OScintPhotons");
+    analysisManager->CreateNtupleIColumn("OCerenkovPhotons");
+    analysisManager->CreateNtupleDColumn("Time");
+    analysisManager->CreateNtupleIColumn("eventID");
+    analysisManager->FinishNtuple();
+
     startTime = chrono::high_resolution_clock::now();
     RunTime =0;
     G4cout << "### Run started ###" << G4endl;
