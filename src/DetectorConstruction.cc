@@ -30,8 +30,12 @@
 #include "DetectorConstruction.hh"
 #include "G4VisAttributes.hh"
 #include <G4Color.hh>
+#include <G4GDMLParser.hh>
 #include <G4VPhysicalVolume.hh>
 #include <G4LogicalVolume.hh>
+#include <G4OpticalSurface.hh>
+#include <G4PhysicalVolumeStore.hh>
+#include <G4Material.hh>
 #include "SensitiveDetector.hh"
 #include "G4SDManager.hh"
 #include "G4GDMLParser.hh"
@@ -39,6 +43,7 @@
 #include <map>
 #include "include/config.h"
 #include "G4UserLimits.hh"
+#include "G4LogicalBorderSurface.hh"
 #ifdef With_Opticks
 #include "G4CXOpticks.hh"
 #include "U4SensorIdentifier.h"
@@ -63,9 +68,28 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 void DetectorConstruction::ConstructSDandField()
 {
+  // ArapucaSurface
+  G4OpticalSurface * ArapucaSurface= new G4OpticalSurface("ArapucaSurface",unified,polished,dielectric_metal);
+  G4Material * Glass= G4Material::GetMaterial("Glass");
+  G4MaterialPropertiesTable * mpt=nullptr;
+  //Making sure we have the material
+
+
+  if (Glass)
+  {
+    mpt=Glass->GetMaterialPropertiesTable();
+    ArapucaSurface->SetMaterialPropertiesTable(mpt);
+  }
+    else
+  {
+    G4cout<<"Error, No Material "<< G4endl;
+    assert(false);
+  }
+
+  G4VPhysicalVolume *vol1,*vol2;
   // UserLimits
   G4UserLimits* limits = new G4UserLimits(0.01*CLHEP::mm); // or smaller
-
+  G4LogicalVolume* myvol;
 
   //------------------------------------------------ 
   // Sensitive detectors
@@ -95,9 +119,18 @@ void DetectorConstruction::ConstructSDandField()
            << " has the following list of auxiliary information: "
            << G4endl << G4endl;
     */
+
     for (G4GDMLAuxListType::const_iterator vit=(*iter).second.begin();
          vit!=(*iter).second.end();vit++)
     {
+      myvol = (*iter).first;
+      // Surfaces
+      if ((*vit).type=="Surface"){
+          vol1=G4PhysicalVolumeStore::GetInstance()->GetVolume((*vit).value+"_PV");
+          vol2=G4PhysicalVolumeStore::GetInstance()->GetVolume((*iter).first->GetName()+"_PV");
+          new G4LogicalBorderSurface(((*iter).first->GetName()+"_"+(*vit).value+"_"+(*vit).type),vol1,vol2,ArapucaSurface);
+      }
+
       if ((*vit).type=="SensDet" and (*vit).value=="PhotonSD")
       {
         G4cout << "Attaching sensitive detector " << (*vit).value
@@ -108,7 +141,7 @@ void DetectorConstruction::ConstructSDandField()
           SDman->FindSensitiveDetector((*vit).value);
         if(mydet)
         {
-          G4LogicalVolume* myvol = (*iter).first;
+
           myvol->SetSensitiveDetector(mydet);
           if(G4Threading::IsMasterThread()){
               (*iter).first->GetName();

@@ -854,6 +854,7 @@
      <materialref ref="LAr"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonSD"/>
+
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-0-1">
