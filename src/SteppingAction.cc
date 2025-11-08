@@ -98,15 +98,15 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
         if(it != fDetectIds->end()){
             Sid=it->second ;
         }
-        /*
         else
         {
-            std::cout << "Status " <<  boundary->GetStatus() << std::endl;
-            std::cout << "Pre Detector Name " << PredetectName << std::endl;
-            std::cout << "Post Detector Name " << PostdetectName << std::endl;
-            std::cout << "Material " << mt->GetName() << std::endl;
-            */
-           /* auto pr  = step->GetPostStepPoint()->GetProcessDefinedStep();
+            /*
+          std::cout << "Status " <<  boundary->GetStatus() << std::endl;
+          std::cout << "Pre Detector Name " << PredetectName << std::endl;
+          std::cout << "Post Detector Name " << PostdetectName << std::endl;
+          std::cout << "Material " << mt->GetName() << std::endl;
+
+          auto pr  = step->GetPostStepPoint()->GetProcessDefinedStep();
             G4cout << "Proc: " << pr->GetProcessName()
                    << " | TrackStatus: " << aTrack->GetTrackStatus()
                    << " | StepStatus: " << step->GetPostStepPoint()->GetStepStatus()
@@ -115,9 +115,9 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
                    << " | PostdetectName: "<< PostdetectName
                    << G4endl;
             //G4Exception("SteppingAction::UserSteppingAction","Sid==-1",JustWarning,"Cant Find the Detector");
-
+            */
             return;
-        }*/
+        }
 
 
 
