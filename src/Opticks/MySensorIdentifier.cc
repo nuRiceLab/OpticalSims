@@ -2,7 +2,7 @@
 // Created by ilker on 10/28/25.
 //
 
-#include "../include/Opticks/MySensorIdentifier.hh"
+#include "Opticks/MySensorIdentifier.hh"
 #include "G4VPhysicalVolume.hh"
 #include "G4LogicalVolume.hh"
 #include "G4SDManager.hh"

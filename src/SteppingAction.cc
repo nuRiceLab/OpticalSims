@@ -5,8 +5,12 @@
 #include "G4OpBoundaryProcess.hh"
 #include "G4ProcessManager.hh"
 #include "SteppingAction.hh"
-SteppingAction::SteppingAction():G4UserSteppingAction()
+#include "ArapucaHit.hh"
+#include "G4Exception.hh"
+
+SteppingAction::SteppingAction():G4UserSteppingAction(),anaHelper(AnalysisManagerHelper::getInstance())
 {
+
 
 }
 
@@ -17,8 +21,8 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step* step)
 {
-    /*
-    auto track = step->GetTrack();
+
+    auto aTrack = step->GetTrack();
     G4ParticleDefinition* pdef = step->GetTrack()->GetDefinition();
     if (pdef != G4OpticalPhoton::Definition()) {return;}
 
@@ -35,7 +39,11 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
                 break;
             }
         }
+    }else
+    {
+        return;
     }
+        /* // For Testing Purposes
         if (boundary) {
             G4OpBoundaryProcessStatus status = boundary->GetStatus();
 
@@ -63,6 +71,65 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
                 }
                 break;
             }
+        } */
+
+        // Process the hits
+    // Only Optical Photons
+
+    G4OpBoundaryProcessStatus status = boundary->GetStatus();
+    if (status==Detection and pdef==G4OpticalPhoton::Definition())
+    {
+        G4String PredetectName=step->GetPreStepPoint()->GetPhysicalVolume()->GetName();
+        G4String PostdetectName=step->GetPostStepPoint()->GetPhysicalVolume()->GetName();
+        G4ThreeVector PPosition = aTrack->GetPosition();
+        G4ThreeVector PMomentDir = aTrack->GetMomentumDirection();
+        G4ThreeVector PPolar = aTrack->GetPolarization();
+        G4double time=aTrack->GetGlobalTime();
+
+        G4double Wavelength=EtoWavelength(aTrack->GetTotalEnergy()/CLHEP::eV);
+        const G4VProcess * proc=aTrack->GetCreatorProcess();
+        G4String processName;
+        G4int Procid=-1;
+        G4int Sid=-1;
+        std::map<G4String, G4int> * fDetectIds=anaHelper->GetDetectIds();
+        G4Material * mt=step->GetPostStepPoint()->GetMaterial();
+
+        auto it =fDetectIds->find(PostdetectName);
+        if(it != fDetectIds->end()){
+            Sid=it->second ;
+        }
+        /*
+        else
+        {
+            std::cout << "Status " <<  boundary->GetStatus() << std::endl;
+            std::cout << "Pre Detector Name " << PredetectName << std::endl;
+            std::cout << "Post Detector Name " << PostdetectName << std::endl;
+            std::cout << "Material " << mt->GetName() << std::endl;
+            */
+           /* auto pr  = step->GetPostStepPoint()->GetProcessDefinedStep();
+            G4cout << "Proc: " << pr->GetProcessName()
+                   << " | TrackStatus: " << aTrack->GetTrackStatus()
+                   << " | StepStatus: " << step->GetPostStepPoint()->GetStepStatus()
+                   << " | BoundaryStatus: "<<boundary->GetStatus()
+                   << " | PredetectName: "<< PredetectName
+                   << " | PostdetectName: "<< PostdetectName
+                   << G4endl;
+            //G4Exception("SteppingAction::UserSteppingAction","Sid==-1",JustWarning,"Cant Find the Detector");
+
+            return;
         }*/
+
+
+
+        if (proc!=NULL) processName=proc->GetProcessName();
+        else processName="None";
+        if (processName.compare("Scintillation")==0)  Procid=0;
+        else if (processName.compare("Cerenkov")==0)  Procid=1;
+
+
+        ArapucaHit Hit= ArapucaHit(Procid,Sid,PostdetectName,Wavelength,time,PPosition,PMomentDir,PPolar);
+        anaHelper->AddG4Hits(Hit);
+    }
+
 
 }

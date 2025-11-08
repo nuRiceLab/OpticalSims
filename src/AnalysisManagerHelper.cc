@@ -61,7 +61,7 @@ void AnalysisManagerHelper::Reset()
     OpticksScintPhotons=0;
 
 }
-void AnalysisManagerHelper::SavetoFile()
+void AnalysisManagerHelper::SavePhotonInfotoFile()
 {
     G4AnalysisManager * AnaMngr = G4AnalysisManager::Instance();
     auto run= G4RunManager::GetRunManager();
@@ -73,4 +73,23 @@ void AnalysisManagerHelper::SavetoFile()
     AnaMngr->FillNtupleDColumn(3,4,Duration);
     AnaMngr->FillNtupleIColumn(3,5,eventID);
     AnaMngr->AddNtupleRow(3);
+}
+
+void AnalysisManagerHelper::SaveG4HitsToFile()
+{
+    G4AnalysisManager * AnaMngr = G4AnalysisManager::Instance();
+    auto run= G4RunManager::GetRunManager();
+    for (auto hit : ArapucaHits)
+    {
+        AnaMngr->FillNtupleIColumn(2,0,run->GetCurrentEvent()->GetEventID());
+        AnaMngr->FillNtupleIColumn(2,1,hit.GetSid());
+        AnaMngr->FillNtupleSColumn(2,2,hit.GetDetName());
+        AnaMngr->FillNtupleDColumn(2,3,hit.GetPos().getX());
+        AnaMngr->FillNtupleDColumn(2,4,hit.GetPos().getY());
+        AnaMngr->FillNtupleDColumn(2,5,hit.GetPos().getZ());
+        AnaMngr->FillNtupleDColumn(2,6,hit.GetTime());
+        AnaMngr->FillNtupleDColumn(2,7,hit.GetWave());
+        AnaMngr->FillNtupleIColumn(2,8,hit.GetPid());
+        AnaMngr->AddNtupleRow(2);
+    }
 }

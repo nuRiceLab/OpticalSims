@@ -11,15 +11,15 @@ TrackingAction::~TrackingAction(){}
 
 void TrackingAction::PreUserTrackingAction(const G4Track* tr)
 {
-    /*
+
     if (tr->GetParticleDefinition()==G4OpticalPhoton::Definition())
     {
         fpTrackingManager->SetStoreTrajectory(false);
     } else
     {
         fpTrackingManager->SetStoreTrajectory(true);
-    }*/
-    fpTrackingManager->SetStoreTrajectory(true);
+    }
+
 
 }
 

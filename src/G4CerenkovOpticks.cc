@@ -80,7 +80,7 @@
 #include "G4CXOpticks.hh"
 #include "SEvt.hh"
 #include "U4.hh"
-#include "OpticksHitHandler.hh"
+#include "Opticks/OpticksHitHandler.hh"
 #include "G4RunManager.hh"
 #endif
 #include "AnalysisManagerHelper.hh"

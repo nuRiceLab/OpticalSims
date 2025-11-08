@@ -21,3 +21,6 @@
 /vis/modeling/trajectories/drawByParticleID-0/set e+ yellow
 /vis/modeling/trajectories/drawByParticleID-0/set opticalphoton green
 /vis/modeling/trajectories/drawByParticleID-0/set gamma blue
+/vis/modeling/trajectories/drawByParticleID-0/set mu- orange
+
+/vis/scene/add/axes -1 0 0 1 m

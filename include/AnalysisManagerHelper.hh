@@ -2,6 +2,8 @@
 // Created by ilker on 11/5/25.
 //
 
+#include <ArapucaHit.hh>
+
 #include "G4Threading.hh"
 #include "G4AutoLock.hh"
 #include "G4ThreeVector.hh"
@@ -27,13 +29,18 @@ class AnalysisManagerHelper
         G4int GetG4CerenkovPhotons();
         G4int GetOpticksCerenkovPhotons();
         G4int GetDuration();
+        std::map<G4String,G4int> * GetDetectIds();
 
         void AddG4ScintPhotons(G4int ph);
         void AddOpticksScintPhotons(G4int ph);
         void AddG4CerenkovPhotons(G4int ph);
         void AddOpticksCerenkovPhotons(G4int ph);
         void SetDuration(G4double dr);
-        void SavetoFile();
+        void SavePhotonInfotoFile();
+        void SaveG4HitsToFile();
+        void SetDetectIds(std::map<G4String,G4int> * fIDs);
+        void AddG4Hits(ArapucaHit hit);
+
         void Reset();
 
 
@@ -46,7 +53,20 @@ class AnalysisManagerHelper
         G4int G4ScintPhotons{0};
         G4int OpticksScintPhotons{0};
         G4double Duration{0};
+        std::map<G4String,G4int> * fDetectIds{nullptr};
+        std::vector<ArapucaHit> ArapucaHits{};
+
+
 };
 
+inline void AnalysisManagerHelper::SetDetectIds(std::map<G4String, G4int> *fIDs) {
+    fDetectIds=fIDs;
+}
+inline void AnalysisManagerHelper::AddG4Hits(ArapucaHit hit) {
+    ArapucaHits.push_back(hit);
+}
 
+inline std::map<G4String, G4int> *AnalysisManagerHelper::GetDetectIds() {
+    return fDetectIds;
+}
 #endif //GDMLOPTICKS_ANALYSISMANAGERHELPER_HH

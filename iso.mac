@@ -1,5 +1,5 @@
 ###################################################
-# Batch running of events  
+# Batch running of events
 ###################################################
 
 # verbosity
@@ -9,9 +9,11 @@
 
 
 # GPS Particle Generation
-/gps/particle mu-
+/gps/particle e-
+/gps/pos/type Point
+/gps/pos/centre 0 200 650
+/gps/ang/type iso
 /gps/energy 3 GeV
-/gps/direction 0 0 -1
-/gps/position 200 300 1000
+/gps/position 0 200 650
 
 /run/beamOn 1

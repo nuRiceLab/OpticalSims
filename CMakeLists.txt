@@ -48,6 +48,11 @@ include_directories(${PROJECT_SOURCE_DIR}/include
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 
+if (With_Opticks)
+  file(GLOB OpRHDRS ${CMAKE_SOURCE_DIR}/include/${DIR}/Opticks/*.h)
+  file(GLOB OpSRCS ${CMAKE_SOURCE_DIR}/src/${DIR}/Opticks/*.cc)
+endif()
+
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
@@ -55,9 +60,12 @@ add_executable(gdml_det gdml_det.cc ${sources} ${headers})
 
 target_link_libraries(gdml_det ${Geant4_LIBRARIES} )
 
+
 # Link Opticks Libraries
 if (With_Opticks)
   target_link_libraries(gdml_det Opticks::G4CX Opticks::U4)
+  target_sources(gdml_det PRIVATE ${SRCS} ${OpSRCS})
+
   include_directories(${CMAKE_CURRENT_BINARY_DIR})
 endif ()
 
@@ -69,7 +77,7 @@ configure_file(config.h.in ${CMAKE_BINARY_DIR}/include/config.h)
 # build G04. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory.
 #
-set(G04_SCRIPTS g04.mac vis.mac GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires-v2.gdml GDML/LArTPC.gdml )
+set(G04_SCRIPTS iso.mac Speed.mac g04.mac vis.mac GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires-v2.gdml GDML/LArTPC.gdml )
 foreach(_script ${G04_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}
@@ -77,6 +85,7 @@ foreach(_script ${G04_SCRIPTS})
     COPYONLY
     )
 endforeach()
+
 
 #----------------------------------------------------------------------------
 # Add program to the project targets

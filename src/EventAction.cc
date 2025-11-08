@@ -19,7 +19,7 @@
 #ifdef With_Opticks
     #include "SEvt.hh"
     #include "G4CXOpticks.hh"
-    #include "OpticksHitHandler.hh"
+    #include "Opticks/OpticksHitHandler.hh"
 namespace {G4Mutex opticks_mt=G4MUTEX_INITIALIZER;}
 #endif
 
@@ -30,6 +30,8 @@ void EventAction::BeginOfEventAction(const G4Event* event) {
      startTime = chrono::high_resolution_clock::now();
      AnalysisManagerHelper * anaHelper = AnalysisManagerHelper::getInstance();
      anaHelper->Reset();
+
+
      cout << "Begin event " << event->GetEventID() << endl;
 }
 void EventAction::EndOfEventAction(const G4Event* event)
@@ -37,6 +39,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     G4int evtID=event->GetEventID();
     auto analysisManager = G4AnalysisManager::Instance();
+
 
 
 #ifdef With_Opticks
@@ -76,41 +79,21 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
 
 
-    /////// GEANT4 HITS ///////
-    G4HCofThisEvent * hcPhoton= event->GetHCofThisEvent();
-
-    if (hcPhoton){
-
-        G4int n=hcPhoton->GetNumberOfCollections();
-        G4VHitsCollection * hc = hcPhoton->GetHC(0);
-        G4int numbHits=hc->GetSize();
-        for (G4int i=0;i<numbHits;i++)
-        {
-            ArapucaHit * hit = dynamic_cast<ArapucaHit*>(hc->GetHit(i));
-            analysisManager->FillNtupleIColumn(2,0,evtID);
-            analysisManager->FillNtupleIColumn(2,1,hit->GetSid());
-            analysisManager->FillNtupleSColumn(2,2,hit->GetDetName());
-            analysisManager->FillNtupleDColumn(2,3,hit->GetPos().getX());
-            analysisManager->FillNtupleDColumn(2,4,hit->GetPos().getY());
-            analysisManager->FillNtupleDColumn(2,5,hit->GetPos().getZ());
-            analysisManager->FillNtupleDColumn(2,6,hit->GetTime());
-            analysisManager->FillNtupleDColumn(2,7,hit->GetWave());
-            analysisManager->FillNtupleIColumn(2,8,hit->GetPid());
-            analysisManager->AddNtupleRow(2);
-        }
-
-    }
-
-
-
     // Save Opticks Hits
+#ifdef With_Opticks
     OpticksHitHandler *hitHandler=OpticksHitHandler::getInstance();
     hitHandler->SaveHits();
-
+#endif
     // Instance for AnalysisHelper
     AnalysisManagerHelper * anaHelper=AnalysisManagerHelper::getInstance();
-    anaHelper->SetDuration(EventTime);
-    anaHelper->SavetoFile();
 
+    // Save Photon Computation Time
+    anaHelper->SetDuration(EventTime);
+
+    // Save Photon info
+    anaHelper->SavePhotonInfotoFile();
+
+    /////// GEANT4 HITS ///////
+    anaHelper->SaveG4HitsToFile();
     G4cout << "Event " <<  evtID <<", End Time " << EventTime << " seconds" << G4endl;
 }

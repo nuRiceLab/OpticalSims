@@ -31,6 +31,7 @@
 #include "G4VisAttributes.hh"
 #include <G4Color.hh>
 #include <G4GDMLParser.hh>
+#include <G4GDMLParser.hh>
 #include <G4VPhysicalVolume.hh>
 #include <G4LogicalVolume.hh>
 #include <G4OpticalSurface.hh>
@@ -39,12 +40,16 @@
 #include "SensitiveDetector.hh"
 #include "G4SDManager.hh"
 #include "G4GDMLParser.hh"
-#include "MySensorIdentifier.hh"
+
 #include <map>
 #include "include/config.h"
 #include "G4UserLimits.hh"
 #include "G4LogicalBorderSurface.hh"
+#include "G4LogicalSkinSurface.hh"
+#include "AnalysisManagerHelper.hh"
+// Opticks Related headers
 #ifdef With_Opticks
+#include "Opticks/MySensorIdentifier.hh"
 #include "G4CXOpticks.hh"
 #include "U4SensorIdentifier.h"
 #endif
@@ -68,16 +73,16 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 void DetectorConstruction::ConstructSDandField()
 {
+  AnalysisManagerHelper * anaHelper = AnalysisManagerHelper::getInstance();
   // ArapucaSurface
   G4OpticalSurface * ArapucaSurface= new G4OpticalSurface("ArapucaSurface",unified,polished,dielectric_metal);
-  G4Material * Glass= G4Material::GetMaterial("Glass");
-  G4MaterialPropertiesTable * mpt=nullptr;
+
   //Making sure we have the material
-
-
-  if (Glass)
+  G4Material * ArapucaWindowMaterial= G4Material::GetMaterial("ArapucaWindowProperties");
+  G4MaterialPropertiesTable * mpt=nullptr;
+  if (ArapucaWindowMaterial)
   {
-    mpt=Glass->GetMaterialPropertiesTable();
+    mpt=ArapucaWindowMaterial->GetMaterialPropertiesTable();
     ArapucaSurface->SetMaterialPropertiesTable(mpt);
   }
     else
@@ -88,20 +93,20 @@ void DetectorConstruction::ConstructSDandField()
 
   G4VPhysicalVolume *vol1,*vol2;
   // UserLimits
-  G4UserLimits* limits = new G4UserLimits(0.01*CLHEP::mm); // or smaller
+  //G4UserLimits* limits = new G4UserLimits(0.01*CLHEP::mm); // or smaller
   G4LogicalVolume* myvol;
 
-  //------------------------------------------------ 
+  //------------------------------------------------
   // Sensitive detectors
-  //------------------------------------------------ 
-
+  //------------------------------------------------
+  /*
   G4SDManager* SDman = G4SDManager::GetSDMpointer();
-  
+
   G4String trackerChamberSDname = "PhotonSD";
   SensitiveDetector* aTrackerSD =
     new SensitiveDetector(trackerChamberSDname);
   SDman->AddNewDetector( aTrackerSD );
-
+  */
   ///////////////////////////////////////////////////////////////////////
   //
   // Example how to retrieve Auxiliary Information for sensitive detector
@@ -124,11 +129,13 @@ void DetectorConstruction::ConstructSDandField()
          vit!=(*iter).second.end();vit++)
     {
       myvol = (*iter).first;
+
       // Surfaces
       if ((*vit).type=="Surface"){
           vol1=G4PhysicalVolumeStore::GetInstance()->GetVolume((*vit).value+"_PV");
           vol2=G4PhysicalVolumeStore::GetInstance()->GetVolume((*iter).first->GetName()+"_PV");
           new G4LogicalBorderSurface(((*iter).first->GetName()+"_"+(*vit).value+"_"+(*vit).type),vol1,vol2,ArapucaSurface);
+          //new G4LogicalSkinSurface((*iter).first->GetName()+"_Surface",(*iter).first,ArapucaSurface);
       }
 
       if ((*vit).type=="SensDet" and (*vit).value=="PhotonSD")
@@ -137,12 +144,11 @@ void DetectorConstruction::ConstructSDandField()
                << " to volume " << ((*iter).first)->GetName()
                <<  G4endl << G4endl;
 
-        G4VSensitiveDetector* mydet =
-          SDman->FindSensitiveDetector((*vit).value);
+       /* G4VSensitiveDetector* mydet =SDman->FindSensitiveDetector((*vit).value);
         if(mydet)
-        {
+        { */
 
-          myvol->SetSensitiveDetector(mydet);
+          //myvol->SetSensitiveDetector(mydet);
           if(G4Threading::IsMasterThread()){
               (*iter).first->GetName();
               //std::cout << "Testing_GlobalIdentiy " << std::endl;
@@ -156,14 +162,14 @@ void DetectorConstruction::ConstructSDandField()
               third=std::stoi(std::string(spsecond[0]));
               sid=third*(10*4)+second*4+first;
               fDetectIds.insert(std::pair<G4String,G4int>((*iter).first->GetName()+"_PV",sid));
-
           }
-
+      /*
         }
         else
         {
           G4cout << (*vit).value << " detector not found" << G4endl;
         }
+        */
       }
       else if((*vit).type == "Solid")
       {
@@ -176,27 +182,29 @@ void DetectorConstruction::ConstructSDandField()
           visatt->SetForceAuxEdgeVisible(true);
           ((*iter).first)->SetVisAttributes(visatt);
 
-          ((*iter).first)->SetUserLimits(limits);
+          //((*iter).first)->SetUserLimits(limits);
 
          }
        }
     }
-      aTrackerSD->SetDetectIds(&fDetectIds);
+      //aTrackerSD->SetDetectIds(&fDetectIds);
   }
+  anaHelper->SetDetectIds(&fDetectIds);
 
-      // Pass the World Volume to Opticks
-    #ifdef With_Opticks
-      // run it only in master thread
-      if (fDetector and G4Threading::IsMasterThread())
-      {
-        std::cout << "Setting up detector construction for Opticks" << std::endl;
-        MySensorIdentifier * OpticksSensor= new MySensorIdentifier(fDetectIds);
 
-        G4CXOpticks::SetSensorIdentifier(OpticksSensor);
-        G4CXOpticks::SetGeometry(fDetector);
-      }
+    // Pass the World Volume to Opticks
+  #ifdef With_Opticks
+    // run it only in master thread
+    if (fDetector and G4Threading::IsMasterThread())
+    {
+      std::cout << "Setting up detector construction for Opticks" << std::endl;
+      MySensorIdentifier * OpticksSensor= new MySensorIdentifier(fDetectIds);
 
-    #endif
+      G4CXOpticks::SetSensorIdentifier(OpticksSensor);
+      G4CXOpticks::SetGeometry(fDetector);
+    }
+
+  #endif
 
 }
 

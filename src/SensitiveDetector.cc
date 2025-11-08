@@ -75,6 +75,7 @@ void SensitiveDetector::Initialize(G4HCofThisEvent* G4hc)
 G4bool SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*th)
 {
 
+
     // Only Optical Photons
     auto aTrack = aStep->GetTrack();
 
@@ -109,7 +110,8 @@ G4bool SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*th)
     ArapucaHit *Hit= new ArapucaHit(Procid,Sid,detectName,Wavelength,time,PPosition,PMomentDir,PPolar);
     fArapucaHitsCollection->insert(Hit);
     aTrack->SetTrackStatus(fStopAndKill);
-    return true;
+
+    return false;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
