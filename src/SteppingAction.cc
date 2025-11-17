@@ -81,6 +81,9 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     {
         G4String PredetectName=step->GetPreStepPoint()->GetPhysicalVolume()->GetName();
         G4String PostdetectName=step->GetPostStepPoint()->GetPhysicalVolume()->GetName();
+        //std::cout << "Pre Detector Name " << PredetectName << std::endl;
+        //std::cout << "Post Detector Name " << PostdetectName << std::endl;
+
         G4ThreeVector PPosition = aTrack->GetPosition();
         G4ThreeVector PMomentDir = aTrack->GetMomentumDirection();
         G4ThreeVector PPolar = aTrack->GetPolarization();
@@ -98,6 +101,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
         if(it != fDetectIds->end()){
             Sid=it->second ;
         }
+
         else
         {
             /*
@@ -129,6 +133,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
         ArapucaHit Hit= ArapucaHit(Procid,Sid,PostdetectName,Wavelength,time,PPosition,PMomentDir,PPolar);
         anaHelper->AddG4Hits(Hit);
+
     }
 
 

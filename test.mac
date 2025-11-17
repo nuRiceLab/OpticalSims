@@ -10,8 +10,8 @@
 
 # GPS Particle Generation
 /gps/particle mu-
-/gps/energy 1 MeV
+/gps/energy 3 MeV
 /gps/direction 0 0 -1
-/gps/position 200 300 1000
+/gps/position 0 0 130
 
 /run/beamOn 1

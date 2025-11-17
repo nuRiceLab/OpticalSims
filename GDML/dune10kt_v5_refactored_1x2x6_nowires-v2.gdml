@@ -38,7 +38,7 @@
    <position name="posArapucaSub3"    unit="cm" x="0" y="0" z="80.2"/>
 
   <!-- Liquid Argon Proporties   -->
-     <matrix name="SY"  coldim="1" values="24000/MeV" />
+     <matrix name="SY"  coldim="1" values="2/MeV" />
      <matrix name="Test_SY"  coldim="1" values="5/MeV" />
           <matrix name="RS"  coldim="1" values="1.0" />
           <matrix name="FTC" coldim="1" values="6.*ns" />
@@ -415,8 +415,8 @@
    <fraction n="0.034" ref="MgO"/>
    <fraction n="0.010" ref="Na2O"/>
    <fraction n="0.013" ref="TiO2"/>
-   <property name="RINDEX" ref="RINDEX0x4b6e620"/>
-   <property name="ABSLENGTH" ref="ABSLENGTH0x4b6ee30"/>
+   <!-- <property name="RINDEX" ref="RINDEX0x4b6e620"/> -->
+   <!-- <property name="ABSLENGTH" ref="ABSLENGTH0x4b6ee30"/>-->
   </material>
 
   <material name="ArapucaWindowProperties">

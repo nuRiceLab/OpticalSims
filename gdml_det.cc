@@ -54,14 +54,14 @@
 #include  "include/config.h"
 
 // Opticks related header files
+#include "G4OpticalPhysicsOpticks.hh"
+
 #ifdef With_Opticks
 #include "SEventConfig.hh"
 #include "OPTICKS_LOG.hh"
 #include <cuda_runtime.h>
-#include "G4OpticalPhysicsOpticks.hh"
-#else
-#include "G4OpticalPhysics.hh"
 #endif
+
 
 int main(int argc,char **argv)
 {
@@ -115,7 +115,9 @@ int main(int argc,char **argv)
     std::cout << "Defining Opticks Physics List" << std::endl;
     physics_list->RegisterPhysics(new G4OpticalPhysicsOpticks());
   #else
-    physics_list->RegisterPhysics(new G4OpticalPhysics());
+    //physics_list->RegisterPhysics(new G4OpticalPhysics());
+    physics_list->RegisterPhysics(new G4OpticalPhysicsOpticks());
+
   #endif
 
    runManager->SetUserInitialization(new DetectorConstruction(parser));

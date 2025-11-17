@@ -23,4 +23,4 @@
 /vis/modeling/trajectories/drawByParticleID-0/set gamma blue
 /vis/modeling/trajectories/drawByParticleID-0/set mu- orange
 
-/vis/scene/add/axes -1 0 0 1 m
+#/vis/scene/add/axes -1 0 0 1 m
