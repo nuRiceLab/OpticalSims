@@ -358,7 +358,6 @@ G4VParticleChange* G4ScintillationOpticks::PostStepDoIt(const G4Track& aTrack,
 
         if(!scintIntegral)
             continue;
-
     AnalysisManagerHelper * anaHelper = AnalysisManagerHelper::getInstance();
     #ifdef With_Opticks
             if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and numPhot>0 )

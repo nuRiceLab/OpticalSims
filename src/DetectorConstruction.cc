@@ -150,8 +150,7 @@ void DetectorConstruction::ConstructSDandField()
 
           //myvol->SetSensitiveDetector(mydet);
           if(G4Threading::IsMasterThread()){
-              (*iter).first->GetName();
-              //std::cout << "Testing_GlobalIdentiy " << std::endl;
+
               std::string_view name = std::string_view ((*iter).first->GetName().c_str(),(*iter).first->GetName().size());
               std::vector<std::string_view> spfirst=Split(name,'_');
               std::vector<std::string_view> spsecond=Split(spfirst[1],'-');
