@@ -94,7 +94,8 @@ void DetectorConstruction::ConstructSDandField()
   G4VPhysicalVolume *vol1,*vol2;
   // UserLimits
   //G4UserLimits* limits = new G4UserLimits(0.01*CLHEP::mm); // or smaller
-  G4LogicalVolume* myvol;
+  //G4LogicalVolume* myvol;
+ 
 
   //------------------------------------------------
   // Sensitive detectors
@@ -128,7 +129,7 @@ void DetectorConstruction::ConstructSDandField()
     for (G4GDMLAuxListType::const_iterator vit=(*iter).second.begin();
          vit!=(*iter).second.end();vit++)
     {
-      myvol = (*iter).first;
+      //myvol = (*iter).first;
 
       // Surfaces
       if ((*vit).type=="Surface"){

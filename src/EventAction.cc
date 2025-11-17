@@ -38,7 +38,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 {
 
     G4int evtID=event->GetEventID();
-    auto analysisManager = G4AnalysisManager::Instance();
+    //auto analysisManager = G4AnalysisManager::Instance();
 
 
 

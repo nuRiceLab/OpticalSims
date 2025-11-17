@@ -25,7 +25,7 @@ int MySensorIdentifier::getGlobalIdentity(const G4VPhysicalVolume *pv, const G4V
     return parent * 10000 + child;
     */
 
-    G4LogicalVolume *lv = pv->GetLogicalVolume();
+    //G4LogicalVolume *lv = pv->GetLogicalVolume();
     //std::cout << "Testing_GlobalIdentiy " << std::endl;
     /*std::string_view name = std::string_view (pv->GetName().c_str(),pv->GetName().size());
     std::vector<std::string_view> spfirst=Split(name,'_');
@@ -48,4 +48,9 @@ int MySensorIdentifier::getGlobalIdentity(const G4VPhysicalVolume *pv, const G4V
     G4cout << " Could not find the Detector ID " << G4endl;
     assert(false);
 
+}
+
+void MySensorIdentifier::setLevel(int _level)
+{
+    
 }

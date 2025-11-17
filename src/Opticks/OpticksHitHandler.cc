@@ -22,7 +22,7 @@ void OpticksHitHandler::CollectHits() {
     G4int eventID=run->GetCurrentEvent()->GetEventID();
     for (auto & hit : sphotons){
         OpticksHit ohit= OpticksHit();
-        ohit.hit_id=hit.idx();
+        ohit.hit_id=hit.index;
         ohit.sensor_id=hit.identity;
         ohit.x=hit.pos.x;
         ohit.y=hit.pos.y;

@@ -92,7 +92,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
         G4int Procid=-1;
         G4int Sid=-1;
         std::map<G4String, G4int> * fDetectIds=anaHelper->GetDetectIds();
-        G4Material * mt=step->GetPostStepPoint()->GetMaterial();
+        //G4Material * mt=step->GetPostStepPoint()->GetMaterial();
 
         auto it =fDetectIds->find(PostdetectName);
         if(it != fDetectIds->end()){

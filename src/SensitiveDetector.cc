@@ -80,7 +80,7 @@ G4bool SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*th)
     auto aTrack = aStep->GetTrack();
 
     if (aTrack->GetParticleDefinition()!=G4OpticalPhoton::OpticalPhoton())  return false;
-    auto analysisManager = G4AnalysisManager::Instance();
+    //auto analysisManager = G4AnalysisManager::Instance();
 
     G4String detectName=aStep->GetPreStepPoint()->GetPhysicalVolume()->GetName();
     G4ThreeVector PPosition = aTrack->GetPosition();

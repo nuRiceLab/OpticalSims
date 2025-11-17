@@ -361,7 +361,7 @@ G4VParticleChange* G4ScintillationOpticks::PostStepDoIt(const G4Track& aTrack,
 
     AnalysisManagerHelper * anaHelper = AnalysisManagerHelper::getInstance();
     #ifdef With_Opticks
-            if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and numPhot>0 )
+            if((SEventConfig::IntegrationMode()==1) || (SEventConfig::IntegrationMode()==3 && (numPhot>0) ) )
             {
                 anaHelper->AddOpticksScintPhotons(numPhot);
                 U4::CollectGenstep_DsG4Scintillation_r4695(&aTrack, &aStep, numPhot, scnt, scintTime);

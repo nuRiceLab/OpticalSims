@@ -315,7 +315,7 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
   AnalysisManagerHelper *anaHelper=AnalysisManagerHelper::getInstance();
 
   #ifdef With_Opticks
-    if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3 and fNumPhotons>0 ){
+    if((SEventConfig::IntegrationMode()==1) || (SEventConfig::IntegrationMode()==3 && (fNumPhotons>0)) ){
       U4::CollectGenstep_G4Cerenkov_modified(&aTrack, &aStep, fNumPhotons,BetaInverse,Pmin,Pmax,maxCos,maxSin2,MeanNumberOfPhotons1,MeanNumberOfPhotons2);
             int CollectedPhotons=SEvt::GetNumPhotonCollected(0);
             int maxPhoton=SEventConfig::MaxPhoton();
