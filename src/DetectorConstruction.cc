@@ -91,7 +91,7 @@ void DetectorConstruction::ConstructSDandField()
     assert(false);
   }
 
-  G4VPhysicalVolume *vol1,*vol2;
+  //G4VPhysicalVolume *vol1,*vol2;
   // UserLimits
   //G4UserLimits* limits = new G4UserLimits(0.01*CLHEP::mm); // or smaller
   //G4LogicalVolume* myvol;
@@ -113,7 +113,7 @@ void DetectorConstruction::ConstructSDandField()
   // Example how to retrieve Auxiliary Information for sensitive detector
   //
   const G4GDMLAuxMapType* auxmap = fParser->GetAuxMap();
-
+  G4int count=0;
 
   // The same as above, but now we are looking for
   // sensitive detectors setting them for the volumes
@@ -133,10 +133,11 @@ void DetectorConstruction::ConstructSDandField()
 
       // Surfaces
       if ((*vit).type=="Surface"){
-          vol1=G4PhysicalVolumeStore::GetInstance()->GetVolume((*vit).value+"_PV");
-          vol2=G4PhysicalVolumeStore::GetInstance()->GetVolume((*iter).first->GetName()+"_PV");
-          new G4LogicalBorderSurface(((*iter).first->GetName()+"_"+(*vit).value+"_"+(*vit).type),vol1,vol2,ArapucaSurface);
-          //new G4LogicalSkinSurface((*iter).first->GetName()+"_Surface",(*iter).first,ArapucaSurface);
+          //vol1=G4PhysicalVolumeStore::GetInstance()->GetVolume((*vit).value+"_PV");
+          //vol2=G4PhysicalVolumeStore::GetInstance()->GetVolume((*iter).first->GetName()+"_PV");
+          //new G4LogicalBorderSurface(((*iter).first->GetName()+"_"+(*vit).value+"_"+(*vit).type),vol1,vol2,ArapucaSurface);
+          new G4LogicalSkinSurface((*iter).first->GetName()+"_Surface",(*iter).first,ArapucaSurface);
+          count++;
       }
 
       if ((*vit).type=="SensDet" and (*vit).value=="PhotonSD")
@@ -190,7 +191,7 @@ void DetectorConstruction::ConstructSDandField()
       //aTrackerSD->SetDetectIds(&fDetectIds);
   }
   anaHelper->SetDetectIds(&fDetectIds);
-
+  //G4cout<<"Detector construction sensor surface count " << count <<G4endl;
 
     // Pass the World Volume to Opticks
   #ifdef With_Opticks

@@ -9,8 +9,8 @@
 
 
 # GPS Particle Generation
-/gps/particle mu-
-/gps/energy 1 MeV
+/gps/particle e-
+/gps/energy 100 MeV
 /gps/direction 0 0 -1
 /gps/position 200 300 1000
 
