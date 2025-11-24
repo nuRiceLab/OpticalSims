@@ -91,7 +91,7 @@ void DetectorConstruction::ConstructSDandField()
     assert(false);
   }
 
-  //G4VPhysicalVolume *vol1,*vol2;
+  G4VPhysicalVolume *vol1,*vol2;
   // UserLimits
   //G4UserLimits* limits = new G4UserLimits(0.01*CLHEP::mm); // or smaller
   //G4LogicalVolume* myvol;
@@ -133,10 +133,10 @@ void DetectorConstruction::ConstructSDandField()
 
       // Surfaces
       if ((*vit).type=="Surface"){
-          //vol1=G4PhysicalVolumeStore::GetInstance()->GetVolume((*vit).value+"_PV");
-          //vol2=G4PhysicalVolumeStore::GetInstance()->GetVolume((*iter).first->GetName()+"_PV");
-          //new G4LogicalBorderSurface(((*iter).first->GetName()+"_"+(*vit).value+"_"+(*vit).type),vol1,vol2,ArapucaSurface);
-          new G4LogicalSkinSurface((*iter).first->GetName()+"_Surface",(*iter).first,ArapucaSurface);
+          vol1=G4PhysicalVolumeStore::GetInstance()->GetVolume((*vit).value+"_PV");
+          vol2=G4PhysicalVolumeStore::GetInstance()->GetVolume((*iter).first->GetName()+"_PV");
+          new G4LogicalBorderSurface(((*iter).first->GetName()+"_"+(*vit).value+"_"+(*vit).type),vol1,vol2,ArapucaSurface);
+          //new G4LogicalSkinSurface((*iter).first->GetName()+"_Surface",(*iter).first,ArapucaSurface);
           count++;
       }
 
@@ -174,6 +174,7 @@ void DetectorConstruction::ConstructSDandField()
       }
       else if((*vit).type == "Solid")
       {
+        /*
         if((*vit).value == "True")
         {
           G4VisAttributes* visatt = new G4VisAttributes(
@@ -185,7 +186,7 @@ void DetectorConstruction::ConstructSDandField()
 
           //((*iter).first)->SetUserLimits(limits);
 
-         }
+         }*/
        }
     }
       //aTrackerSD->SetDetectIds(&fDetectIds);

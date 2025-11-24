@@ -77,6 +77,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
     // Only Optical Photons
 
     G4OpBoundaryProcessStatus status = boundary->GetStatus();
+    //std::cout << "Status " <<  boundary->GetStatus() << std::endl;
     if (status==Detection and pdef==G4OpticalPhoton::Definition())
     {
         G4String PredetectName=step->GetPreStepPoint()->GetPhysicalVolume()->GetName();
@@ -117,9 +118,9 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
                    << " | BoundaryStatus: "<<boundary->GetStatus()
                    << " | PredetectName: "<< PredetectName
                    << " | PostdetectName: "<< PostdetectName
-                   << G4endl;
+                   << G4endl;*/
             //G4Exception("SteppingAction::UserSteppingAction","Sid==-1",JustWarning,"Cant Find the Detector");
-            */
+
             return;
         }
 

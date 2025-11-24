@@ -6,14 +6,13 @@ export RNG_SEED=0
 export RNG_OFFSET=0
 export SProf__WRITE=1
 ## Opticks settings
-export OPTICKS_MAX_PHOTON=1000000 # Max Amount of photons
+export OPTICKS_MAX_PHOTON=200000000 # Max Amount of photons
 export OPTICKS_MAX_SLOT=$OPTICKS_MAX_PHOTON
-export OPTICKS_PROPAGATE_EPSILON=0.01
-
-export OPTICKS_PROPAGATE_EPSILON0=0.01
-export OPTICKS_MAX_BOUNCE=100
-export OPTICKS_INTEGRATION_MODE=3  # Running both GPU and CPU simulation
-export OPTICKS_EVENT_MODE=DebugHeavy  # Hits or Minimal Prefered. Hits will create .npy files in /tmp/user/opticks/GEOM/NEXUS_CRAB/nexus/ALL
+export OPTICKS_PROPAGATE_EPSILON=0.05
+export OPTICKS_PROPAGATE_EPSILON0=0.05
+export OPTICKS_MAX_BOUNCE=14
+export OPTICKS_INTEGRATION_MODE=1  # Running both GPU and CPU simulation
+export OPTICKS_EVENT_MODE=Minimal  # Hits or Minimal Prefered. Hits will create .npy files in /tmp/user/opticks/GEOM/NEXUS_CRAB/nexus/ALL
 ### Opticks Detector Identification (Boundary Names for Identifying small number of detectors)
 ## Skipahead is used for offseting the random generator values so photons produce per event is not repeated
 if [ -z ${SKIPAHEAD+x} ]; then
@@ -25,20 +24,23 @@ if [ -z ${SKIPAHEAD+x} ]; then
 fi
 export OPTICKS_EVENT_SKIPAHEAD=$OPTICKS_MAX_PHOTON
 
-
-### Lets Check if Curand file present if not then create it 
+### --- Curand File Generation is no longer needed by latests version of opticks ---
+# Lets Check if Curand file present if not then create it 
 ##
-CurandBinPath=$HOME/.opticks/rngcache/RNG/QCurandState_${OPTICKS_MAX_PHOTON}_0_0.bin
+
+#CurandBinPath=$HOME/.opticks/rngcache/RNG/QCurandState_${OPTICKS_MAX_PHOTON}_0_0.bin
 
 #echo $CurandBinPath
-if ! test -f $CurandBinPath; then
-   echo "Creating Curand Binary File .."	
-   echo "$CurandBinPath"
-   sleep 2 ## Delay 2s so user knows we are creating curand file
-   export OPTICKS_QUDARAP_RNGMAX=$OPTICKS_MAX_PHOTON/1000000
-   qudarap-
-   qudarap-prepare-installation
-fi
+#if ! test -f $CurandBinPath; then
+#   echo "Creating Curand Binary File .."	
+#   echo "$CurandBinPath"
+#   sleep 2 ## Delay 2s so user knows we are creating curand file
+#   export OPTICKS_QUDARAP_RNGMAX=$OPTICKS_MAX_PHOTON/1000000
+#   qudarap-
+#   qudarap-prepare-installation
+#fi
+
+### ---------------------------------------------------------------------
 ## default setting of the opticks
 #export OPTICKS_RG_MODE="simulate" # Simulate or Render
 #export OPTICKS_HIT_MASK="SD" # getting hits SD is Surface Detect This can be changed to other flags SA, Surface Absorbtion etc.
@@ -47,7 +49,7 @@ fi
 
 ## for debugging purposeses
 #export QSim=INFO
-#export SEvt=DEBUG
+#export SEvt=INFO
 #export QEvent=INFO
 #export G4CXOpticks=INFO
 #export U4=INFO
