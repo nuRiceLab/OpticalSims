@@ -91,7 +91,7 @@ void DetectorConstruction::ConstructSDandField()
     assert(false);
   }
 
-  G4VPhysicalVolume *vol1,*vol2;
+  //G4VPhysicalVolume *vol1,*vol2;
   // UserLimits
   //G4UserLimits* limits = new G4UserLimits(0.01*CLHEP::mm); // or smaller
   //G4LogicalVolume* myvol;
@@ -133,10 +133,10 @@ void DetectorConstruction::ConstructSDandField()
 
       // Surfaces
       if ((*vit).type=="Surface"){
-          vol1=G4PhysicalVolumeStore::GetInstance()->GetVolume((*vit).value+"_PV");
-          vol2=G4PhysicalVolumeStore::GetInstance()->GetVolume((*iter).first->GetName()+"_PV");
-          new G4LogicalBorderSurface(((*iter).first->GetName()+"_"+(*vit).value+"_"+(*vit).type),vol1,vol2,ArapucaSurface);
-          //new G4LogicalSkinSurface((*iter).first->GetName()+"_Surface",(*iter).first,ArapucaSurface);
+          //vol1=G4PhysicalVolumeStore::GetInstance()->GetVolume((*vit).value+"_PV");
+          //vol2=G4PhysicalVolumeStore::GetInstance()->GetVolume((*iter).first->GetName()+"_PV");
+          //new G4LogicalBorderSurface(((*iter).first->GetName()+"_"+(*vit).value+"_"+(*vit).type),vol1,vol2,ArapucaSurface);
+          new G4LogicalSkinSurface((*iter).first->GetName()+"_Surface",(*iter).first,ArapucaSurface);
           count++;
       }
 
@@ -152,17 +152,24 @@ void DetectorConstruction::ConstructSDandField()
 
           //myvol->SetSensitiveDetector(mydet);
           if(G4Threading::IsMasterThread()){
-
               std::string_view name = std::string_view ((*iter).first->GetName().c_str(),(*iter).first->GetName().size());
-              std::vector<std::string_view> spfirst=Split(name,'_');
-              std::vector<std::string_view> spsecond=Split(spfirst[1],'-');
-              int first,second,third,sid=0;
 
-              first=std::stoi(std::string(spsecond[2]));
-              second=std::stoi(std::string(spsecond[1]));
-              third=std::stoi(std::string(spsecond[0]));
-              sid=third*(10*4)+second*4+first;
-              fDetectIds.insert(std::pair<G4String,G4int>((*iter).first->GetName()+"_PV",sid));
+             std::vector<std::string_view> spfirst=Split(name,'_');
+            if (spfirst.size()>1)
+            {
+                  std::vector<std::string_view> spsecond=Split(spfirst[1],'-');
+                  int first,second,third,sid=0;
+                  first=std::stoi(std::string(spsecond[2]));
+                  second=std::stoi(std::string(spsecond[1]));
+                  third=std::stoi(std::string(spsecond[0]));
+                  sid=third*(10*4)+second*4+first;
+                  fDetectIds.insert(std::pair<G4String,G4int>((*iter).first->GetName()+"_PV",sid));
+              }else
+              {
+                  std::cout << "Warning: Can not generate detector ids from the name" << G4endl;
+                  std::cout << "Opticks will use the copy number as sensitive detector id" << G4endl;
+                  fDetectIds.insert(std::pair<G4String,G4int>((*iter).first->GetName()+"_PV",-99));
+              }
           }
       /*
         }

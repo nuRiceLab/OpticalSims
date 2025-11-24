@@ -40,14 +40,15 @@ int MySensorIdentifier::getGlobalIdentity(const G4VPhysicalVolume *pv, const G4V
     if(fDetectIds.size()!=0){
         auto it =fDetectIds.find(pv->GetName());
         if(it != fDetectIds.end()){
-            return it->second ;
+            // Return the build detector id or just generate one
+            return (it->second > 0) ? it->second : ids++;
         }
         return -1;
     }
     std::cout <<fDetectIds.size() <<std::endl;
-    G4cout << " Could not find the Detector ID " << G4endl;
-    assert(false);
-
+    G4cout << " Could not find any detector IDs" << G4endl;
+    //assert(false);
+    return -1;
 }
 
 void MySensorIdentifier::setLevel(int _level)

@@ -19,6 +19,7 @@ public:
     int getInstanceIdentity(const G4VPhysicalVolume* ) const override ;
 private:
     std::map<G4String,G4int> &fDetectIds;
+    int ids=0;
 };
 
 
