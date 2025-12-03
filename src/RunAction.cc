@@ -5,7 +5,9 @@
 #include "G4Run.hh"
 #include "G4AnalysisManager.hh"
 
+
 RunAction::RunAction(): G4UserRunAction() {
+
 }
 
 RunAction::~RunAction() {
@@ -75,6 +77,7 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     startTime = chrono::high_resolution_clock::now();
     RunTime =0;
     G4cout << "### Run started ###" << G4endl;
+
 }
 
 

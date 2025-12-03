@@ -4926,6 +4926,7 @@
       <D value="8.26"/>
       <fraction ref="copper" n="0.981"/>
       <fraction ref="beryllium" n="0.019"/>
+      <property name="REFLECTIVITY" ref="D_RF"/>
     </material>
     <material name="LAr" formula="">
       <D value="1.4"/>

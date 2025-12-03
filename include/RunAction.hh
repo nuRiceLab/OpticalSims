@@ -8,6 +8,7 @@
 #include "G4UserRunAction.hh"
 #include "chrono"
 #include "vector"
+#include "G4GenericMessenger.hh"
 using namespace std;
 
 class RunAction:public G4UserRunAction

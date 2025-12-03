@@ -1,0 +1,14 @@
+###################################################
+# Batch running of events
+###################################################
+
+# verbosity
+/tracking/verbose 0
+/control/verbose 0
+/run/verbose 0
+
+
+# Reading a Larsoft File for optical photon simulation
+/input/file Test.root
+
+/run/beamOn 1

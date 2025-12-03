@@ -65,19 +65,28 @@ target_link_libraries(gdml_det ${Geant4_LIBRARIES} )
 if (With_Opticks)
   target_link_libraries(gdml_det Opticks::G4CX Opticks::U4)
   target_sources(gdml_det PRIVATE ${SRCS} ${OpSRCS})
-
-  include_directories(${CMAKE_CURRENT_BINARY_DIR})
 endif ()
-
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 configure_file(config.h.in ${CMAKE_BINARY_DIR}/include/config.h)
 
+
+# Find the ROOT package
+#    "REQUIRED" fails the build if ROOT isn't found.
+#    "COMPONENTS" allows you to specify specific libraries (optional but good practice).
+find_package(ROOT REQUIRED COMPONENTS RIO Net Tree )
+
+# Setup ROOT definitions and include directories
+
+include(${ROOT_USE_FILE})
+include_directories(${ROOT_INCLUDE_DIRS})
+target_link_libraries(gdml_det ${ROOT_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
 # build G04. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory.
 #
-set(G04_SCRIPTS iso.mac test.mac  Speed.mac g04.mac vis.mac GDML/test.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires_NoField.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires-v2.gdml GDML/LArTPC.gdml )
+set(G04_SCRIPTS macros/iso.mac macros/test.mac macros/Speed.mac macros/g04.mac vis.mac GDML/test.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires_NoField.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires-v2.gdml GDML/LArTPC.gdml )
 foreach(_script ${G04_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}

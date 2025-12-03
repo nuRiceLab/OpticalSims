@@ -35,7 +35,7 @@
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "G4GeneralParticleSource.hh"
-
+#include "G4GenericMessenger.hh"
 #include "globals.hh"
 
 class G4Event;
@@ -54,6 +54,9 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
   private:
 
     G4GeneralParticleSource* fParticleGun;
+    G4GenericMessenger * fmsg ;
+    G4String fFileName;
+    G4String finitParticleType;
 };
 
 #endif

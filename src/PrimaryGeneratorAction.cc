@@ -39,15 +39,19 @@
 #include "G4GeneralParticleSource.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4AnalysisManager.hh"
-
+#include "G4GenericMessenger.hh"
+#include "LArSoftManager.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 PrimaryGeneratorAction::PrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction(), 
-   fParticleGun(0)
+   fParticleGun(0),fmsg(nullptr),fFileName(""),finitParticleType("GPS")
 {
   //G4int n_particle = 1;
   fParticleGun = new G4GeneralParticleSource();
+  fmsg=new G4GenericMessenger(this,"/PrimaryGenerationAction/input/","");
+  fmsg->DeclareProperty("type",finitParticleType,"Initial Particle Type: LArSoft or GPS (Default)");
+  fmsg->DeclareProperty("file",fFileName,"File Name to Read");
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -62,7 +66,6 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
   auto analysisManager =  G4AnalysisManager::Instance();
-
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
   analysisManager->FillNtupleSColumn(0,0,fParticleGun->GetParticleDefinition()->GetParticleName());
