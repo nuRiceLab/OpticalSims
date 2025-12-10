@@ -4,7 +4,7 @@
 
 // This is generated for reading larsoft ionization and scintilation root file.
 // simulate the optical photons in GPU using information provided by this root file
-#include "../include/LArSoftManager.hh"
+#include "LArSoftManager.hh"
 #include "G4GenericMessenger.hh"
 #include "TTreeReader.h"
 #include "TFile.h"
@@ -13,21 +13,22 @@
 #include "G4ExceptionSeverity.hh"
 #include "TROOT.h"
 
+/// For Initial Testing
 LArSoftManager * LArSoftManager::instance = nullptr;
 G4Mutex LArSoftManager::mtx;
 
 
 
 
-void LArSoftManager::init()
+void LArSoftManager::init(G4String FileName)
 {
     //ROOT::EnableImplicitMT(); // multi-threading
     // Ionization and Scintilation Module of LArSoft produce a root file that contains hits and number of photons
 
     // Try to open the file
-    TFile* f = TFile::Open(fFileName);
+    TFile* f = TFile::Open(FileName);
     if (!f || f->IsZombie()) {
-        G4String err="Error: file " + fFileName + " does not exist or is corrupted.";
+        G4String err="Error: file " + FileName + " does not exist or is corrupted.";
         std::cerr << err << std::endl;
         G4Exception("ROOTManager::init",err,FatalException,"Checking to see if file exist");
     }
@@ -36,18 +37,19 @@ void LArSoftManager::init()
    // "run:event:t:x:y:z:ds:e:trackid:pdg:e_deposit:n_electron:n_photon:scintyield");
 
     std::cout << "ROOTManager::init()" << std::endl;
-    std::cout << "Reading file " << fFileName << std::endl;
-    ROOT::RDataFrame df("is_ana/nt_is", fFileName);
-    auto fRunIDs=df.Take<int>("run");
-    auto feventIDs=df.Take<int>("event");
-    auto fpdgs  = df.Take<int>("pdg");
-    auto ftrackId  = df.Take<int>("trackid");
-    auto fedeps = df.Take<float>("e_deposit");
-    auto fnphoton = df.Take<float>("n_photon");
-    auto fLightYields   = df.Take<float>("scintyield");
-    auto fx=df.Take<float>("x");
-    auto fy = df.Take<float>("y");
-    auto fz = df.Take<float>("z");
-    auto ft   = df.Take<float>("t");
+    std::cout << "Reading file " << FileName << std::endl;
+    ROOT::RDataFrame df("Events", FileName);
+    G4String obj="sim::SimEnergyDeposits_IonAndScint__G4.obj.";
 
+    auto fpdgs  = df.Take<int>(obj+"pdgCode");
+    auto ftrackId  = df.Take<int>(obj+"trackid");
+    auto fedeps = df.Take<float>(obj+"edep");
+    auto fnphoton = df.Take<float>(obj+"numPhotons");
+    auto fLightYields   = df.Take<float>(obj+"scintYieldRatio");
+    auto fStartPos=df.Take<float>(obj+"endPos");
+    auto fEndPos = df.Take<float>(obj+"StartPos");
+    auto startTime=df.Take<float>(obj+"startTime");
+    auto endTime = df.Take<float>(obj+"endTime");
+    std::cout << "Size " << fpdgs->size() << std::endl;
+    std::cout << "Pdg " << fpdgs->at(0) << std::endl;
 }

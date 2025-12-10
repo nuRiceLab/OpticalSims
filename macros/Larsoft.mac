@@ -9,6 +9,7 @@
 
 
 # Reading a Larsoft File for optical photon simulation
-/input/file Test.root
+/PrimaryGenerationAction/input/type larsoft
+/PrimaryGenerationAction/input/file /home/rice/Downloads/prod_electron_3GeV_dune10kt_1x2x6_gen_g4.root
 
 /run/beamOn 1

@@ -31,8 +31,8 @@ mkdir build && cd build && cmake -DWith_Opticks=true -DWITH_GEANT4_VIS=true ..
 make -j2
 ```
 ### 3. Run in Interactive Mode
-./gdml_det i GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac
+./gdml_det i GDML/dune10kt_v5_refactored_1x2x6_nowires_NoField.gdml g04.mac
 
 ![dune10kt_v5_refactored_1x2x6_nowires.gdml](dune10kt.png)
 ### 3. Run in Batch Mode
-./gdml_det GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac
+./gdml_det GDML/dune10kt_v5_refactored_1x2x6_nowires_NoField.gdml g04.mac

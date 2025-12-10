@@ -23,13 +23,11 @@ class LArSoftManager
     };
 
 
-    void init();
+    void init(G4String FileName);
     private:
     LArSoftManager(){};
     static LArSoftManager * instance;
     static G4Mutex mtx;
-    G4GenericMessenger * msg;
-    G4String fFileName;
 
 };
 

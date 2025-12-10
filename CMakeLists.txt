@@ -16,6 +16,7 @@ else()
 endif()
 
 option (With_Opticks OFF)
+option (With_LArSoft OFF)
 
 if(With_Opticks)
   message(STATUS "WITH_OPTICKS is set ON")
@@ -35,6 +36,11 @@ if(With_Opticks)
   find_package(U4 REQUIRED CONFIG)
 endif ()
 
+if(With_LArSoft)
+# LarSoft Libraries are here
+include_directories($ENV{MRB_BUILDDIR}/larsim)
+
+endif ()
 #----------------------------------------------------------------------------
 # Setup Geant4 include directories and compile definitions
 #
