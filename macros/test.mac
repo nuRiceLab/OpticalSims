@@ -7,6 +7,7 @@
 /control/verbose 0
 /run/verbose 0
 
+/RunAction/output/file out.root
 
 # GPS Particle Generation
 /gps/particle mu-

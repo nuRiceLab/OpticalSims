@@ -6,8 +6,11 @@
 #include "G4AnalysisManager.hh"
 
 
-RunAction::RunAction(): G4UserRunAction() {
+RunAction::RunAction(): G4UserRunAction(),fmsg(nullptr),fFileName("out.csv"){
+    //G4int n_particle = 1;
 
+    fmsg=new G4GenericMessenger(this,"/RunAction/output/","");
+    fmsg->DeclareProperty("file",fFileName,"File Name to Save");
 }
 
 RunAction::~RunAction() {
@@ -20,10 +23,9 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
     // Open an output file
-    G4String file = "out.csv";
     if (analysisManager)
-        analysisManager->OpenFile(file);
-    cout << "Generating " << file << G4endl;
+        analysisManager->OpenFile(fFileName);
+    cout << "Generating " << fFileName << G4endl;
     // Main Particle
     analysisManager->CreateNtuple("generator","Particle Generator Info");
     analysisManager->CreateNtupleSColumn("name");

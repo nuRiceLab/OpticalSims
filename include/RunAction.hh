@@ -24,6 +24,8 @@ public:
   vector<double> NPhotons;
   double RunTime;
   chrono::time_point<chrono::high_resolution_clock> startTime;
+  G4GenericMessenger* fmsg;
+  G4String fFileName;
 
 };
 

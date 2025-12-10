@@ -6,6 +6,7 @@
 /tracking/verbose 0
 /control/verbose 0
 /run/verbose 0
+/RunAction/output/file out.root
 
 
 # Reading a Larsoft File for optical photon simulation
