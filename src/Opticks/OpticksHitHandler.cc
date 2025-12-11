@@ -10,7 +10,9 @@
 #include "QSim.hh"
 #include "G4RunManager.hh"
 #include "G4AnalysisManager.hh"
-// Initialize Static Member
+// Opticks Hit Collection
+// Handles getting hits from opticks to a file
+// Need to implement the backtracer for LArSoft in this class
 OpticksHitHandler * OpticksHitHandler::instance = nullptr;
 G4Mutex OpticksHitHandler::mtx;
 
@@ -20,6 +22,7 @@ void OpticksHitHandler::CollectHits() {
     sphoton::Get(sphotons, sev->getHit());
     auto run= G4RunManager::GetRunManager();
     G4int eventID=run->GetCurrentEvent()->GetEventID();
+
     for (auto & hit : sphotons){
         OpticksHit ohit= OpticksHit();
         ohit.hit_id=hit.index;

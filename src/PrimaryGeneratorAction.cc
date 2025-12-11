@@ -38,7 +38,6 @@
 #include "G4ParticleDefinition.hh"
 #include "G4GeneralParticleSource.hh"
 #include "G4SystemOfUnits.hh"
-#include "G4AnalysisManager.hh"
 #include "G4GenericMessenger.hh"
 #include "LArSoftManager.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -59,6 +58,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
   delete fParticleGun;
+  delete fmsg;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

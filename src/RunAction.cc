@@ -14,7 +14,7 @@ RunAction::RunAction(): G4UserRunAction(),fmsg(nullptr),fFileName("out.csv"){
 }
 
 RunAction::~RunAction() {
-
+    delete fmsg;
 }
 
 void RunAction::BeginOfRunAction(const G4Run* run) {

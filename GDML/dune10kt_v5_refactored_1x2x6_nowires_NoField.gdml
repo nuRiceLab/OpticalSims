@@ -836,7 +836,7 @@
      <materialref ref="Glass"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volArapucaLAr_PV"/>
+     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-0-1">
