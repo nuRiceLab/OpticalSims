@@ -11290,7 +11290,6 @@ z="706.975"/>
     <volume name="volWorld" >
       <materialref ref="DUSEL_Rock"/>
       <solidref ref="World"/>
-
       <physvol>
         <volumeref ref="volDetEnclosure"/>
       <position name="posDetEnclosure" unit="cm" x="0" y="120.75" z="570.29375"/>

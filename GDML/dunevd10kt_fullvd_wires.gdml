@@ -12844,6 +12844,8 @@
     <volume name="volOpDetSensitiveDouble">
       <materialref ref="LAr"/>
       <solidref ref="ArapucaDoubleAcceptanceWindow"/>
+      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
+      <auxiliary auxtype="Surface" auxvalue="volArapucaDoubleLAr"/>
     </volume>
     <volume name="volArapucaDoubleLAr">
       <materialref ref="LAr"/>
@@ -18873,8 +18875,8 @@
     <volume name="volOpDetSensitive">
       <materialref ref="Glass"/>
       <solidref ref="ArapucaAcceptanceWindow"/>
-      <auxiliary auxtype="SensDet" auxvalue="PhotonSD"/>
-      <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
+      <auxiliary auxtype="Surface" auxvalue="volArapucaLAr"/>
     </volume>
     <volume name="volArapucaLAr">
       <materialref ref="LAr"/>

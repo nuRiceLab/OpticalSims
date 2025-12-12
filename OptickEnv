@@ -10,7 +10,7 @@ export OPTICKS_MAX_PHOTON=200000000 # Max Amount of photons
 export OPTICKS_MAX_SLOT=$OPTICKS_MAX_PHOTON
 export OPTICKS_PROPAGATE_EPSILON=0.01
 export OPTICKS_PROPAGATE_EPSILON0=0.01
-export OPTICKS_MAX_BOUNCE=100
+export OPTICKS_MAX_BOUNCE=2000
 export OPTICKS_INTEGRATION_MODE=3  # Running both GPU and CPU simulation
 export OPTICKS_EVENT_MODE=Minimal  # Hits or Minimal Prefered. Hits will create .npy files in /tmp/user/opticks/GEOM/NEXUS_CRAB/nexus/ALL
 ### Opticks Detector Identification (Boundary Names for Identifying small number of detectors)
