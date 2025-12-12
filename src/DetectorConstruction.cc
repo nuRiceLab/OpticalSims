@@ -114,7 +114,7 @@ void DetectorConstruction::ConstructSDandField()
   //
   const G4GDMLAuxMapType* auxmap = fParser->GetAuxMap();
   G4int count=0;
-
+  G4int sid=0;
   // The same as above, but now we are looking for
   // sensitive detectors setting them for the volumes
 
@@ -152,18 +152,19 @@ void DetectorConstruction::ConstructSDandField()
 
           //myvol->SetSensitiveDetector(mydet);
           if(G4Threading::IsMasterThread()){
-              std::string_view name = std::string_view ((*iter).first->GetName().c_str(),(*iter).first->GetName().size());
 
+            std::string_view name = std::string_view ((*iter).first->GetName().c_str(),(*iter).first->GetName().size());
              std::vector<std::string_view> spfirst=Split(name,'_');
             if (spfirst.size()>1)
             {
-                  std::vector<std::string_view> spsecond=Split(spfirst[1],'-');
-                  int first,second,third,sid=0;
+                  /*std::vector<std::string_view> spsecond=Split(spfirst[1],'-');
+                  int first,second,third;
                   first=std::stoi(std::string(spsecond[2]));
                   second=std::stoi(std::string(spsecond[1]));
                   third=std::stoi(std::string(spsecond[0]));
                   sid=third*(10*4)+second*4+first;
-                  fDetectIds.insert(std::pair<G4String,G4int>((*iter).first->GetName()+"_PV",sid));
+                  */
+                  fDetectIds.insert(std::pair<G4String,G4int>((*iter).first->GetName()+"_PV",sid++));
               }else
               {
                   std::cout << "Warning: Can not generate detector ids from the name" << G4endl;
