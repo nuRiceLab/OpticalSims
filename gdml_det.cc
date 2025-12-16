@@ -80,12 +80,12 @@ int main(int argc,char **argv)
       */
   #endif
 
-   G4cout << G4endl;
-   G4cout <<" Usage : " << G4endl;
-   G4cout << "Interactive Mode : ./gdml_det i GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac"
-          << G4endl;
-   G4cout << "Batch Mode : ./gdml_det i GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml g04.mac"
-          << G4endl;
+  G4cout << G4endl;
+  G4cout <<" Usage : " << G4endl;
+  G4cout << "Interactive Mode : ./gdml_det i ../GDML/dune10kt_v5_refactored_1x2x6_nowires_NoField.gdml macros/g04.mac"
+         << G4endl;
+  G4cout << "Batch Mode : ./gdml_det ../GDML/dune10kt_v5_refactored_1x2x6_nowires_NoField.gdml macros/g04.mac"
+         << G4endl;
 
    if (argc<2)
    {
@@ -94,6 +94,7 @@ int main(int argc,char **argv)
       return -1;
    }
 
+
    // Detect interactive mode (if only one argument) and define UI session
    auto * fReader=new ColorReader;
    auto parser= new G4GDMLParser(fReader);
@@ -101,10 +102,12 @@ int main(int argc,char **argv)
    if ( strcmp(argv[1],"i") == 0 ) {
      ui = new G4UIExecutive(argc, argv);
      parser->Read(argv[2],false);
-   } else
+   }
+  else
    {
      parser->Read(argv[1],false);
    }
+
 
    auto* runManager = G4RunManagerFactory::CreateRunManager();
 

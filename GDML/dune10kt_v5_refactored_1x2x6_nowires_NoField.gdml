@@ -399,8 +399,9 @@
    <fraction n="0.600" ref="carbon"/>
    <fraction n="0.320" ref="oxygen"/>
    <fraction n="0.080" ref="hydrogen"/>
-
   </material>
+
+
 
   <material name="NiGas1atm80K">
    <D value="0.0039" unit="g/cm3"/>
