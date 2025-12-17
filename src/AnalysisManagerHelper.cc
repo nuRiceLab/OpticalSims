@@ -4,8 +4,9 @@
 
 
 #include "AnalysisManagerHelper.hh"
-#include "G4AnalysisManager.hh"
+#include "G4AnalysisMessengerHelper.hh"
 #include "G4RunManager.hh"
+#include "g4root.hh"
 // Initialize Static Member
 AnalysisManagerHelper * AnalysisManagerHelper::instance = nullptr;
 G4Mutex AnalysisManagerHelper::mtx;

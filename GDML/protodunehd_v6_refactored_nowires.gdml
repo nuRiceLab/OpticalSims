@@ -112,6 +112,7 @@
   <material name="ALUMINUM_Al" formula="ALUMINUM_Al">
    <D value="2.6990" unit="g/cm3"/>
    <fraction n="1.0000" ref="aluminum"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="SILICON_Si" formula="SILICON_Si">
@@ -303,6 +304,7 @@
    <fraction n="0.3954" ref="oxygen"/>
    <fraction n="0.2990" ref="carbon"/>
    <fraction n="0.0251" ref="hydrogen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material formula=" " name="Granite">
@@ -349,11 +351,13 @@
    <D value="1.0" unit="g/cm3"/>
    <fraction n="0.1119" ref="hydrogen"/>
    <fraction n="0.8881" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material formula="Ti" name="Titanium">
    <D value="4.506" unit="g/cm3"/>
    <fraction n="1." ref="titanium"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="TPB" formula="TPB">
@@ -370,6 +374,7 @@
    <fraction n="0.034" ref="MgO"/>
    <fraction n="0.010" ref="Na2O"/>
    <fraction n="0.013" ref="TiO2"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="Acrylic">
@@ -395,6 +400,7 @@
    <composite n="16" ref="hydrogen"/>
    <composite n="2" ref="nitrogen"/>
    <composite n="4" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="ProtoDUNEFoam">
@@ -403,6 +409,7 @@
    <composite n="16" ref="hydrogen"/>
    <composite n="2" ref="nitrogen"/>
    <composite n="4" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="LightPolyurethaneFoam">
@@ -411,6 +418,7 @@
    <composite n="16" ref="hydrogen"/>
    <composite n="2" ref="nitrogen"/>
    <composite n="4" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="ProtoDUNEBWFoam">
@@ -419,6 +427,7 @@
    <composite n="16" ref="hydrogen"/>
    <composite n="2" ref="nitrogen"/>
    <composite n="4" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="GlassWool">
@@ -428,12 +437,14 @@
    <fraction n="0.07" ref="CaO"/>
    <fraction n="0.03" ref="MgO"/>
    <fraction n="0.16" ref="Na2O"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="Polystyrene">
    <D value="1.06" unit="g/cm3"/>
    <composite n="8" ref="carbon"/>
    <composite n="8" ref="hydrogen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
 
@@ -443,6 +454,8 @@
    <D value="0.6355086" unit="g/cm3"/>
    <fraction n="0.99825557042029" ref="STEEL_STAINLESS_Fe7Cr2Ni"/>
    <fraction n="0.00174442957970988"   ref="Air"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
+
   </material>
   <material name="ArapucaWindowProperties">
      <D value="2.74351" unit="g/cm3"/>

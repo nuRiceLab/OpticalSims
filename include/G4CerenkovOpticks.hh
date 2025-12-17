@@ -23,11 +23,14 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
+//
+//
+// 
 ////////////////////////////////////////////////////////////////////////
 // Cerenkov Radiation Class Definition
 ////////////////////////////////////////////////////////////////////////
 //
-// File:        G4CerenkovOpticks.hh
+// File:        G4Cerenkov.hh
 // Description:	Discrete Process - Generation of Cerenkov Photons
 // Version:     2.0
 // Created:     1996-02-21
@@ -37,36 +40,71 @@
 //              1999-10-29 add method and class descriptors
 //              1997-04-09 by Peter Gumplinger
 //              > G4MaterialPropertiesTable; new physics/tracking scheme
+// mail:        gum@triumf.ca
 //
 ////////////////////////////////////////////////////////////////////////
 
-#ifndef G4CerenkovOpticks_h
-#define G4CerenkovOpticks_h 1
+#ifndef G4Cerenkov_h
+#define G4Cerenkov_h 1
+
+/////////////
+// Includes
+/////////////
+
+#include <CLHEP/Units/SystemOfUnits.h>
 
 #include "globals.hh"
-#include "G4DynamicParticle.hh"
-#include "G4ForceCondition.hh"
-#include "G4GPILSelection.hh"
-#include "G4MaterialPropertyVector.hh"
+#include "templates.hh"
+#include "Randomize.hh"
+#include "G4ThreeVector.hh"
+#include "G4ParticleMomentum.hh"
+#include "G4Step.hh"
 #include "G4VProcess.hh"
+#include "G4OpticalPhoton.hh"
+#include "G4DynamicParticle.hh"
+#include "G4Material.hh"
+#include "G4PhysicsTable.hh"
+#include "G4MaterialPropertyVector.hh"
+#include "G4MaterialPropertiesTable.hh"
+#include "G4PhysicsOrderedFreeVector.hh"
 
-class G4Material;
-class G4ParticleDefinition;
-class G4PhysicsTable;
-class G4Step;
-class G4Track;
-class G4VParticleChange;
+// Class Description:
+// Discrete Process -- Generation of Cerenkov Photons.
+// Class inherits publicly from G4VDiscreteProcess.
+// Class Description - End:
+
+/////////////////////
+// Class Definition
+/////////////////////
 
 class G4CerenkovOpticks : public G4VProcess
 {
- public:
-  explicit G4CerenkovOpticks(const G4String& processName = "Cerenkov",
-                      G4ProcessType type          = fElectromagnetic);
+
+public:
+
+  ////////////////////////////////
+  // Constructors and Destructor
+  ////////////////////////////////
+
+  explicit G4CerenkovOpticks(const G4String& processName = "Cerenkov", 
+             G4ProcessType type = fElectromagnetic);
   ~G4CerenkovOpticks();
 
-  explicit G4CerenkovOpticks(const G4CerenkovOpticks& right);
+  explicit G4CerenkovOpticks(const G4CerenkovOpticks &right);
 
-  G4CerenkovOpticks& operator=(const G4CerenkovOpticks& right) = delete;
+private:
+
+  //////////////
+  // Operators
+  //////////////
+
+  G4CerenkovOpticks& operator=(const G4CerenkovOpticks &right) = delete;
+
+public:
+
+  ////////////
+  // Methods
+  ////////////
 
   G4bool IsApplicable(const G4ParticleDefinition& aParticleType) override;
   // Returns true -> 'is applicable', for all charged particles
@@ -75,73 +113,68 @@ class G4CerenkovOpticks : public G4VProcess
   void BuildPhysicsTable(const G4ParticleDefinition& aParticleType) override;
   // Build table at a right time
 
-  void PreparePhysicsTable(const G4ParticleDefinition& part) override;
-  void Initialise();
-
-  G4double GetMeanFreePath(const G4Track& aTrack, G4double, G4ForceCondition*);
+  G4double GetMeanFreePath(const G4Track& aTrack, 
+                           G4double, G4ForceCondition* );
   // Returns the discrete step limit and sets the 'StronglyForced'
   // condition for the DoIt to be invoked at every step.
 
-  G4double PostStepGetPhysicalInteractionLength(const G4Track& aTrack, G4double,
-                                                G4ForceCondition*) override;
+  G4double PostStepGetPhysicalInteractionLength(const G4Track& aTrack,
+                                                G4double ,
+                                                G4ForceCondition* ) override;
   // Returns the discrete step limit and sets the 'StronglyForced'
   // condition for the DoIt to be invoked at every step.
 
-  G4VParticleChange* PostStepDoIt(const G4Track& aTrack,
-                                  const G4Step& aStep) override;
+  G4VParticleChange* PostStepDoIt(const G4Track& aTrack, 
+                                  const G4Step&  aStep) override;
   // This is the method implementing the Cerenkov process.
 
   //  no operation in  AtRestDoIt and  AlongStepDoIt
-  virtual G4double AlongStepGetPhysicalInteractionLength(
-    const G4Track&, G4double, G4double, G4double&, G4GPILSelection*) override
-  {
-    return -1.0;
-  };
+  virtual G4double AlongStepGetPhysicalInteractionLength(const G4Track&,
+                                                         G4double  ,
+                                                         G4double  ,
+                                                         G4double& ,
+                                                         G4GPILSelection*
+                                                ) override { return -1.0; };
 
-  virtual G4double AtRestGetPhysicalInteractionLength(
-    const G4Track&, G4ForceCondition*) override
-  {
-    return -1.0;
-  };
+  virtual G4double AtRestGetPhysicalInteractionLength(const G4Track& ,
+                                                      G4ForceCondition*
+                                                 ) override { return -1.0; };
 
   //  no operation in  AtRestDoIt and  AlongStepDoIt
-  virtual G4VParticleChange* AtRestDoIt(const G4Track&, const G4Step&) override
-  {
-    return nullptr;
-  };
+  virtual G4VParticleChange* AtRestDoIt(const G4Track& , const G4Step& ) 
+                             override {return nullptr;};
 
-  virtual G4VParticleChange* AlongStepDoIt(const G4Track&,
-                                           const G4Step&) override
-  {
-    return nullptr;
-  };
+  virtual G4VParticleChange* AlongStepDoIt(const G4Track& , const G4Step&) 
+                             override {return nullptr;};
 
   void SetTrackSecondariesFirst(const G4bool state);
-  // If set, the primary particle tracking is interrupted and any
-  // produced Cerenkov photons are tracked next. When all have
+  // If set, the primary particle tracking is interrupted and any 
+  // produced Cerenkov photons are tracked next. When all have 
   // been tracked, the tracking of the primary resumes.
 
   G4bool GetTrackSecondariesFirst() const;
   // Returns the boolean flag for tracking secondaries first.
 
   void SetMaxBetaChangePerStep(const G4double d);
-  // Set the maximum allowed change in beta = v/c in % (perCent) per step.
+  // Set the maximum allowed change in beta = v/c in % (perCent)
+  // per step.
 
   G4double GetMaxBetaChangePerStep() const;
   // Returns the maximum allowed change in beta = v/c in % (perCent)
 
   void SetMaxNumPhotonsPerStep(const G4int NumPhotons);
-  // Set the maximum number of Cerenkov photons allowed to be generated during
-  // a tracking step. This is an average ONLY; the actual number will vary
-  // around this average. If invoked, the maximum photon stack will roughly be
-  // of the size set. If not called, the step is not limited by the number of
+  // Set the maximum number of Cerenkov photons allowed to be 
+  // generated during a tracking step. This is an average ONLY; 
+  // the actual number will vary around this average. If invoked, 
+  // the maximum photon stack will roughly be of the size set.
+  // If not called, the step is not limited by the number of 
   // photons generated.
 
   G4int GetMaxNumPhotonsPerStep() const;
   // Returns the maximum number of Cerenkov photons allowed to be
   // generated during a tracking step.
 
-  void SetStackPhotons(const G4bool);
+  void SetStackPhotons(const G4bool );
   // Call by the user to set the flag for stacking the scint. photons
 
   G4bool GetStackPhotons() const;
@@ -156,51 +189,85 @@ class G4CerenkovOpticks : public G4VProcess
   void DumpPhysicsTable() const;
   // Prints the physics table.
 
-  G4double GetAverageNumberOfPhotons(const G4double charge, const G4double beta,
-                                     const G4Material* aMaterial,
+private:
+
+  void BuildThePhysicsTable();
+
+  /////////////////////
+  // Helper Functions
+  /////////////////////
+
+  G4double GetAverageNumberOfPhotons(const G4double charge,
+                                     const G4double beta,
+                                     const G4Material *aMaterial,
                                      G4MaterialPropertyVector* Rindex) const;
 
-  void DumpInfo() const override {ProcessDescription(G4cout);};
-  void ProcessDescription(std::ostream& out) const override;
+  ///////////////////////
+  // Class Data Members
+  ///////////////////////
 
-  void SetVerboseLevel(G4int);
-  // sets verbosity
+protected:
 
- protected:
   G4PhysicsTable* thePhysicsTable;
+  //  A Physics Table can be either a cross-sections table or
+  //  an energy table (or can be used for other specific
+  //  purposes).
 
- private:
+private:
+
+  G4bool fTrackSecondariesFirst;
   G4double fMaxBetaChange;
-  
-  G4int fMaxPhotons;
-  G4int fNumPhotons;
+  G4int  fMaxPhotons;
 
   G4bool fStackingFlag;
-  G4bool fTrackSecondariesFirst;
 
-  G4int secID = -1;  // creator modelID
-
+  G4int fNumPhotons;
 };
 
-inline G4bool G4CerenkovOpticks::GetTrackSecondariesFirst() const
+  ////////////////////
+  // Inline methods
+  ////////////////////
+
+inline
+G4bool G4CerenkovOpticks::GetTrackSecondariesFirst() const
 {
   return fTrackSecondariesFirst;
 }
 
-inline G4double G4CerenkovOpticks::GetMaxBetaChangePerStep() const
+inline
+G4double G4CerenkovOpticks::GetMaxBetaChangePerStep() const
 {
   return fMaxBetaChange;
 }
 
-inline G4int G4CerenkovOpticks::GetMaxNumPhotonsPerStep() const { return fMaxPhotons; }
+inline
+G4int G4CerenkovOpticks::GetMaxNumPhotonsPerStep() const
+{
+  return fMaxPhotons;
+}
 
-inline G4bool G4CerenkovOpticks::GetStackPhotons() const { return fStackingFlag; }
+inline
+void G4CerenkovOpticks::SetStackPhotons(const G4bool stackingFlag)
+{
+        fStackingFlag = stackingFlag;
+}
 
-inline G4int G4CerenkovOpticks::GetNumPhotons() const { return fNumPhotons; }
+inline
+G4bool G4CerenkovOpticks::GetStackPhotons() const
+{
+        return fStackingFlag;
+}
 
-inline G4PhysicsTable* G4CerenkovOpticks::GetPhysicsTable() const
+inline
+G4int G4CerenkovOpticks::GetNumPhotons() const
+{
+        return fNumPhotons;
+}
+
+inline
+G4PhysicsTable* G4CerenkovOpticks::GetPhysicsTable() const
 {
   return thePhysicsTable;
 }
 
-#endif /* G4CerenkovOpticks_h */
+#endif /* G4Cerenkov_h */

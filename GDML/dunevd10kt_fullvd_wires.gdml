@@ -5017,6 +5017,7 @@
       <fraction ref="MgO" n="0.034"/>
       <fraction ref="Na2O" n="0.01"/>
       <fraction ref="TiO2" n="0.013"/>
+       <property name="REFLECTIVITY" ref="D_RF"/>
     </material>
     <material name="Acrylic" formula="">
       <D value="1.19"/>
@@ -12842,8 +12843,10 @@
       <solidref ref="ArapucaDoubleWalls"/>
     </volume>
     <volume name="volOpDetSensitiveDouble">
-      <materialref ref="LAr"/>
+      <materialref ref="Glass"/>
       <solidref ref="ArapucaDoubleAcceptanceWindow"/>
+      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
+      <auxiliary auxtype="Surface" auxvalue="volArapucaDoubleLAr"/>
     </volume>
     <volume name="volArapucaDoubleLAr">
       <materialref ref="LAr"/>
@@ -18873,8 +18876,8 @@
     <volume name="volOpDetSensitive">
       <materialref ref="Glass"/>
       <solidref ref="ArapucaAcceptanceWindow"/>
-      <auxiliary auxtype="SensDet" auxvalue="PhotonSD"/>
-      <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
+      <auxiliary auxtype="Surface" auxvalue="volArapucaLAr"/>
     </volume>
     <volume name="volArapucaLAr">
       <materialref ref="LAr"/>

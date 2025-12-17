@@ -4,7 +4,7 @@
 
 #include "EventAction.hh"
 
-#include <G4AnalysisManager.hh>
+#include <g4root.hh>
 #include <G4AutoLock.hh>
 #include "G4Event.hh"
 #include "include/config.h"

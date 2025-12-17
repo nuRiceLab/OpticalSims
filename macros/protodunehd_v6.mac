@@ -1,0 +1,21 @@
+# Macro for running protodunehd_v6_refactored_nowires.gdml
+###################################################
+# Batch running of events  
+###################################################
+
+# verbosity
+/tracking/verbose 0
+/control/verbose 0
+/run/verbose 0
+# can be csv, root or hdf5
+#/RunAction/output/file protodunehd_v6_electron_1GeV.root
+#/RunAction/output/file protodunehd_v6_mu_1GeVv2.root
+/RunAction/output/file test.root
+
+# GPS Particle Generation
+/gps/particle mu-
+/gps/energy 1 GeV
+/gps/direction 0 0 -1
+/gps/position 300 300 300 cm
+#/gps/position 200 300 1000
+/run/beamOn 1

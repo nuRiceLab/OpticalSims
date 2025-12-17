@@ -46,7 +46,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
     virtual G4VPhysicalVolume *Construct();  
     virtual void ConstructSDandField();
-    std::vector<std::string_view> Split(const std::string_view & s,char del);
+    //std::vector<std::string_view> Split(const std::string_view & s,char del);
 
   private:
     const G4GDMLParser * fParser;

@@ -1,7 +1,3 @@
-
-
-#ifndef G4SCINTILLATIONOPTICKS_HH
-#define G4SCINTILLATIONOPTICKS_HH
 //
 // ********************************************************************
 // * License and Disclaimer                                           *
@@ -27,11 +23,14 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
+//
+//
+// 
 ////////////////////////////////////////////////////////////////////////
-// Scintillation Light Class Definition
+// Scintillation Light Class Definition 
 ////////////////////////////////////////////////////////////////////////
 //
-// File:        G4Scintillation.hh
+// File:        G4Scintillation.hh  
 // Description:	Discrete Process - Generation of Scintillation Photons
 // Version:     1.0
 // Created:     1998-11-07
@@ -48,174 +47,227 @@
 //              2002-05-09 changed IsApplicable method
 //              1999-10-29 add method and class descriptors
 //
-//
-//              Modified by Ilker Parmaksiz on 3/5/25.
-//              Opticks S1 Photons Implementation
+// mail:        gum@triumf.ca
 //
 ////////////////////////////////////////////////////////////////////////
 
+#ifndef G4Scintillation_h
+#define G4Scintillation_h 1
+
+/////////////
+// Includes
+/////////////
 
 #include "globals.hh"
-#include "G4EmSaturation.hh"
-#include "G4OpticalPhoton.hh"
+#include "templates.hh"
+#include "Randomize.hh"
+#include "G4Poisson.hh"
+#include "G4ThreeVector.hh"
+#include "G4ParticleMomentum.hh"
+#include "G4Step.hh"
 #include "G4VRestDiscreteProcess.hh"
+#include "G4OpticalPhoton.hh"
+#include "G4DynamicParticle.hh"
+#include "G4Material.hh" 
+#include "G4PhysicsTable.hh"
+#include "G4MaterialPropertiesTable.hh"
+#include "G4PhysicsOrderedFreeVector.hh"
 
-class G4PhysicsTable;
-class G4Step;
-class G4Track;
+#include "G4EmSaturation.hh"
 
 // Class Description:
 // RestDiscrete Process - Generation of Scintillation Photons.
 // Class inherits publicly from G4VRestDiscreteProcess.
 // Class Description - End:
 
+/////////////////////
+// Class Definition
+/////////////////////
+
 class G4ScintillationOpticks : public G4VRestDiscreteProcess
 {
+
 public:
-    explicit G4ScintillationOpticks(const G4String& processName = "Scintillation",
-                             G4ProcessType type          = fElectromagnetic);
-    ~G4ScintillationOpticks();
 
-    G4ScintillationOpticks(const G4ScintillationOpticks& right) = delete;
-    G4ScintillationOpticks& operator=(const G4ScintillationOpticks& right) = delete;
+	////////////////////////////////
+	// Constructors and Destructor
+	////////////////////////////////
 
-    // G4ScintillationOpticks Process has both PostStepDoIt (for energy
-    // deposition of particles in flight) and AtRestDoIt (for energy
-    // given to the medium by particles at rest)
-
-    G4bool IsApplicable(const G4ParticleDefinition& aParticleType) override;
-    // Returns true -> 'is applicable', for any particle type except
-    // for an 'opticalphoton' and for short-lived particles
-
-    void ProcessDescription(std::ostream&) const override;
-    void DumpInfo() const override {ProcessDescription(G4cout);};
-
-    void BuildPhysicsTable(const G4ParticleDefinition& aParticleType) override;
-    // Build table at the right time
-
-    void PreparePhysicsTable(const G4ParticleDefinition& part) override;
-    void Initialise();
-
-    G4double GetMeanFreePath(const G4Track& aTrack, G4double,
-                             G4ForceCondition*) override;
-    // Returns infinity; i. e. the process does not limit the step,
-    // but sets the 'StronglyForced' condition for the DoIt to be
-    // invoked at every step.
-
-    G4double GetMeanLifeTime(const G4Track& aTrack, G4ForceCondition*) override;
-    // Returns infinity; i. e. the process does not limit the time,
-    // but sets the 'StronglyForced' condition for the DoIt to be
-    // invoked at every step.
-
-    G4VParticleChange* PostStepDoIt(const G4Track& aTrack,
-                                    const G4Step& aStep) override;
-    G4VParticleChange* AtRestDoIt(const G4Track& aTrack,
-                                  const G4Step& aStep) override;
-
-    G4double GetScintillationYieldByParticleType(const G4Track& aTrack,
-                                                 const G4Step& aStep,
-                                                 G4double& yield1,
-                                                 G4double& yield2,
-                                                 G4double& yield3);
-    // allow multiple time constants with scint by particle type
-    // Returns the number of scintillation photons calculated when
-    // scintillation depends on the particle type and energy
-    // deposited (includes nonlinear dependendency) and updates the
-    // yields for each channel
-
-    void SetTrackSecondariesFirst(const G4bool state);
-    // If set, the primary particle tracking is interrupted and any
-    // produced scintillation photons are tracked next. When all
-    // have been tracked, the tracking of the primary resumes.
-
-    G4bool GetTrackSecondariesFirst() const;
-    // Returns the boolean flag for tracking secondaries first.
-
-    void SetFiniteRiseTime(const G4bool state);
-    // If set, the G4ScintillationOpticks process expects the user to have
-    // set the constant material property SCINTILLATIONRISETIME{1,2,3}.
-
-    G4bool GetFiniteRiseTime() const;
-    // Returns the boolean flag for a finite scintillation rise time.
-
-    G4PhysicsTable* GetIntegralTable1() const;
-    // Returns the address of scintillation integral table #1.
-
-    G4PhysicsTable* GetIntegralTable2() const;
-    // Returns the address of scintillation integral table #2.
-
-    G4PhysicsTable* GetIntegralTable3() const;
-    // Returns the address of scintillation integral table #3.
-
-    void AddSaturation(G4EmSaturation* sat);
-    // Adds Birks Saturation to the process.
-
-    void RemoveSaturation();
-    // Removes the Birks Saturation from the process.
-
-    G4EmSaturation* GetSaturation() const;
-    // Returns the Birks Saturation.
-
-    void SetScintillationByParticleType(const G4bool);
-    // Called by the user to set the scintillation yield as a function
-    // of energy deposited by particle type
-
-    G4bool GetScintillationByParticleType() const;
-    // Return the boolean that determines the method of scintillation
-    // production
-
-    void SetScintillationTrackInfo(const G4bool trackType);
-    // Call by the user to set the G4ScintillationOpticksTrackInformation
-    // to scintillation photon track
-
-    G4bool GetScintillationTrackInfo() const;
-    // Return the boolean for whether or not the
-    // G4ScintillationOpticksTrackInformation is set to the scint. photon track
-
-    void SetStackPhotons(const G4bool);
-    // Call by the user to set the flag for stacking the scint. photons
-
-    G4bool GetStackPhotons() const;
-    // Return the boolean for whether or not the scint. photons are stacked
-
-    G4int GetNumPhotons() const;
-    // Returns the current number of scint. photons (after PostStepDoIt)
-
-    void DumpPhysicsTable() const;
-    // Prints the fast and slow scintillation integral tables.
-
-    void SetVerboseLevel(G4int);
-    // sets verbosity
+	explicit G4ScintillationOpticks(const G4String& processName = "Scintillation",
+                                 G4ProcessType type = fElectromagnetic);
+	~G4ScintillationOpticks();
 
 private:
 
-    G4PhysicsTable* fIntegralTable1;
-    G4PhysicsTable* fIntegralTable2;
-    G4PhysicsTable* fIntegralTable3;
+        G4ScintillationOpticks(const G4ScintillationOpticks &right) = delete;
 
-    G4EmSaturation* fEmSaturation;
-    const G4ParticleDefinition* opticalphoton =
-            G4OpticalPhoton::OpticalPhotonDefinition();
+        //////////////
+        // Operators
+        //////////////
 
-    G4int fNumPhotons;
+        G4ScintillationOpticks& operator=(const G4ScintillationOpticks &right) = delete;
 
-    G4bool fScintillationByParticleType;
-    G4bool fScintillationTrackInfo;
-    G4bool fStackingFlag;
-    G4bool fTrackSecondariesFirst;
-    G4bool fFiniteRiseTime;
+public:
+
+        ////////////
+        // Methods
+        ////////////
+
+        // G4Scintillation Process has both PostStepDoIt (for energy 
+        // deposition of particles in flight) and AtRestDoIt (for energy
+        // given to the medium by particles at rest)
+
+        G4bool IsApplicable(
+          const G4ParticleDefinition& aParticleType) override;
+        // Returns true -> 'is applicable', for any particle type except
+        // for an 'opticalphoton' and for short-lived particles
+
+        void BuildPhysicsTable(
+          const G4ParticleDefinition& aParticleType) override;
+        // Build table at the right time
+
+        G4double GetMeanFreePath(const G4Track& aTrack,
+                                       G4double ,
+                                       G4ForceCondition* ) override;
+        // Returns infinity; i. e. the process does not limit the step,
+        // but sets the 'StronglyForced' condition for the DoIt to be 
+        // invoked at every step.
+
+        G4double GetMeanLifeTime(const G4Track& aTrack,
+                                 G4ForceCondition* ) override;
+        // Returns infinity; i. e. the process does not limit the time,
+        // but sets the 'StronglyForced' condition for the DoIt to be
+        // invoked at every step.
+
+        G4VParticleChange* PostStepDoIt(const G4Track& aTrack, 
+                            const G4Step&  aStep) override;
+        G4VParticleChange* AtRestDoIt (const G4Track& aTrack,
+                                       const G4Step& aStep) override;
+
+        G4double GetScintillationYieldByParticleType(const G4Track &aTrack,
+						     const G4Step &aStep);
+        // Returns the number of scintillation photons calculated when
+        // scintillation depends on the particle type and energy
+        // deposited (includes nonlinear dependendency)
+
+        // These are the methods implementing the scintillation process.
+
+        void SetTrackSecondariesFirst(const G4bool state);
+        // If set, the primary particle tracking is interrupted and any
+        // produced scintillation photons are tracked next. When all 
+        // have been tracked, the tracking of the primary resumes.
+
+        G4bool GetTrackSecondariesFirst() const;
+        // Returns the boolean flag for tracking secondaries first.
+
+        void SetFiniteRiseTime(const G4bool state);
+        // If set, the G4Scintillation process expects the user to have
+        // set the constant material property FAST/SLOWSCINTILLATIONRISETIME.
+
+        G4bool GetFiniteRiseTime() const;
+        // Returns the boolean flag for a finite scintillation rise time.
+	
+        void SetScintillationYieldFactor(const G4double yieldfactor);
+        // Called to set the scintillation photon yield factor, needed when
+        // the yield is different for different types of particles. This
+        // scales the yield obtained from the G4MaterialPropertiesTable.
+
+        G4double GetScintillationYieldFactor() const;
+        // Returns the photon yield factor.
+
+        void SetScintillationExcitationRatio(const G4double ratio);
+        // Called to set the scintillation exciation ratio, needed when
+        // the scintillation level excitation is different for different
+        // types of particles. This overwrites the YieldRatio obtained
+        // from the G4MaterialPropertiesTable.
+
+        G4double GetScintillationExcitationRatio() const;
+        // Returns the scintillation level excitation ratio.
+
+        G4PhysicsTable* GetFastIntegralTable() const;
+        // Returns the address of the fast scintillation integral table.
+
+        G4PhysicsTable* GetSlowIntegralTable() const;
+        // Returns the address of the slow scintillation integral table.
+
+        void AddSaturation(G4EmSaturation* sat);
+        // Adds Birks Saturation to the process.
+
+        void RemoveSaturation();
+        // Removes the Birks Saturation from the process.
+
+        G4EmSaturation* GetSaturation() const;
+        // Returns the Birks Saturation.
+
+        void SetScintillationByParticleType(const G4bool );
+        // Called by the user to set the scintillation yield as a function
+        // of energy deposited by particle type
+
+        G4bool GetScintillationByParticleType() const;
+        // Return the boolean that determines the method of scintillation
+        // production
+
+        void SetScintillationTrackInfo(const G4bool trackType);
+        // Call by the user to set the G4ScintillationTrackInformation
+        // to scintillation photon track
+
+        G4bool GetScintillationTrackInfo() const;
+        // Return the boolean for whether or not the
+        // G4ScintillationTrackInformation is set to the scint. photon track
+
+        void SetStackPhotons(const G4bool );
+        // Call by the user to set the flag for stacking the scint. photons
+
+        G4bool GetStackPhotons() const;
+        // Return the boolean for whether or not the scint. photons are stacked
+
+        G4int GetNumPhotons() const;
+        // Returns the current number of scint. photons (after PostStepDoIt)
+
+        void DumpPhysicsTable() const;
+        // Prints the fast and slow scintillation integral tables.
+
+protected:
+
+        void BuildThePhysicsTable();
+        // It builds either the fast or slow scintillation integral table; 
+        // or both. 
+
+        ///////////////////////
+        // Class Data Members
+        ///////////////////////
+
+        G4PhysicsTable* fFastIntegralTable;
+        G4PhysicsTable* fSlowIntegralTable;
+
+private:
+
+        G4bool fTrackSecondariesFirst;
+        G4bool fFiniteRiseTime;
+
+        G4double fYieldFactor;
+
+        G4double fExcitationRatio;
+
+        G4bool fScintillationByParticleType;
+
+        G4bool fScintillationTrackInfo;
+
+        G4bool fStackingFlag;
+
+        G4int fNumPhotons;
 
 #ifdef G4DEBUG_SCINTILLATION
-    G4double ScintTrackEDep, ScintTrackYield;
+        G4double ScintTrackEDep, ScintTrackYield;
 #endif
 
-    G4double single_exp(G4double t, G4double tau2);
-    G4double bi_exp(G4double t, G4double tau1, G4double tau2);
+        G4double single_exp(G4double t, G4double tau2);
+        G4double bi_exp(G4double t, G4double tau1, G4double tau2);
 
-    // emission time distribution when there is a finite rise time
-    G4double sample_time(G4double tau1, G4double tau2);
+        // emission time distribution when there is a finite rise time
+        G4double sample_time(G4double tau1, G4double tau2);
 
-    G4int secID = -1;  // creator modelID
+        G4EmSaturation* fEmSaturation;
 
 };
 
@@ -223,69 +275,131 @@ private:
 // Inline methods
 ////////////////////
 
-inline G4bool G4ScintillationOpticks::GetTrackSecondariesFirst() const
+inline
+void G4ScintillationOpticks::SetTrackSecondariesFirst(const G4bool state)
 {
-    return fTrackSecondariesFirst;
+        fTrackSecondariesFirst = state;
 }
 
-inline G4bool G4ScintillationOpticks::GetFiniteRiseTime() const
+inline
+G4bool G4ScintillationOpticks::GetTrackSecondariesFirst() const
 {
-    return fFiniteRiseTime;
+        return fTrackSecondariesFirst;
 }
 
-inline G4PhysicsTable* G4ScintillationOpticks::GetIntegralTable1() const
+inline
+void G4ScintillationOpticks::SetFiniteRiseTime(const G4bool state)
 {
-    return fIntegralTable1;
+        fFiniteRiseTime = state;
 }
 
-inline G4PhysicsTable* G4ScintillationOpticks::GetIntegralTable2() const
+inline 
+G4bool G4ScintillationOpticks::GetFiniteRiseTime() const
 {
-    return fIntegralTable2;
+        return fFiniteRiseTime;
 }
 
-inline G4PhysicsTable* G4ScintillationOpticks::GetIntegralTable3() const
+inline
+void G4ScintillationOpticks::SetScintillationYieldFactor(const G4double yieldfactor)
 {
-    return fIntegralTable3;
+        fYieldFactor = yieldfactor;
 }
 
-inline void G4ScintillationOpticks::AddSaturation(G4EmSaturation* sat)
+inline
+G4double G4ScintillationOpticks::GetScintillationYieldFactor() const
 {
-    fEmSaturation = sat;
+        return fYieldFactor;
 }
 
-inline void G4ScintillationOpticks::RemoveSaturation() { fEmSaturation = nullptr; }
-
-inline G4EmSaturation* G4ScintillationOpticks::GetSaturation() const
+inline
+void G4ScintillationOpticks::SetScintillationExcitationRatio(const G4double ratio)
 {
-    return fEmSaturation;
+        fExcitationRatio = ratio;
 }
 
-inline G4bool G4ScintillationOpticks::GetScintillationByParticleType() const
+inline
+G4double G4ScintillationOpticks::GetScintillationExcitationRatio() const
 {
-    return fScintillationByParticleType;
+        return fExcitationRatio;
 }
 
-inline G4bool G4ScintillationOpticks::GetScintillationTrackInfo() const
+inline
+G4PhysicsTable* G4ScintillationOpticks::GetSlowIntegralTable() const
 {
-    return fScintillationTrackInfo;
+        return fSlowIntegralTable;
 }
 
-inline G4bool G4ScintillationOpticks::GetStackPhotons() const { return fStackingFlag; }
-
-inline G4int G4ScintillationOpticks::GetNumPhotons() const { return fNumPhotons; }
-
-inline G4double G4ScintillationOpticks::single_exp(G4double t, G4double tau2)
+inline
+G4PhysicsTable* G4ScintillationOpticks::GetFastIntegralTable() const
 {
-    return std::exp(-1.0 * t / tau2) / tau2;
+        return fFastIntegralTable;
 }
 
-inline G4double G4ScintillationOpticks::bi_exp(G4double t, G4double tau1,
-                                        G4double tau2)
+inline
+void G4ScintillationOpticks::AddSaturation(G4EmSaturation* sat)
 {
-    return std::exp(-1.0 * t / tau2) * (1 - std::exp(-1.0 * t / tau1)) / tau2 /
-           tau2 * (tau1 + tau2);
+        fEmSaturation = sat;
+}
+
+inline
+void G4ScintillationOpticks::RemoveSaturation()
+{
+        fEmSaturation = nullptr;
+}
+
+inline
+G4EmSaturation* G4ScintillationOpticks::GetSaturation() const
+{
+        return fEmSaturation;
+}
+
+inline
+G4bool G4ScintillationOpticks::GetScintillationByParticleType() const
+{
+        return fScintillationByParticleType;
+}
+
+inline
+void G4ScintillationOpticks::SetScintillationTrackInfo(const G4bool trackType)
+{
+        fScintillationTrackInfo = trackType;
+}
+
+inline
+G4bool G4ScintillationOpticks::GetScintillationTrackInfo() const
+{
+        return fScintillationTrackInfo;
+}
+
+inline
+void G4ScintillationOpticks::SetStackPhotons(const G4bool stackingFlag)
+{
+        fStackingFlag = stackingFlag;
+}
+
+inline
+G4bool G4ScintillationOpticks::GetStackPhotons() const
+{
+        return fStackingFlag;
+}
+
+inline
+G4int G4ScintillationOpticks::GetNumPhotons() const
+{
+        return fNumPhotons;
 }
 
 
+inline
+G4double G4ScintillationOpticks::single_exp(G4double t, G4double tau2)
+{
+         return std::exp(-1.0*t/tau2)/tau2;
+}
 
-#endif //G4SCINTILLATIONOPTICKS_HH
+inline
+G4double G4ScintillationOpticks::bi_exp(G4double t, G4double tau1, G4double tau2)
+{
+         return std::exp(-1.0*t/tau2)*(1-std::exp(-1.0*t/tau1))/tau2/tau2*(tau1+tau2);
+}
+
+#endif /* G4Scintillation_h */
