@@ -34,12 +34,11 @@
 #include "G4Event.hh"
 #include "G4ParticleGun.hh"
 #include "G4ParticleTable.hh"
-#include "G4AnalysisManager.hh"
+#include "g4root.hh"
 #include "G4ParticleDefinition.hh"
 #include "G4GeneralParticleSource.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4GenericMessenger.hh"
-#include "LArSoftManager.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 PrimaryGeneratorAction::PrimaryGeneratorAction()
@@ -83,8 +82,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
     analysisManager->AddNtupleRow(0);
   }else if (finitParticleType=="larsoft")
   {
-     auto lmng= LArSoftManager::getInstance();
-     lmng->init(fFileName);
+
   }
   // Add Analysis Manager
 }

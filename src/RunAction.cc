@@ -3,7 +3,7 @@
 //
 #include "RunAction.hh"
 #include "G4Run.hh"
-#include "G4AnalysisManager.hh"
+#include "g4root.hh"
 
 
 RunAction::RunAction(): G4UserRunAction(),fmsg(nullptr),fFileName("out.csv"){

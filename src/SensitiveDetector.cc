@@ -35,7 +35,7 @@
 #include "G4ThreeVector.hh"
 #include "G4SDManager.hh"
 #include "G4ios.hh"
-#include  "G4AnalysisManager.hh"
+#include  "g4root.hh"
 #include "G4OpticalPhoton.hh"
 #include "G4Track.hh"
 #include "G4VHit.hh"

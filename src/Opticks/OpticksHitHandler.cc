@@ -9,7 +9,7 @@
 #include "OpticksGenstep.h"
 #include "QSim.hh"
 #include "G4RunManager.hh"
-#include "G4AnalysisManager.hh"
+#include "g4root.hh"
 // Opticks Hit Collection
 // Handles getting hits from opticks to a file
 // Need to implement the backtracer for LArSoft in this class
