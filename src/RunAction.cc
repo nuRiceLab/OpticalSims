@@ -19,6 +19,7 @@ RunAction::~RunAction() {
 
 void RunAction::BeginOfRunAction(const G4Run* run) {
 
+    std::cout << "Run ID: " << run->GetRunID() << std::endl;
     // Get the analysis manager
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
 
@@ -86,14 +87,13 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
 void RunAction::EndOfRunAction(const G4Run* run) {
     auto duration = chrono::high_resolution_clock::now() - startTime;
     auto RunTime = chrono::duration_cast<chrono::duration<double>>(duration).count();
-    std::cout << "Run time: " << RunTime << " seconds" << G4endl;
-
+    std::cout << "Run time: " << RunTime << " seconds, RunID= " <<run->GetRunID() << G4endl;	
     // Write and Close File
     auto analysisManager = G4AnalysisManager::Instance();
     if (analysisManager){
         cout << "Saving Events to " << analysisManager->GetFileName() <<" root file .." << G4endl;
         analysisManager->Write();
         analysisManager->CloseFile();
-        analysisManager->Clear();
+        //analysisManager->Clear();
     }
  }

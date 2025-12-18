@@ -60,6 +60,10 @@ if (With_Opticks)
 endif()
 
 #----------------------------------------------------------------------------
+# Ignore warnings as errors
+add_compile_options(-Wno-error=unused-parameter)
+
+#----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
 add_executable(gdml_det gdml_det.cc ${sources} ${headers})
