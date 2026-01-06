@@ -10,9 +10,9 @@
 /RunAction/output/file out.root
 
 # GPS Particle Generation
-/gps/particle mu-
-/gps/energy 1 MeV
+/gps/particle e-
+/gps/energy 1 GeV
 /gps/direction 0 0 -1
 /gps/position 0 0 130
 
-/run/beamOn 1
+/run/beamOn 3
