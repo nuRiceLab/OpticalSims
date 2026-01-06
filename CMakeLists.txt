@@ -3,7 +3,7 @@ project(GDMLOpticks)
 
 # --- 1. Options ---
 option(With_Opticks "Enable Opticks GPU Support" OFF)
-option(With_LArSoft "Enable LArSoft/Art Integration" OFF)
+option(With_LArSoft "Enable LArSoft/Art Integration" ON)
 option(WITH_GEANT4_VIS "Build with Geant4 Vis drivers" ON)
 
 
