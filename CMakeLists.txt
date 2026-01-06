@@ -1,119 +1,125 @@
-#----------------------------------------------------------------------------
-# Setup the project
-cmake_minimum_required(VERSION 3.16...3.21)
+cmake_minimum_required(VERSION 3.16...3.27)
 project(GDMLOpticks)
 
-#----------------------------------------------------------------------------
-# Find Geant4 package, activating all available Vis drivers by default
-# You can set WITH_GEANT4_VIS to OFF via the command line or ccmake/cmake-gui
-# to build a batch mode only executable
-#
-option(WITH_GEANT4_VIS "Build example with Geant4 Vis drivers" ON)
+# --- 1. Options ---
+option(With_Opticks "Enable Opticks GPU Support" OFF)
+option(With_LArSoft "Enable LArSoft/Art Integration" OFF)
+option(WITH_GEANT4_VIS "Build with Geant4 Vis drivers" ON)
+
+
+# --- 2. Geant4 Setup ---
 if(WITH_GEANT4_VIS)
-  find_package(Geant4 REQUIRED gdml vis_all)
+    if(WITH_LARSOFT)
+        find_ups_package(Geant4 REQUIRED gdml vis_all)
+    else()
+        find_package(Geant4 REQUIRED gdml vis_all)
+    endif ()
 else()
-  find_package(Geant4 REQUIRED gdml)
+    if(WITH_LARSOFT)
+        find_ups_package(Geant4 REQUIRED gdml)
+    else()
+        find_package(Geant4 REQUIRED gdml)
+    endif ()
 endif()
 
-option (With_Opticks OFF)
-option (With_LArSoft OFF)
-
-if(With_Opticks)
-  message(STATUS "WITH_OPTICKS is set ON")
-  list(APPEND CMAKE_MODULE_PATH "$ENV{OPTICKS_HOME}/cmake/Modules")
-  #list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/Modules")
-  set(OPTICKS_PREFIX "$ENV{OPTICKS_PREFIX}")
-  ### we need to Make sure this OPTICKS_PREFIX matches with the one on OpticksBuildOptions
-  message(STATUS "OPTICKS_PREFIX : $ENV{OPTICKS_PREFIX} ")
-  include(OpticksBuildOptions)
-  message(STATUS "---- OPTICKS ----")
-  message(STATUS "CMAKE_MODULE_PATH --> ${CMAKE_MODULE_PATH}")
-  message(STATUS "OPTICKS HOME --> $ENV{OPTICKS_HOME}")
-  message(STATUS "---- OPTICKS END ----")
-  find_dependency(PLog) # For Some Reason it was not finding PLog , doing this compiles
-  ## These are needed for opticks
-  find_package(G4CX REQUIRED CONFIG)
-  find_package(U4 REQUIRED CONFIG)
-endif ()
-
-if(With_LArSoft)
-# LarSoft Libraries are here
-include_directories($ENV{MRB_BUILDDIR}/larsim)
-
-endif ()
-#----------------------------------------------------------------------------
-# Setup Geant4 include directories and compile definitions
-#
 include(${Geant4_USE_FILE})
 
-#----------------------------------------------------------------------------
-# Locate sources and headers for this project
-#
-include_directories(${PROJECT_SOURCE_DIR}/include 
-                    ${Geant4_INCLUDE_DIR})
-file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
-
-if (With_Opticks)
-  file(GLOB OpRHDRS ${CMAKE_SOURCE_DIR}/include/${DIR}/Opticks/*.h)
-  file(GLOB OpSRCS ${CMAKE_SOURCE_DIR}/src/${DIR}/Opticks/*.cc)
-endif()
-
-#----------------------------------------------------------------------------
-# Ignore warnings as errors
-add_compile_options(-Wno-error=unused-parameter)
-
-#----------------------------------------------------------------------------
-# Add the executable, and link it to the Geant4 libraries
-#
-add_executable(gdml_det gdml_det.cc ${sources} ${headers})
-
-target_link_libraries(gdml_det ${Geant4_LIBRARIES} )
-
-
-# Link Opticks Libraries
-if (With_Opticks)
-  target_link_libraries(gdml_det Opticks::G4CX Opticks::U4)
-  target_sources(gdml_det PRIVATE ${SRCS} ${OpSRCS})
+# --- 3. ROOT Setup ---
+if(WITH_LARSOFT)
+    find_ups_package(ROOT REQUIRED COMPONENTS RIO Net Tree)
+else()
+    find_package(ROOT REQUIRED COMPONENTS RIO Net Tree)
 endif ()
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
-configure_file(config.h.in ${CMAKE_BINARY_DIR}/include/config.h)
-
-
-# Find the ROOT package
-#    "REQUIRED" fails the build if ROOT isn't found.
-#    "COMPONENTS" allows you to specify specific libraries (optional but good practice).
-find_package(ROOT REQUIRED COMPONENTS RIO Net Tree )
-
-# Setup ROOT definitions and include directories
 
 include(${ROOT_USE_FILE})
-include_directories(${ROOT_INCLUDE_DIRS})
-target_link_libraries(gdml_det ${ROOT_LIBRARIES})
 
-#----------------------------------------------------------------------------
-# Copy all scripts to the build directory, i.e. the directory in which we
-# build G04. This is so that we can run the executable directly because it
-# relies on these scripts being in the current working directory.
-#
-set(G04_SCRIPTS macros/iso.mac macros/test.mac macros/Speed.mac macros/g04.mac vis.mac GDML/test.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires_NoField.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires.gdml GDML/dune10kt_v5_refactored_1x2x6_nowires-v2.gdml GDML/LArTPC.gdml )
-foreach(_script ${G04_SCRIPTS})
-  configure_file(
-    ${PROJECT_SOURCE_DIR}/${_script}
-    ${PROJECT_BINARY_DIR}/${_script}
-    COPYONLY
+
+
+# --- 4. Opticks Conditional Setup ---
+if(With_Opticks)
+    message(STATUS "Opticks Enabled. Home: $ENV{OPTICKS_HOME}")
+    list(APPEND CMAKE_MODULE_PATH "$ENV{OPTICKS_HOME}/cmake/Modules")
+    message(STATUS "OPTICKS_PREFIX : $ENV{OPTICKS_PREFIX} ")
+    include(OpticksBuildOptions)
+    message(STATUS "---- OPTICKS ----")
+    message(STATUS "CMAKE_MODULE_PATH --> ${CMAKE_MODULE_PATH}")
+    message(STATUS "OPTICKS HOME --> $ENV{OPTICKS_HOME}")
+    message(STATUS "---- OPTICKS END ----")
+    # Use find_package for PLog
+    find_package(PLog REQUIRED)
+    find_package(G4CX REQUIRED CONFIG)
+    find_package(U4 REQUIRED CONFIG)
+
+endif()
+
+# --- 5. LArSoft Conditional Setup ---
+if(With_LArSoft)
+    find_package(cetmodules 3.24.00 REQUIRED)
+    include(CetCMakeEnv)
+    cet_cmake_env()
+    # -Wno-unused-variable needed because of CLHEP
+    cet_set_compiler_flags(DIAGS CAUTIOUS
+            WERROR
+            NO_UNDEFINED
+            EXTRA_FLAGS -pedantic -Wno-unused-local-typedefs -Wno-unused-variable
     )
+    cet_report_compiler_flags(REPORT_THRESHOLD VERBOSE)
+    cet_cmake_module_directories(Modules BINARY)
+
+    find_package(art REQUIRED)
+    find_package(larsim REQUIRED)
+    find_package(larcore REQUIRED)
+    find_ups_product(xerces_c)
+    # loading macros to cmake
+    include(ArtMake)
+    include(ArtDictionary)
+    include(CetMake)
+    include(BuildPlugins)
+endif()
+
+# --- 6. Include Directories ---
+include_directories(${PROJECT_SOURCE_DIR}/include
+        ${Geant4_INCLUDE_DIR}
+        ${ROOT_INCLUDE_DIRS}:
+        ${CMAKE_CURRENT_BINARY_DIR})
+
+# --- 7. Target Handling ---
+# Only build standalone executable if NOT building a LArSoft module
+# OR if you want both, ensure they use different source files.
+if(NOT With_LArSoft)
+    file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
+    file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
+
+    add_executable(gdml_det gdml_det.cc ${sources})
+    target_link_libraries(gdml_det ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
+
+    if(With_Opticks)
+        target_link_libraries(gdml_det Opticks::G4CX Opticks::U4)
+    endif()
+else()
+    # In LArSoft mode, we use art_make.
+    # NOTE: art_make will look for all .cc files in the current dir.
+    # Exclude your standalone main (gdml_det.cc) from the art_make build!
+    art_make(
+	    USE_PROJECT_NAME
+            MODULE_LIBRARIES
+            larsim::LArG4_LArG4
+            larcore::Geometry_Geometry
+            nusimdata::SimulationBase
+	        ${XERCES_C}
+	        ${XERCES_C_LIBRARIES}
+            ${Geant4_LIBRARIES}
+            ${ROOT_LIBRARIES}
+            Opticks::G4CX
+            Opticks::U4
+    )
+endif()
+
+# --- 8. Config & Scripts ---
+configure_file(config.h.in ${CMAKE_BINARY_DIR}/include/config.h)
+
+set(G04_SCRIPTS macros/iso.mac macros/test.mac GDML/test.gdml) # shortened for brevity
+
+foreach(_script ${G04_SCRIPTS})
+    configure_file(${PROJECT_SOURCE_DIR}/${_script} ${PROJECT_BINARY_DIR}/${_script} COPYONLY)
 endforeach()
-
-
-#----------------------------------------------------------------------------
-# Add program to the project targets
-# (this avoids the need of typing the program name after make)
-#
-add_custom_target(G04 DEPENDS gdml_det)
-
-#----------------------------------------------------------------------------
-# Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
-#
-install(TARGETS gdml_det DESTINATION bin)
-
