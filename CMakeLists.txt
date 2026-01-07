@@ -16,7 +16,7 @@
 # use cmake 3.12 or later
 cmake_minimum_required (VERSION 3.12)
 
-project(laropticks LANGUAGES CXX C)
+project(laropticks VERSION v10.09.01 LANGUAGES CXX C)
 
 # cetbuildtools contains our cmake modules
 find_package(cetbuildtools REQUIRED)
