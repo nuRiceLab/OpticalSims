@@ -1,0 +1,22 @@
+# Macro for running dunevd10kt_fullvd_wires.
+# Bounce is 50
+# Epsilon is 0.01
+###################################################
+# Batch running of events  
+###################################################
+
+# verbosity
+/tracking/verbose 0
+/control/verbose 0
+/run/verbose 0
+# can be csv, root or hdf5
+#/RunAction/output/file dunevd10kt_fullvd_wires_electron_3GeV.root
+#/RunAction/output/file dunevd10kt_fullvd_wires_electron_1GeV.root
+/RunAction/output/file test.root
+
+# GPS Particle Generation
+/gps/particle e-
+/gps/energy 1 GeV
+/gps/direction 0 0 1
+/gps/position 200 300 1000
+/run/beamOn 1

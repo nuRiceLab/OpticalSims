@@ -1,0 +1,20 @@
+###################################################
+# Batch running of events
+###################################################
+
+# verbosity
+/tracking/verbose 0
+/control/verbose 0
+/run/verbose 0
+
+/RunAction/output/file out.root
+
+# GPS Particle Generation
+/gps/particle e-
+/gps/pos/type Point
+/gps/pos/centre 0 200 650
+/gps/ang/type iso
+/gps/energy 3 GeV
+/gps/position 0 200 650
+
+/run/beamOn 1

@@ -1,0 +1,26 @@
+###################################################
+# Visualization of detector geometry and events  
+###################################################
+
+# create empty scene
+/vis/scene/create
+
+# Create a scene handler for a specific graphics system
+/vis/open OGL
+
+# draw scene
+/vis/viewer/zoom 1.4
+/vis/viewer/flush
+
+# (if you prefer not refreshing each event, uncomment next line)
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate
+
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set e- red
+/vis/modeling/trajectories/drawByParticleID-0/set e+ yellow
+/vis/modeling/trajectories/drawByParticleID-0/set opticalphoton green
+/vis/modeling/trajectories/drawByParticleID-0/set gamma blue
+/vis/modeling/trajectories/drawByParticleID-0/set mu- orange
+
+#/vis/scene/add/axes -1 0 0 1 m

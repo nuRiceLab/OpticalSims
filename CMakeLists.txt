@@ -1,125 +1,66 @@
-cmake_minimum_required(VERSION 3.16...3.27)
-project(GDMLOpticks)
-
-# --- 1. Options ---
-option(With_Opticks "Enable Opticks GPU Support" OFF)
-option(With_LArSoft "Enable LArSoft/Art Integration" ON)
-option(WITH_GEANT4_VIS "Build with Geant4 Vis drivers" ON)
-
-
-# --- 2. Geant4 Setup ---
-if(WITH_GEANT4_VIS)
-    if(WITH_LARSOFT)
-        find_ups_package(Geant4 REQUIRED gdml vis_all)
-    else()
-        find_package(Geant4 REQUIRED gdml vis_all)
-    endif ()
-else()
-    if(WITH_LARSOFT)
-        find_ups_package(Geant4 REQUIRED gdml)
-    else()
-        find_package(Geant4 REQUIRED gdml)
-    endif ()
-endif()
-
-include(${Geant4_USE_FILE})
-
-# --- 3. ROOT Setup ---
-if(WITH_LARSOFT)
-    find_ups_package(ROOT REQUIRED COMPONENTS RIO Net Tree)
-else()
-    find_package(ROOT REQUIRED COMPONENTS RIO Net Tree)
-endif ()
-
-include(${ROOT_USE_FILE})
+# ======================================================================
+#  laropticks main build file
+#
+#  cd .../path/to/build/directory
+#  source .../path/to/laropticks/ups/setup_for_development <-d|-p>
+#  cmake [-DCMAKE_INSTALL_PREFIX=/install/path]
+#        -DCMAKE_BUILD_TYPE=$CETPKG_TYPE
+#        $CETPKG_SOURCE
+#  make
+#  make test
+#  make install
+#  make package (builds distribution tarfile)
+# ======================================================================
 
 
+# use cmake 3.12 or later
+cmake_minimum_required (VERSION 3.12)
 
-# --- 4. Opticks Conditional Setup ---
-if(With_Opticks)
-    message(STATUS "Opticks Enabled. Home: $ENV{OPTICKS_HOME}")
-    list(APPEND CMAKE_MODULE_PATH "$ENV{OPTICKS_HOME}/cmake/Modules")
-    message(STATUS "OPTICKS_PREFIX : $ENV{OPTICKS_PREFIX} ")
-    include(OpticksBuildOptions)
-    message(STATUS "---- OPTICKS ----")
-    message(STATUS "CMAKE_MODULE_PATH --> ${CMAKE_MODULE_PATH}")
-    message(STATUS "OPTICKS HOME --> $ENV{OPTICKS_HOME}")
-    message(STATUS "---- OPTICKS END ----")
-    # Use find_package for PLog
-    find_package(PLog REQUIRED)
-    find_package(G4CX REQUIRED CONFIG)
-    find_package(U4 REQUIRED CONFIG)
+project(laropticks LANGUAGES CXX C)
 
-endif()
+# cetbuildtools contains our cmake modules
+find_package(cetbuildtools REQUIRED)
 
-# --- 5. LArSoft Conditional Setup ---
-if(With_LArSoft)
-    find_package(cetmodules 3.24.00 REQUIRED)
-    include(CetCMakeEnv)
-    cet_cmake_env()
-    # -Wno-unused-variable needed because of CLHEP
-    cet_set_compiler_flags(DIAGS CAUTIOUS
-            WERROR
-            NO_UNDEFINED
-            EXTRA_FLAGS -pedantic -Wno-unused-local-typedefs -Wno-unused-variable
-    )
-    cet_report_compiler_flags(REPORT_THRESHOLD VERBOSE)
-    cet_cmake_module_directories(Modules BINARY)
+list(APPEND CMAKE_MODULE_PATH
+     $ENV{CANVAS_ROOT_IO_DIR}/Modules
+     $ENV{ART_DIR}/Modules
+#     ${CMAKE_CURRENT_SOURCE_DIR}/Modules
+)
 
-    find_package(art REQUIRED)
-    find_package(larsim REQUIRED)
-    find_package(larcore REQUIRED)
-    find_ups_product(xerces_c)
-    # loading macros to cmake
-    include(ArtMake)
-    include(ArtDictionary)
-    include(CetMake)
-    include(BuildPlugins)
-endif()
+include(CetCMakeEnv)
+cet_cmake_env()
 
-# --- 6. Include Directories ---
-include_directories(${PROJECT_SOURCE_DIR}/include
-        ${Geant4_INCLUDE_DIR}
-        ${ROOT_INCLUDE_DIRS}:
-        ${CMAKE_CURRENT_BINARY_DIR})
+cet_set_compiler_flags(DIAGS CAUTIOUS
+  WERROR
+  NO_UNDEFINED
+  EXTRA_FLAGS -pedantic
+  EXTRA_CXX_FLAGS -Wno-unused-local-typedefs
+)
 
-# --- 7. Target Handling ---
-# Only build standalone executable if NOT building a LArSoft module
-# OR if you want both, ensure they use different source files.
-if(NOT With_LArSoft)
-    file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
-    file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
+cet_report_compiler_flags()
 
-    add_executable(gdml_det gdml_det.cc ${sources})
-    target_link_libraries(gdml_det ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
+# these are minimum required versions, not the actual product versions
+find_ups_product( larsoft )
+find_ups_product( nutools )
+find_ups_product( art )
+find_ups_product( cetbuildtools ) # LIBRARY_OUTPUT_DIRECTORY, etc.
 
-    if(With_Opticks)
-        target_link_libraries(gdml_det Opticks::G4CX Opticks::U4)
-    endif()
-else()
-    # In LArSoft mode, we use art_make.
-    # NOTE: art_make will look for all .cc files in the current dir.
-    # Exclude your standalone main (gdml_det.cc) from the art_make build!
-    art_make(
-	    USE_PROJECT_NAME
-            MODULE_LIBRARIES
-            larsim::LArG4_LArG4
-            larcore::Geometry_Geometry
-            nusimdata::SimulationBase
-	        ${XERCES_C}
-	        ${XERCES_C_LIBRARIES}
-            ${Geant4_LIBRARIES}
-            ${ROOT_LIBRARIES}
-            Opticks::G4CX
-            Opticks::U4
-    )
-endif()
+# macros for dictionary and simple_plugin
+include(ArtDictionary)
+include(ArtMake)
+include(BuildPlugins)
 
-# --- 8. Config & Scripts ---
-configure_file(config.h.in ${CMAKE_BINARY_DIR}/include/config.h)
+# add cet_find_library commands here when needed
 
-set(G04_SCRIPTS macros/iso.mac macros/test.mac GDML/test.gdml) # shortened for brevity
+# ADD SOURCE CODE SUBDIRECTORIES HERE
+add_subdirectory(laropticks)
 
-foreach(_script ${G04_SCRIPTS})
-    configure_file(${PROJECT_SOURCE_DIR}/${_script} ${PROJECT_BINARY_DIR}/${_script} COPYONLY)
-endforeach()
+# tests
+add_subdirectory(test)
+
+# ups - table and config files
+# must be AFTER all other subdirectories
+add_subdirectory(ups)
+
+# packaging utility - must be last
+include(UseCPack)

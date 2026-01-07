@@ -1,0 +1,16 @@
+###################################################
+# Batch running of events
+###################################################
+
+# verbosity
+/tracking/verbose 0
+/control/verbose 0
+/run/verbose 0
+/RunAction/output/file out.root
+
+
+# Reading a Larsoft File for optical photon simulation
+/PrimaryGenerationAction/input/type larsoft
+/PrimaryGenerationAction/input/file /home/rice/Downloads/prod_electron_3GeV_dune10kt_1x2x6_gen_g4.root
+
+/run/beamOn 1
