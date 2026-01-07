@@ -1,1 +1,0 @@
-ELV=t:World,DetEnclosure,SteelSupport,Cryostat,Inner,SteelShell,FieldCage,InnerActive,FoamPadding,InnerUPlane,InnerVPlane,InnerZPlane,Cathode EYE=-2,2,2 TMIN=0.1 cxr_min.sh
