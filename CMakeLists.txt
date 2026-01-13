@@ -3,7 +3,7 @@ project(GDMLOpticks)
 
 # --- 1. Options ---
 option(With_Opticks "Enable Opticks GPU Support" OFF)
-option(With_LArSoft "Enable LArSoft/Art Integration" ON)
+option(With_LArSoft "Enable LArSoft/Art Integration" OFF)
 option(WITH_GEANT4_VIS "Build with Geant4 Vis drivers" ON)
 
 
@@ -39,6 +39,7 @@ include(${ROOT_USE_FILE})
 if(With_Opticks)
     message(STATUS "Opticks Enabled. Home: $ENV{OPTICKS_HOME}")
     list(APPEND CMAKE_MODULE_PATH "$ENV{OPTICKS_HOME}/cmake/Modules")
+    set(OPTICKS_PREFIX "$ENV{OPTICKS_PREFIX}")
     message(STATUS "OPTICKS_PREFIX : $ENV{OPTICKS_PREFIX} ")
     include(OpticksBuildOptions)
     message(STATUS "---- OPTICKS ----")
@@ -89,12 +90,18 @@ include_directories(${PROJECT_SOURCE_DIR}/include
 if(NOT With_LArSoft)
     file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
     file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
+  
+    if (With_Opticks)
+      file(GLOB OpRHDRS ${CMAKE_SOURCE_DIR}/include/${DIR}/Opticks/*.h)
+      file(GLOB OpSRCS ${CMAKE_SOURCE_DIR}/src/${DIR}/Opticks/*.cc)
+    endif()
 
-    add_executable(gdml_det gdml_det.cc ${sources})
+    add_executable(gdml_det gdml_det.cc ${sources} ${headers})
     target_link_libraries(gdml_det ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
 
     if(With_Opticks)
         target_link_libraries(gdml_det Opticks::G4CX Opticks::U4)
+	target_sources(gdml_det PRIVATE ${SRCS} ${OpSRCS})
     endif()
 else()
     # In LArSoft mode, we use art_make.
@@ -114,7 +121,7 @@ else()
             Opticks::U4
     )
 endif()
-
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 # --- 8. Config & Scripts ---
 configure_file(config.h.in ${CMAKE_BINARY_DIR}/include/config.h)
 
