@@ -59,7 +59,10 @@ void AnalysisManagerHelper::Reset()
     OpticksScintPhotons=0;
     OpticksCerenkovPhotons=0;
     OpticksScintPhotons=0;
-
+    G4CerenkovPhotons=0;
+    G4ScintPhotons=0;
+    ArapucaHits.clear();
+    ArapucaHits.shrink_to_fit();
 }
 void AnalysisManagerHelper::SavePhotonInfotoFile()
 {
@@ -92,4 +95,6 @@ void AnalysisManagerHelper::SaveG4HitsToFile()
         AnaMngr->FillNtupleIColumn(2,8,hit.GetPid());
         AnaMngr->AddNtupleRow(2);
     }
+    ArapucaHits.clear();
+    ArapucaHits.shrink_to_fit();
 }
