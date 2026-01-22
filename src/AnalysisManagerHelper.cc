@@ -60,6 +60,10 @@ void AnalysisManagerHelper::Reset()
     OpticksScintPhotons=0;
     OpticksCerenkovPhotons=0;
     OpticksScintPhotons=0;
+    G4CerenkovPhotons=0;
+    G4ScintPhotons=0;
+    ArapucaHits.clear();
+    ArapucaHits.shrink_to_fit();
 
 }
 void AnalysisManagerHelper::SavePhotonInfotoFile()
