@@ -8,12 +8,13 @@
 /run/verbose 0
 # can be csv, root or hdf5
 #/RunAction/output/file dune10kt_v6_refactored.root
-/RunAction/output/file test.root
+/RunAction/output/file dune10kt_v6_refactored_e_3GeV.root
 # GPS Particle Generation
 
 /gps/particle e-
 /gps/energy 3 GeV
-/gps/direction 0 0 -1
+#/gps/direction 0 0 -1
+/gps/ang/type iso
 #/gps/position 0 0 0
 /gps/position 200 300 1000
-/run/beamOn 1
+/run/beamOn 10

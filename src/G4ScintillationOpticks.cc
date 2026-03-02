@@ -355,10 +355,10 @@ G4ScintillationOpticks::PostStepDoIt(const G4Track& aTrack, const G4Step& aStep)
 
             AnalysisManagerHelper * anaHelper = AnalysisManagerHelper::getInstance();
 #ifdef With_Opticks
-            if((SEventConfig::IntegrationMode()==1) || (SEventConfig::IntegrationMode()==3 && (numPhot>0) ) )
+            if((SEventConfig::IntegrationMode()==1) || (SEventConfig::IntegrationMode()==3 && (Num>0) ) )
             {
                 anaHelper->AddOpticksScintPhotons(Num);
-                U4::CollectGenstep_DsG4Scintillation_r4695(&aTrack, &aStep, Num, scnt, scintTime);
+                U4::CollectGenstep_DsG4Scintillation_r4695(&aTrack, &aStep, Num, scnt, ScintillationTime);
                 int CollectedPhotons=SEvt::GetNumPhotonCollected(0);
                 int maxPhoton=SEventConfig::MaxPhoton();
                 auto run= G4RunManager::GetRunManager();
