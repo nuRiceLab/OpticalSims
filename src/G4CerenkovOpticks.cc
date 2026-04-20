@@ -71,6 +71,7 @@
 #include "G4ParticleDefinition.hh"
 
 #include "G4CerenkovOpticks.hh"
+#include "include/config.h"
 #ifdef With_Opticks
 #include "G4CXOpticks.hh"
 #include "SEvt.hh"

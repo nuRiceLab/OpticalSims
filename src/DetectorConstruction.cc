@@ -140,7 +140,7 @@ void DetectorConstruction::ConstructSDandField()
           count++;
       }
 
-      if ((*vit).type=="SensDet" and (*vit).value=="PhotonDetector")
+      if (((*vit).type=="SensDet" or (*vit).type=="PD" ) and (*vit).value=="PhotonDetector")
       {
         G4cout << "Attaching sensitive detector " << (*vit).value
                << " to volume " << ((*iter).first)->GetName()

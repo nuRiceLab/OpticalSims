@@ -7,6 +7,10 @@
 #include "G4Threading.hh"
 #include "G4AutoLock.hh"
 #include "G4ThreeVector.hh"
+#include "include/config.h"
+#ifdef With_Opticks
+#include "sphoton.h"
+#endif
 
 #ifndef GDMLOPTICKS_ANALYSISMANAGERHELPER_HH
 #define GDMLOPTICKS_ANALYSISMANAGERHELPER_HH
@@ -40,7 +44,10 @@ class AnalysisManagerHelper
         void SaveG4HitsToFile();
         void SetDetectIds(std::map<G4String,G4int> * fIDs);
         void AddG4Hits(ArapucaHit hit);
-
+        #ifdef With_Opticks
+            void SetSphotons(std::vector<sphoton> &sphts);
+            std::vector<sphoton>& GetSphotons();
+        #endif
         void Reset();
 
 
@@ -69,4 +76,6 @@ inline void AnalysisManagerHelper::AddG4Hits(ArapucaHit hit) {
 inline std::map<G4String, G4int> *AnalysisManagerHelper::GetDetectIds() {
     return fDetectIds;
 }
+
+
 #endif //GDMLOPTICKS_ANALYSISMANAGERHELPER_HH

@@ -52,6 +52,7 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtupleDColumn("z");
     analysisManager->CreateNtupleDColumn("t");
     analysisManager->CreateNtupleDColumn("wavelength");
+    analysisManager->CreateNtupleIColumn("boundary");
     analysisManager->FinishNtuple();
 
     //Geant4 Hits
