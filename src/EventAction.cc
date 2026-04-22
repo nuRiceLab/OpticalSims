@@ -45,32 +45,23 @@ void EventAction::EndOfEventAction(const G4Event* event)
 #ifdef With_Opticks
     // Force Single Thread
     G4AutoLock lock(&opticks_mt);
-    // Obtain predefined pointer to G4CXOpticks
-    G4CXOpticks * g4cx=G4CXOpticks::Get();
+    OpticksHitHandler *hitHandler = OpticksHitHandler::getInstance();
+
+    // Adding here the photon production
+    int numSPhotons = hitHandler->GetSphotons().size();
+
+    // Simulate the Primary photons in GPU
+    if(numSPhotons>0) hitHandler->PrimPhotonBatcher(evtID);
+
     // Get event id and number of gensteps
-
     G4int ngenstep=SEvt::GetNumGenstepFromGenstep(0);
-    G4int hits;
 
-    // Simulate photons in opticks
-    std::cout << "Number of GenStep " << ngenstep << std::endl;
-    std::cout << "Number of Photons " << SEvt::GetNumPhotonCollected(0) << std::endl;
 
     if (ngenstep>0)
     {
-        // Initiate the simulation in GPU
-        g4cx->simulate(evtID, 0);
-        cudaDeviceSynchronize();
-        // get number of hits
-        hits=SEvt::GetNumHit(0);
-        std::cout << "Number of Hits " << hits << std::endl;
-
-        if (hits>0) {
-            OpticksHitHandler *hitHandler=OpticksHitHandler::getInstance();
-            hitHandler->CollectHits();
-        }
-        else std::cout << "No hits" << std::endl;
-        g4cx->reset(evtID);
+        std::cout << "Number of GenStep: " << ngenstep << std::endl;
+        std::cout << "Number of Photons: " << SEvt::GetNumPhotonCollected(0) << std::endl;
+        hitHandler->Simulate(evtID);
     }
 #endif
 
@@ -81,9 +72,9 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     // Save Opticks Hits
 #ifdef With_Opticks
-    OpticksHitHandler *hitHandler=OpticksHitHandler::getInstance();
     hitHandler->SaveHits();
 #endif
+
     // Instance for AnalysisHelper
     AnalysisManagerHelper * anaHelper=AnalysisManagerHelper::getInstance();
 

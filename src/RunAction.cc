@@ -46,11 +46,11 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtupleIColumn("evtID");
     analysisManager->CreateNtupleIColumn("hit_Id");
     analysisManager->CreateNtupleIColumn("SensorID");
-    analysisManager->CreateNtupleDColumn("x");
-    analysisManager->CreateNtupleDColumn("y");
-    analysisManager->CreateNtupleDColumn("z");
-    analysisManager->CreateNtupleDColumn("t");
-    analysisManager->CreateNtupleDColumn("wavelength");
+    analysisManager->CreateNtupleFColumn("x");
+    analysisManager->CreateNtupleFColumn("y");
+    analysisManager->CreateNtupleFColumn("z");
+    analysisManager->CreateNtupleFColumn("t");
+    analysisManager->CreateNtupleFColumn("wavelength");
     analysisManager->FinishNtuple();
 
     //Geant4 Hits

@@ -68,7 +68,6 @@ int main(int argc,char **argv)
     // Opticks Initialization
   #ifdef With_Opticks
       int device;
-
       OPTICKS_LOG(argc,argv); // This is needed for opticks
       cudaDeviceSynchronize();
       SEventConfig::Initialize();
@@ -107,7 +106,6 @@ int main(int argc,char **argv)
    {
      parser->Read(argv[1],false);
    }
-
 
    auto* runManager = G4RunManagerFactory::CreateRunManager();
 

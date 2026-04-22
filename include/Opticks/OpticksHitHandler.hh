@@ -16,8 +16,6 @@
 #include "OpticksGenstep.h"
 #include "QSim.hh"
 
-
-
 class OpticksHitHandler {
     public:
 
@@ -43,17 +41,18 @@ class OpticksHitHandler {
         void CollectHits();
         void AddHits();
         void SaveHits();
-
+        std::vector<sphoton>& GetSphotons();
+        void PrepPrimPhotons(std::vector<sphoton> sphts);
+        void setPrimPhotons(std::vector<sphoton> sphts);
+        void PrimPhotonBatcher(int eventID);
+        void Simulate(int eventID);
 
     private:
         OpticksHitHandler(){};
         static OpticksHitHandler * instance;
         static G4Mutex mtx;
-        std::vector<sphoton> sphotons;
+        std::vector<sphoton> sphotons,sphits;
         std::vector<OpticksHit> hits;
-
-
-
 };
 
 
