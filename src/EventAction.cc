@@ -48,13 +48,10 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     // Adding here the photon production
     int numSPhotons = hitHandler->GetSphotons().size();
-	int maxPhoton   = SEventConfig::MaxPhoton();
-	// Simulate photons in opticks
-    if(numSPhotons>0) std::cout << "Number of GPU PrimaryPhotons: " << numSPhotons << std::endl;
+
 
 	// Simulate the Primary photons in GPU
-	if((numSPhotons>0) && (numSPhotons<maxPhoton) ) hitHandler->Simulate(evtID);
-	else if(numSPhotons>maxPhoton) hitHandler->PrimPhotonBatcher(evtID);
+	if(numSPhotons>0) hitHandler->PrimPhotonBatcher(evtID);
 
 	// Simulate photons from scintilation or cerenkov in here
     // Get event id and number of gensteps

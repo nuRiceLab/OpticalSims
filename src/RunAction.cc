@@ -31,14 +31,14 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtuple("generator","Particle Generator Info");
     analysisManager->CreateNtupleSColumn("name");
     analysisManager->CreateNtupleIColumn("pdg");
-    analysisManager->CreateNtupleDColumn("energy");
-    analysisManager->CreateNtupleDColumn("ix");
-    analysisManager->CreateNtupleDColumn("iy");
-    analysisManager->CreateNtupleDColumn("iz");
-    analysisManager->CreateNtupleDColumn("it");
-    analysisManager->CreateNtupleDColumn("mx");
-    analysisManager->CreateNtupleDColumn("my");
-    analysisManager->CreateNtupleDColumn("mz");
+    analysisManager->CreateNtupleFColumn("energy");
+    analysisManager->CreateNtupleFColumn("ix");
+    analysisManager->CreateNtupleFColumn("iy");
+    analysisManager->CreateNtupleFColumn("iz");
+    analysisManager->CreateNtupleFColumn("it");
+    analysisManager->CreateNtupleFColumn("mx");
+    analysisManager->CreateNtupleFColumn("my");
+    analysisManager->CreateNtupleFColumn("mz");
     analysisManager->CreateNtupleIColumn("evtID");
     analysisManager->FinishNtuple();
 
@@ -47,11 +47,11 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtupleIColumn("evtID");
     analysisManager->CreateNtupleIColumn("hit_Id");
     analysisManager->CreateNtupleIColumn("SensorID");
-    analysisManager->CreateNtupleDColumn("x");
-    analysisManager->CreateNtupleDColumn("y");
-    analysisManager->CreateNtupleDColumn("z");
-    analysisManager->CreateNtupleDColumn("t");
-    analysisManager->CreateNtupleDColumn("wavelength");
+    analysisManager->CreateNtupleFColumn("x");
+    analysisManager->CreateNtupleFColumn("y");
+    analysisManager->CreateNtupleFColumn("z");
+    analysisManager->CreateNtupleFColumn("t");
+    analysisManager->CreateNtupleFColumn("wavelength");
     analysisManager->CreateNtupleIColumn("boundary");
     analysisManager->FinishNtuple();
 

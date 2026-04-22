@@ -41,7 +41,7 @@ void OpticksHitHandler::CollectHits() {
         ohit.wavelength=hit.wavelength;
         hits.push_back(ohit);
     }
-
+	std::cout << "[OpticksHitHandler::CollectHits] Amount of Hits: " << hits.size() <<std::endl;
     // clear the hits
     sphits.clear();
     sphits.shrink_to_fit();
@@ -57,11 +57,11 @@ void OpticksHitHandler::SaveHits(){
         analysisManager->FillNtupleIColumn(1,0,eventID);
         analysisManager->FillNtupleIColumn(1,1,it.hit_id);
         analysisManager->FillNtupleIColumn(1,2,it.sensor_id);
-        analysisManager->FillNtupleDColumn(1,3,it.x);
-        analysisManager->FillNtupleDColumn(1,4,it.y);
-        analysisManager->FillNtupleDColumn(1,5,it.z);
-        analysisManager->FillNtupleDColumn(1,6,it.time);
-        analysisManager->FillNtupleDColumn(1,7,it.wavelength);
+        analysisManager->FillNtupleFColumn(1,3,it.x);
+        analysisManager->FillNtupleFColumn(1,4,it.y);
+        analysisManager->FillNtupleFColumn(1,5,it.z);
+        analysisManager->FillNtupleFColumn(1,6,it.time);
+        analysisManager->FillNtupleFColumn(1,7,it.wavelength);
         analysisManager->FillNtupleIColumn(1,8,it.boundary);
         analysisManager->AddNtupleRow(1);
     }
