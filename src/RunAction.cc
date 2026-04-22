@@ -31,14 +31,14 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtuple("generator","Particle Generator Info");
     analysisManager->CreateNtupleSColumn("name");
     analysisManager->CreateNtupleIColumn("pdg");
-    analysisManager->CreateNtupleFColumn("energy");
-    analysisManager->CreateNtupleFColumn("ix");
-    analysisManager->CreateNtupleFColumn("iy");
-    analysisManager->CreateNtupleFColumn("iz");
-    analysisManager->CreateNtupleFColumn("it");
-    analysisManager->CreateNtupleFColumn("mx");
-    analysisManager->CreateNtupleFColumn("my");
-    analysisManager->CreateNtupleFColumn("mz");
+    analysisManager->CreateNtupleDColumn("energy");
+    analysisManager->CreateNtupleDColumn("ix");
+    analysisManager->CreateNtupleDColumn("iy");
+    analysisManager->CreateNtupleDColumn("iz");
+    analysisManager->CreateNtupleDColumn("it");
+    analysisManager->CreateNtupleDColumn("mx");
+    analysisManager->CreateNtupleDColumn("my");
+    analysisManager->CreateNtupleDColumn("mz");
     analysisManager->CreateNtupleIColumn("evtID");
     analysisManager->FinishNtuple();
 
