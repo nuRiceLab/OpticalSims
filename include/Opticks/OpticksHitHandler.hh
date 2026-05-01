@@ -38,14 +38,21 @@ class OpticksHitHandler {
             G4double boundary;
         };
 
+        struct Visibility{
+        	int id, sensorid;
+        	double Visibility;
+        };
+
         void CollectHits();
         void AddHits();
         void SaveHits();
+		void SaveVisibilities();
         std::vector<sphoton>& GetSphotons();
         void PrepPrimPhotons(std::vector<sphoton> sphts);
         void setPrimPhotons(std::vector<sphoton> sphts);
         void PrimPhotonBatcher(int eventID);
         void Simulate(int eventID);
+
 
     private:
         OpticksHitHandler(){};
@@ -53,6 +60,7 @@ class OpticksHitHandler {
         static G4Mutex mtx;
         std::vector<sphoton> sphotons,sphits;
         std::vector<OpticksHit> hits;
+
 };
 
 

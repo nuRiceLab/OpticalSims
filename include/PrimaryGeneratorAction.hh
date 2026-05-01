@@ -58,6 +58,15 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     PrimaryGeneratorAction();
    ~PrimaryGeneratorAction();
     void GeneratePrimaries(G4Event* anEvent) override;
+    struct photons{
+        G4int evtID;
+        G4ThreeVector pos;
+        G4ThreeVector mom_unit;
+        G4ThreeVector pol;
+        G4double time;
+        G4double wavelength;
+        G4double energy;
+    };
     #ifdef With_Opticks
     void setPhotons(std::vector<sphoton> sphotons);
     #endif
@@ -68,8 +77,11 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     G4String fFileName;
     G4String finitParticleType;
     G4int fAmount;
+    std::vector<photons> RootPhotons;
 #ifdef With_Opticks
     std::vector<sphoton> sphotons;
+
+
 #endif
 
 };

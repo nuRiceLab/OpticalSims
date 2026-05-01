@@ -69,7 +69,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     // Save Opticks Hits
 #ifdef With_Opticks
-    hitHandler->SaveHits();
+	hitHandler->SaveHits();
 #endif
 
 
@@ -81,6 +81,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     /////// GEANT4 HITS ///////
     anaHelper->SaveG4HitsToFile();
+
     G4cout << "Event " <<  evtID <<", End Time " << EventTime << " seconds" << G4endl;
 }
 

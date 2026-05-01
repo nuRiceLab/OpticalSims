@@ -9,6 +9,10 @@
 # can be csv, root or hdf5
 /RunAction/output/file dune10kt_v5_refactored_1x2x6_e_3GeV.root
 
+# PrimaryGenerationAction
+/PrimaryGenerationAction/input/type ROOT # GPS or use ROOT
+/PrimaryGenerationAction/input/file test.root
+#/PrimaryGenerationAction/input/phamount  # Amount of Photons to simulate if GPS is used for optical photon
 # GPS Particle Generation
 /gps/particle e-
 /gps/energy 3 GeV
@@ -16,4 +20,4 @@
 #/gps/direction 0 0 -1
 #/gps/position 0 0 0
 /gps/position 200 300 1000
-/run/beamOn 10
+/run/beamOn 1

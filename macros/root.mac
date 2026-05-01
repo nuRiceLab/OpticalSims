@@ -12,4 +12,4 @@
 # PrimaryGenerationAction
 /PrimaryGenerationAction/input/type ROOT # GPS or use ROOT
 /PrimaryGenerationAction/input/file test.root
-/run/beamOn 3375
+/run/beamOn 1000

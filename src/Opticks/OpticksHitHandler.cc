@@ -24,6 +24,7 @@ void OpticksHitHandler::CollectHits() {
     G4int eventID=run->GetCurrentEvent()->GetEventID();
 
     for (auto & hit : sphits){
+
         OpticksHit ohit= OpticksHit();
         ohit.hit_id=hit.index;
         ohit.sensor_id=hit.get_identity()-1;
@@ -53,6 +54,7 @@ void OpticksHitHandler::SaveHits(){
     auto run= G4RunManager::GetRunManager();
     G4int eventID=run->GetCurrentEvent()->GetEventID();
     G4AnalysisManager * analysisManager= G4AnalysisManager::Instance();
+	if (hits.size()<1) return;
     for (auto it : hits){
         analysisManager->FillNtupleIColumn(1,0,eventID);
         analysisManager->FillNtupleIColumn(1,1,it.hit_id);
@@ -67,6 +69,13 @@ void OpticksHitHandler::SaveHits(){
     }
    hits.clear();
    hits.shrink_to_fit();
+
+   if (sphotons.size()>0)
+   {
+   		sphotons.clear();
+   		sphotons.shrink_to_fit();
+   }
+
    G4CXOpticks::Get()->reset(eventID);
    QSim::Get()->reset(eventID);
 }
@@ -123,7 +132,6 @@ void OpticksHitHandler::PrimPhotonBatcher(int eventID)
 	// initiate simulation
 void OpticksHitHandler::Simulate(int eventID)
 	{
-
        	G4CXOpticks * g4xc=G4CXOpticks::Get();
        	//Event id needed in here
        	std::cout << " [OpticksHitHandler::Simulate]: Simulating Photons Within GPU for EventID " << eventID << " ...."  << std::endl;

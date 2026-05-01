@@ -110,7 +110,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
           particle->SetPolarization( fParticleGun->GetParticlePolarization());
           vertex->SetPrimary(particle);
           #ifdef With_Opticks
-
+		  double wavelength=0;
           if( (SEventConfig::IntegrationMode()==1) || (SEventConfig::IntegrationMode()==3))
           {
              // Produce photon on GPU with GPS
@@ -121,7 +121,9 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
       	     spht.pos=make_float3(fParticleGun->GetParticlePosition().x(),fParticleGun->GetParticlePosition().y(),fParticleGun->GetParticlePosition().z());
              spht.pol=make_float3(fParticleGun->GetParticlePolarization().x(),fParticleGun->GetParticlePolarization().y(),fParticleGun->GetParticlePolarization().z());
              spht.mom=make_float3(fParticleGun->GetParticleMomentumDirection().x(),fParticleGun->GetParticleMomentumDirection().y(),fParticleGun->GetParticleMomentumDirection().z());
-             spht.wavelength=(1240)/(fParticleGun->GetParticleEnergy()/eV); // nm
+          	 wavelength=((CLHEP::h_Planck * CLHEP::c_light)/(fParticleGun->GetParticleEnergy()*eV));
+          	 spht.wavelength=wavelength/nm; // Opticks expect wavelength in nm
+          	 //spht.wavelength=(1240)/(fParticleGun->GetParticleEnergy()/eV); // nm
              spht.time=0;
 		     sphotons.push_back(spht);
           }
@@ -140,28 +142,49 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
       }
 
       // Loading photon info from a ROOT file
-      TFile file(fFileName);
-	  std::cout << "[PrimaryGeneratorAction::GeneratePrimaries] Using Root for reading photon positions" <<std::endl;
-	  std::cout << "[PrimaryGeneratorAction::GeneratePrimaries] Reading  " << fFileName << " ..."<< std::endl;
+   	  if (anEvent->GetEventID()==0)
+   	  {
+   	  	TFile file(fFileName);
+   	  	std::cout << "[PrimaryGeneratorAction::GeneratePrimaries] Using Root for reading photon positions" <<std::endl;
+   	  	std::cout << "[PrimaryGeneratorAction::GeneratePrimaries] Reading  " << fFileName << " ..."<< std::endl;
+   	  	// Retrive the photon info
+   	  	TTreeReader reader("opticks/photon_gen", &file);
+   	  	TTreeReaderValue<int>fevtID(reader,"evtID");
+   	  	TTreeReaderValue<double>fx(reader,"x");
+   	  	TTreeReaderValue<double>fy(reader,"y");
+   	  	TTreeReaderValue<double>fz(reader,"z");
+   	  	TTreeReaderValue<double>ft(reader,"t");
+   	  	TTreeReaderValue<double>fpx(reader,"px");
+   	  	TTreeReaderValue<double>fpy(reader,"py");
+   	  	TTreeReaderValue<double>fpz(reader,"pz");
+   	  	TTreeReaderValue<double>fmx(reader,"mx");
+   	  	TTreeReaderValue<double>fmy(reader,"my");
+   	  	TTreeReaderValue<double>fmz(reader,"mz");
+   	  	TTreeReaderValue<double>fwave(reader,"wavelength");
+   	  	TTreeReaderValue<double>fenergy(reader,"energy");
 
-      TTreeReader reader("photon_gen", &file);
-      TTreeReaderValue<int>fevtID(reader,"evtID");
-  	  TTreeReaderValue<double>fx(reader,"x");
-  	  TTreeReaderValue<double>fy(reader,"y");
-  	  TTreeReaderValue<double>fz(reader,"z");
-  	  TTreeReaderValue<double>ft(reader,"t");
-	  TTreeReaderValue<double>fpx(reader,"px");
-  	  TTreeReaderValue<double>fpy(reader,"py");
-  	  TTreeReaderValue<double>fpz(reader,"pz");
- 	  TTreeReaderValue<double>fmx(reader,"mx");
-  	  TTreeReaderValue<double>fmy(reader,"my");
-  	  TTreeReaderValue<double>fmz(reader,"mz");
-  	  TTreeReaderValue<double>fwave(reader,"wavelength");
-  	  TTreeReaderValue<double>fenergy(reader,"energy");
+		// Read Photons and keep in the memory
+   	  	while (reader.Next())
+   	  	{
+			photons pht;
+   	  		pht.pos=G4ThreeVector((*fx)*cm,(*fy)*cm,(*fz)*cm);
+   	  		pht.mom_unit=G4ThreeVector(*fmx,*fmy,*fmz);
+   	  		pht.pol=G4ThreeVector(*fpx,*fpy,*fpz);
+   	  		pht.time=(*ft)*ns;
+   	  		pht.wavelength=*fwave;
+   	  		pht.energy=(*fenergy)*eV;
+   	  		pht.evtID=*fevtID;
+   	  		RootPhotons.push_back(pht);
+   	  	}
+   	  	file.Close();
+   	  }
+
       G4bool simPhotonCPU = true;
+
       #ifdef With_Opticks
       if((SEventConfig::IntegrationMode()==1)) simPhotonCPU=false;
       #endif
+
       // Clear the sphotons before the next event
       if(sphotons.size()>0){
             sphotons.clear();
@@ -170,19 +193,19 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
 
       // Produce Photons from a root file
-      while (reader.Next())
+      for (auto it: RootPhotons)
       {
-		//std::cout << "Event ID "<< anEvent->GetEventID() << " Event From File " <<*fevtID << std::endl;
-        if(anEvent->GetEventID()!=(*fevtID)-1) continue;
+        if(anEvent->GetEventID()!=(it.evtID)-1) continue;
+      	//std::cout << "Event ID "<< anEvent->GetEventID() << " Event From File " <<*fevtID << std::endl;
 
         if(simPhotonCPU)
         {
 			//std::cout << "[PrimaryGeneratorAction::GeneratePrimaries] Simulating Photons in Geant4 for Event ID "<<*fevtID << std::endl;
             G4PrimaryParticle* particle = new G4PrimaryParticle(G4OpticalPhoton::Definition());
-            G4PrimaryVertex* vertex = new G4PrimaryVertex(G4ThreeVector((*fx)*cm,(*fy)*cm,(*fz)*cm),(*ft)*ns);
-            particle->SetKineticEnergy((*fenergy)*eV);
-            particle->SetMomentumDirection( G4ThreeVector(*fmx,*fmy,*fmz) );
-            particle->SetPolarization(G4ThreeVector(*fpx,*fpy,*fpz));
+            G4PrimaryVertex* vertex = new G4PrimaryVertex(it.pos,it.time);
+            particle->SetKineticEnergy(it.energy);
+            particle->SetMomentumDirection( it.mom_unit );
+            particle->SetPolarization(it.pol);
             vertex->SetPrimary(particle);
             anEvent->AddPrimaryVertex( vertex );
         }
@@ -194,11 +217,11 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
               spht.zero();
               spht.zero_flags();
               spht.set_flag(TORCH);
-              spht.pos=make_float3((*fx)*10,(*fy)*10,(*fz)*10); // mm
-              spht.mom=make_float3(*fmx,*fmy,*fmz);
-              spht.pol=make_float3(*fpx,*fpy,*fpz);
-              spht.wavelength=*fwave; // nm
-              spht.time=*ft; //ns
+              spht.pos=make_float3(it.pos.x(),it.pos.y(),it.pos.z()); // mm
+              spht.mom=make_float3(it.mom_unit.x(),it.mom_unit.y(),it.mom_unit.z());
+              spht.pol=make_float3(it.pol.x(),it.pol.y(),it.pol.z());
+              spht.wavelength=it.wavelength; // nm
+              spht.time=it.time; //ns
               sphotons.push_back(spht);
           }
        #endif
