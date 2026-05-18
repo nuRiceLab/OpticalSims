@@ -7,9 +7,9 @@
 /control/verbose 0
 /run/verbose 0
 # can be csv, root or hdf5
-/RunAction/output/file voxelTest.root
+/RunAction/output/file voxelTest_Ray_Abs_v6_1x2x6.root
 
 # PrimaryGenerationAction
 /PrimaryGenerationAction/input/type ROOT # GPS or use ROOT
 /PrimaryGenerationAction/input/file test.root
-/run/beamOn 1000
+/run/beamOn 4913
