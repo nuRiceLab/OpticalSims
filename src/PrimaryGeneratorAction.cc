@@ -161,12 +161,13 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
       G4bool simPhotonCPU = true;
       #ifdef With_Opticks
       if((SEventConfig::IntegrationMode()==1)) simPhotonCPU=false;
-      #endif
+
       // Clear the sphotons before the next event
       if(sphotons.size()>0){
             sphotons.clear();
             sphotons.shrink_to_fit();
       }
+     #endif
 
 
       // Produce Photons from a root file
