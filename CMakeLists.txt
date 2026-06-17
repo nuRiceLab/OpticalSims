@@ -30,7 +30,6 @@ if(With_Opticks)
   message(STATUS "CMAKE_MODULE_PATH --> ${CMAKE_MODULE_PATH}")
   message(STATUS "OPTICKS HOME --> $ENV{OPTICKS_HOME}")
   message(STATUS "---- OPTICKS END ----")
-  find_dependency(PLog) # For Some Reason it was not finding PLog , doing this compiles
   ## These are needed for opticks
   find_package(G4CX REQUIRED CONFIG)
   find_package(U4 REQUIRED CONFIG)

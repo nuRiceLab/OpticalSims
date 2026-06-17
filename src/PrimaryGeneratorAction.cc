@@ -31,6 +31,7 @@
 //
 
 #include "PrimaryGeneratorAction.hh"
+#include "Randomize.hh"
 #include "G4Event.hh"
 #include "G4ParticleGun.hh"
 #include "G4ParticleTable.hh"
@@ -41,7 +42,8 @@
 #include "G4GenericMessenger.hh"
 #include "G4OpticalPhoton.hh"
 #include "G4PrimaryParticle.hh"
-
+#include "G4PhysicalConstants.hh"
+#include "G4RandomTools.hh"
 #include "TFile.h"
 #include "TTreeReader.h"
 #include "TTreeReaderValue.h"
@@ -51,14 +53,24 @@
 
 PrimaryGeneratorAction::PrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction(), 
-   fParticleGun(0),fmsg(nullptr),fFileName(""),finitParticleType("GPS"),fAmount(100)
+   fParticleGun(0),fmsg(nullptr),fFileName(""),finitParticleType("GPS"),fAmount(100),fPosition(G4ThreeVector(0,0,0)),fMom(9.7*eV),fSigmaMom(0.1*eV)
 {
   //G4int n_particle = 1;
   fParticleGun = new G4GeneralParticleSource();
   fmsg=new G4GenericMessenger(this,"/PrimaryGenerationAction/input/","");
   fmsg->DeclareProperty("type",finitParticleType,"Initial Particle Type: LArSoft or GPS (Default)");
   fmsg->DeclareProperty("file",fFileName,"File Name to Read");
-  fmsg->DeclareProperty("phamount",fAmount,"Amount of Photons to produce");
+  fmsg->DeclarePropertyWithUnit("pos","mm",fPosition,"Position of the particle gun (x,y,z) in mm");
+  fmsg->DeclareProperty("momentum",fMom,"The mean momentum of the photon in ev");
+  fmsg->DeclareProperty("sigma_momentum",fSigmaMom,"Spread of photonMomentum  in ev");
+  fmsg->DeclareProperty("PhLinAmount",fPhotonAmount,"Defines the minimum, maximum, and step size for generating photons with linearly spaced energies (in MeV)");
+  fmsg->DeclareProperty("phamount",fAmount,"Amount of particles to produce or the amount of repeats for the linearly spaced energies primary photons");
+  simPhotonCPU = true;
+
+#ifdef With_Opticks
+  if((SEventConfig::IntegrationMode()==1)) simPhotonCPU=false;
+#endif
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -67,6 +79,13 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
   delete fParticleGun;
   delete fmsg;
+}
+
+G4double PrimaryGeneratorAction::EnergyToWavelength(G4double energy)
+{
+    // energy should be in eV (or any Geant4 energy unit)
+    G4double wavelength = (h_Planck * c_light) / energy;  // in Geant4 length units
+    return wavelength / nm;  // convert to nm
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -129,16 +148,12 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
       }
       anEvent->AddPrimaryVertex( vertex );
 
-
-
    }else if (finitParticleType=="ROOT")
    {
-
 	  if(!fFileName){
           std::cout << fFileName <<"  is not found" <<std::endl;
           return;
       }
-
       // Loading photon info from a ROOT file
       TFile file(fFileName);
 	  std::cout << "[PrimaryGeneratorAction::GeneratePrimaries] Using Root for reading photon positions" <<std::endl;
@@ -158,7 +173,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   	  TTreeReaderValue<double>fmz(reader,"mz");
   	  TTreeReaderValue<double>fwave(reader,"wavelength");
   	  TTreeReaderValue<double>fenergy(reader,"energy");
-      G4bool simPhotonCPU = true;
+
       #ifdef With_Opticks
       if((SEventConfig::IntegrationMode()==1)) simPhotonCPU=false;
 
@@ -205,10 +220,13 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
        #endif
 
      }
-
-
   // Add Analysis Manager
+  }else if (finitParticleType=="Performance")
+  {
+	  GeneratePrimaryLinearly(anEvent);
   }
+
+
   #ifdef With_Opticks
 	  if(sphotons.size()>0){
 		 std::cout << "[PrimaryGeneratorAction::GeneratePrimaries]: Amount of Photons to simulate " << sphotons.size() << std::endl;
@@ -217,3 +235,84 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 	 } else std::cout << "[PrimaryGeneratorAction::GeneratePrimaries]: No photons to simulate ... "<< std::endl;
   #endif
 }
+
+std::vector<G4double> PrimaryGeneratorAction::linspace(G4double start, G4double end, G4int num, G4int factor)
+{
+    std::vector<G4double> values;
+    values.reserve(num);
+
+    if (num == 1) {
+        values.push_back(start*factor);
+        return values;
+    }
+
+    G4double step = (end - start) / (num - 1);
+
+    for (int i = 0; i < num; ++i) {
+        values.push_back((start + step * i)*factor);
+    }
+    return values;
+}
+void PrimaryGeneratorAction::SinglePhotonGenerator(G4Event* anEvent, PrimaryPhoton &pht)
+{
+	 if(simPhotonCPU)
+        {
+			//std::cout << "[PrimaryGeneratorAction::GeneratePrimaries] Simulating Photons in Geant4 for Event ID "<<*fevtID << std::endl;
+            G4PrimaryParticle* particle = new G4PrimaryParticle(G4OpticalPhoton::Definition());
+            G4PrimaryVertex* vertex = new G4PrimaryVertex(G4ThreeVector(pht.x,pht.y,pht.z),pht.t);
+            particle->SetKineticEnergy(pht.e);
+            particle->SetMomentumDirection( G4ThreeVector(pht.mx,pht.my,pht.mz) );
+            particle->SetPolarization(G4ThreeVector(pht.px,pht.py,pht.pz));
+            vertex->SetPrimary(particle);
+            anEvent->AddPrimaryVertex( vertex );
+        }
+        #ifdef With_Opticks
+          if(SEventConfig::IntegrationMode()==1 || SEventConfig::IntegrationMode()==3)
+          {
+			  //std::cout << "[PrimaryGeneratorAction::GeneratePrimaries] Simulating Photons in GPU for Event ID "<<*fevtID << std::endl;
+              sphoton spht;
+              spht.zero();
+              spht.zero_flags();
+              spht.set_flag(TORCH);
+              spht.pos=make_float3(pht.x,pht.y,pht.z); // mm
+              spht.mom=make_float3(pht.mx,pht.my,pht.mz);
+              spht.pol=make_float3(pht.px,pht.py,pht.pz);
+              spht.wavelength=EnergyToWavelength(pht.e); // nm
+              spht.time=pht.t; //ns
+              sphotons.push_back(spht);
+          }
+       #endif
+
+}
+
+void PrimaryGeneratorAction::GeneratePrimaryLinearly(G4Event * anEvent)
+{
+	G4int evtID = anEvent->GetEventID();
+	std::vector<G4double> NPhotons=linspace(0.25, 25, 11, 1e6); // ToDo passs this from macro .
+
+	unsigned idx   = evtID / fAmount;   // fRepeat set from macro
+	if (idx >= NPhotons.size()) return;
+	unsigned long long N = NPhotons[idx];
+	for (unsigned long long i = 0; i < N; ++i)
+	{
+		G4ThreeVector mdir = G4RandomDirection(); // isotropic
+		G4ThreeVector pdir = G4RandomDirection(); // isotropic
+		PrimaryPhoton pht ;
+		pht.x = fPosition.x()*cm;
+		pht.y = fPosition.y()*cm;
+		pht.z = fPosition.z()*cm;
+		pht.t = 0;
+		pht.mx = mdir.x();
+		pht.my = mdir.y();
+		pht.mz = mdir.z();
+		pht.px = pdir.x();
+		pht.py = pdir.y();
+		pht.pz = pdir.z();
+		pht.e  =  G4RandGauss::shoot(fMom, fSigmaMom)*eV;
+		SinglePhotonGenerator(anEvent, pht);
+
+	}
+}
+
+
+
