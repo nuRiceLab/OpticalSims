@@ -41,7 +41,6 @@
 #include "SensitiveDetector.hh"
 
 #include "G4RunManagerFactory.hh"
-
 #include "G4UImanager.hh"
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
@@ -57,6 +56,8 @@
 #include "G4OpticalPhysicsOpticks.hh"
 
 #ifdef With_Opticks
+#include <QString>
+#include <QtGlobal>
 #include "SEventConfig.hh"
 #include "OPTICKS_LOG.hh"
 #include <cuda_runtime.h>
@@ -125,8 +126,7 @@ int main(int argc,char **argv)
    runManager->SetUserInitialization(physics_list);
    // User action initialization
    runManager->SetUserInitialization(new ActionInitialization());
-   runManager->SetNumberOfThreads(1);
-   runManager->Initialize();
+
 
    // Initialize visualization
    G4VisManager* visManager = new G4VisExecutive;

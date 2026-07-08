@@ -6,10 +6,14 @@
 /tracking/verbose 0
 /control/verbose 0
 /run/verbose 0
+/run/numberOfThreads 1
+/run/initialize
 # can be csv, root or hdf5
-/RunAction/output/file voxelTest.root
+/RunAction/output/file Results_100k_17-3Voxel_Comparison_wires.root
 
 # PrimaryGenerationAction
 /PrimaryGenerationAction/input/type ROOT # GPS or use ROOT
-/PrimaryGenerationAction/input/file test.root
-/run/beamOn 3375
+/PrimaryGenerationAction/input/file 100k_17-3Voxel_Comparison.root
+
+/run/beamOn 4913
+#/run/beamOn 10

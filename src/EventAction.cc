@@ -27,12 +27,9 @@ EventAction::EventAction(): G4UserEventAction() {}
 EventAction::~EventAction(){}
 
 void EventAction::BeginOfEventAction(const G4Event* event) {
-     startTime = chrono::high_resolution_clock::now();
-     AnalysisManagerHelper * anaHelper = AnalysisManagerHelper::getInstance();
-     anaHelper->Reset();
-
 
      cout << "Begin event " << event->GetEventID() << endl;
+     startTime=std::chrono::high_resolution_clock::now();
 }
 void EventAction::EndOfEventAction(const G4Event* event)
 {
@@ -64,7 +61,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
         hitHandler->Simulate(evtID);
     }
 #endif
-
+    // Instance for AnalysisHelper
     auto duration = chrono::high_resolution_clock::now() - startTime;
     auto EventTime = chrono::duration_cast<chrono::duration<double>>(duration).count();
 
@@ -75,8 +72,7 @@ void EventAction::EndOfEventAction(const G4Event* event)
     hitHandler->SaveHits();
 #endif
 
-    // Instance for AnalysisHelper
-    AnalysisManagerHelper * anaHelper=AnalysisManagerHelper::getInstance();
+
 
     // Save Photon Computation Time
     anaHelper->SetDuration(EventTime);
@@ -86,5 +82,6 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
     /////// GEANT4 HITS ///////
     anaHelper->SaveG4HitsToFile();
+    anaHelper->Reset();
     G4cout << "Event " <<  evtID <<", End Time " << EventTime << " seconds" << G4endl;
 }

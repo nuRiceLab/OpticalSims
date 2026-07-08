@@ -9,6 +9,9 @@
 /tracking/verbose 0
 /control/verbose 0
 /run/verbose 0
+/run/numberOfThreads 1
+/run/initialize
+
 # can be csv, root or hdf5
 /RunAction/output/file dunevd10kt_fullvd_wires_e_3GeV.root
 #/RunAction/output/file dunevd10kt_fullvd_wires_e_1GeV.root
@@ -20,4 +23,6 @@
 /gps/ang/type iso
 #/gps/direction 0 0 1
 /gps/position 200 300 1000
+
+
 /run/beamOn 10

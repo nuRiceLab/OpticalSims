@@ -4,11 +4,19 @@
 
 
 #include "AnalysisManagerHelper.hh"
+#include "../include/AnalysisManagerHelper.hh"
+
 #include "G4AnalysisManager.hh"
 #include "G4RunManager.hh"
-// Initialize Static Member
-AnalysisManagerHelper * AnalysisManagerHelper::instance = nullptr;
-G4Mutex AnalysisManagerHelper::mtx;
+
+thread_local std::unique_ptr<AnalysisManagerHelper> anaHelper = nullptr;
+AnalysisManagerHelper::AnalysisManagerHelper()
+{
+ Reset();
+}
+AnalysisManagerHelper::~AnalysisManagerHelper()
+{
+}
 
 G4int AnalysisManagerHelper::GetG4ScintPhotons(){
     return G4ScintPhotons;
@@ -61,6 +69,7 @@ void AnalysisManagerHelper::Reset()
     OpticksScintPhotons=0;
     G4CerenkovPhotons=0;
     G4ScintPhotons=0;
+    fbatchID=0;
     ArapucaHits.clear();
     ArapucaHits.shrink_to_fit();
 }
@@ -75,6 +84,7 @@ void AnalysisManagerHelper::SavePhotonInfotoFile()
     AnaMngr->FillNtupleIColumn(3,3,OpticksCerenkovPhotons);
     AnaMngr->FillNtupleDColumn(3,4,Duration);
     AnaMngr->FillNtupleIColumn(3,5,eventID);
+    AnaMngr->FillNtupleIColumn(3,6,fbatchID);
     AnaMngr->AddNtupleRow(3);
 }
 

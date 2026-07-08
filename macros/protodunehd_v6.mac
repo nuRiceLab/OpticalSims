@@ -7,6 +7,8 @@
 /tracking/verbose 0
 /control/verbose 0
 /run/verbose 0
+/run/numberOfThreads 1
+/run/initialize
 # can be csv, root or hdf5
 /RunAction/output/file protodunehd_v6_e_3GeV.root
 
@@ -17,4 +19,6 @@
 #/gps/direction 0 0 -1
 /gps/position 300 300 300 cm
 #/gps/position 200 300 1000
+
+
 /run/beamOn 10

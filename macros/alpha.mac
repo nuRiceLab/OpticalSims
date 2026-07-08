@@ -6,19 +6,27 @@
 /tracking/verbose 0
 /control/verbose 0
 /run/verbose 0
+
 /run/numberOfThreads 1
 /run/initialize
-/RunAction/output/file out.root
+
+/RunAction/output/file AlphaTest.root
 
 # GPS Particle Generation
-/gps/particle e-
+/gps/particle alpha
 /gps/pos/type Point
-/gps/pos/centre 0 200 650
+/gps/pos/centre -314 72 290
 /gps/ang/type iso
-/gps/energy 3 GeV
-/gps/position 0 200 650
-/run/numberOfThreads 1
-/run/initialize
+/gps/energy 5.4 MeV
+/gps/position -314 72 290
 
+/run/beamOn 10
 
-/run/beamOn 1
+/gps/particle alpha
+/gps/pos/type Point
+/gps/pos/centre -314 72 290
+/gps/ang/type iso
+/gps/energy 100 MeV
+/gps/position -314 72 290
+
+/run/beamOn 10

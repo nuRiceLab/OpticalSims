@@ -312,7 +312,6 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
   // turning off Cerenkov
   aParticleChange.SetNumberOfSecondaries(0);
   return pParticleChange;
-  AnalysisManagerHelper *anaHelper=AnalysisManagerHelper::getInstance();
 
   #ifdef With_Opticks
     if((SEventConfig::IntegrationMode()==1) || (SEventConfig::IntegrationMode()==3 && (fNumPhotons>0)) ){

@@ -6,6 +6,7 @@
 #define GDMLOPTICKS_STEPPINGACTION_HH
 #include "G4UserSteppingAction.hh"
 #include "AnalysisManagerHelper.hh"
+class G4OpBoundaryProcess;
 class SteppingAction : public G4UserSteppingAction
 {
     public:
@@ -14,7 +15,8 @@ class SteppingAction : public G4UserSteppingAction
         // Destr.
         ~SteppingAction();
         void UserSteppingAction(const G4Step*) override;
-        AnalysisManagerHelper * anaHelper;
+        G4OpBoundaryProcess*  GetOpticalBoundaryProcess();
+        std::map<G4String,G4int> fDetectIds;
 
 };
 

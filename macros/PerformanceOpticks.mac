@@ -11,10 +11,11 @@
 /run/initialize
 
 # can be csv, root or hdf5
-/RunAction/output/file Performance_G4.root
+/RunAction/output/file Performance_Opticks.root
 
 # PrimaryGenerationAction
 /PrimaryGenerationAction/input/type Performance # GPS, Performance, or use ROOT
+/PrimaryGenerationAction/input/GPUPhotonType Storch # Storch for GPU sampling and Sphoton for CPU sampling (one to one comparison photons produced by G4).
 
 
 /PrimaryGenerationAction/input/pos 175 0 695 # Performance # GPS, Performance, or use ROOT
@@ -27,4 +28,4 @@
 /PrimaryGenerationAction/input/PhLinAmount 0.25 25 30  ## linearly spaced energies from 0.25 to 25 MeV, 11 points.
 #/PrimaryGenerationAction/input/PhLinAmount 1 180 22  ## linearly spaced energies from 0.25 to 25 MeV, 11 points.
 
-/run/beamOn 30 # Number of total events to run. Should be repeats * number of energies. As an example, 2 repeats * 11 energies = 22 events.
+/run/beamOn 2 # Number of total events to run. Should be repeats * number of energies. As an example, 2 repeats * 11 energies = 22 events.

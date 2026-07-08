@@ -6,6 +6,8 @@
 /tracking/verbose 0
 /control/verbose 0
 /run/verbose 0
+/run/numberOfThreads 1
+/run/initialize
 
 /RunAction/output/file out.root
 

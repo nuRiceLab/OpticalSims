@@ -10,6 +10,7 @@
 #include "QSim.hh"
 #include "G4RunManager.hh"
 #include "G4AnalysisManager.hh"
+#include "NP.hh"
 // Opticks Hit Collection
 // Handles getting hits from opticks to a file
 // Need to implement the backtracer for LArSoft in this class
@@ -41,7 +42,7 @@ void OpticksHitHandler::CollectHits() {
         ohit.wavelength=hit.wavelength;
         hits.push_back(ohit);
     }
-	std::cout << "[OpticksHitHandler::CollectHits] Amount of Hits: " << hits.size() <<std::endl;
+	if (fVerbose)std::cout << "[OpticksHitHandler::CollectHits] Amount of Hits: " << hits.size() <<std::endl;
     // clear the hits
     sphits.clear();
     sphits.shrink_to_fit();
@@ -50,25 +51,29 @@ void OpticksHitHandler::CollectHits() {
 }
 
 void OpticksHitHandler::SaveHits(){
-    auto run= G4RunManager::GetRunManager();
-    G4int eventID=run->GetCurrentEvent()->GetEventID();
-    G4AnalysisManager * analysisManager= G4AnalysisManager::Instance();
-    for (auto it : hits){
-        analysisManager->FillNtupleIColumn(1,0,eventID);
-        analysisManager->FillNtupleIColumn(1,1,it.hit_id);
-        analysisManager->FillNtupleIColumn(1,2,it.sensor_id);
-        analysisManager->FillNtupleFColumn(1,3,it.x);
-        analysisManager->FillNtupleFColumn(1,4,it.y);
-        analysisManager->FillNtupleFColumn(1,5,it.z);
-        analysisManager->FillNtupleFColumn(1,6,it.time);
-        analysisManager->FillNtupleFColumn(1,7,it.wavelength);
-        analysisManager->FillNtupleIColumn(1,8,it.boundary);
-        analysisManager->AddNtupleRow(1);
-    }
-   hits.clear();
-   hits.shrink_to_fit();
-   G4CXOpticks::Get()->reset(eventID);
-   QSim::Get()->reset(eventID);
+     auto run= G4RunManager::GetRunManager();
+     G4int eventID=run->GetCurrentEvent()->GetEventID();
+     G4AnalysisManager * analysisManager= G4AnalysisManager::Instance();
+     for (auto it : hits){
+         analysisManager->FillNtupleIColumn(1,0,eventID);
+         analysisManager->FillNtupleIColumn(1,1,it.hit_id);
+         analysisManager->FillNtupleIColumn(1,2,it.sensor_id);
+         analysisManager->FillNtupleFColumn(1,3,it.x);
+         analysisManager->FillNtupleFColumn(1,4,it.y);
+         analysisManager->FillNtupleFColumn(1,5,it.z);
+         analysisManager->FillNtupleFColumn(1,6,it.time);
+         analysisManager->FillNtupleFColumn(1,7,it.wavelength);
+         analysisManager->FillNtupleIColumn(1,8,it.boundary);
+         analysisManager->AddNtupleRow(1);
+     }
+    hits.clear();
+    hits.shrink_to_fit();
+    G4CXOpticks::Get()->reset(eventID);
+    QSim::Get()->reset(eventID);
+    // Ensure photon buffers are cleared after saving hits
+    sphotons.clear();
+    sphotons.shrink_to_fit();
+    if (fVerbose) std::cout << " [OpticksHitHandler::SaveHits] Event " << eventID << " cleanup complete" << std::endl;
 }
 
 
@@ -77,47 +82,70 @@ void OpticksHitHandler::SaveHits(){
     return sphotons;
 }
 
-void OpticksHitHandler::setPrimPhotons(std::vector<sphoton> sphts){
-	sphotons = sphts;
+void OpticksHitHandler::setPrimPhotons(std::vector<sphoton>&& sphts){
+	sphotons = std::move(sphts);
 }
-void OpticksHitHandler::PrepPrimPhotons(std::vector<sphoton> sphotons)
+
+void OpticksHitHandler::ClearPrimPhotons(){
+	sphotons.clear();
+	sphotons.shrink_to_fit();
+}
+
+void OpticksHitHandler::ClearAllBuffers(){
+	// Clear all internal buffers
+	sphotons.clear();
+	sphotons.shrink_to_fit();
+	sphits.clear();
+	sphits.shrink_to_fit();
+	hits.clear();
+	hits.shrink_to_fit();
+	if (fVerbose) std::cout << " [OpticksHitHandler::ClearAllBuffers] All buffers cleared" << std::endl;
+}
+
+void OpticksHitHandler::PrepPrimPhotons(const std::vector<sphoton>& sphotons)
 	{
 
-		std::cout << " [OpticksHitHandler::PrepPrimPhotons] Setting Photons ...." << std::endl;
+
+		if (fVerbose) std::cout << " [OpticksHitHandler::PrepPrimPhotons] Setting Photons ...." << std::endl;
 		size_t num_floats = sphotons.size()*17;
-       	float* data = reinterpret_cast<float*>(sphotons.data());
-       	NP* photons = NP::MakeFromValues<float>(data, num_floats);
+
+	    float *data = reinterpret_cast<float*>(const_cast<sphoton*>(sphotons.data()));
+	    NP * photons = NP::MakeFromValues<float>(data, num_floats);
        	photons->reshape({ static_cast<int64_t>(sphotons.size()), 17});
        	SEvt::SetInputPhoton(photons);
+		if (fVerbose) std::cout << " [OpticksHitHandler::PrepPrimPhotons] Photons set successfully: " << sphotons.size() << " photons" << std::endl;
+
 	}
 void OpticksHitHandler::PrimPhotonBatcher(int eventID)
 	{
-       	std::cout << " [OpticksHitHandler::PrimPhotonBatcher] Deciding if Batching Needed ...." << std::endl;
+       	if (fVerbose) std::cout << " [OpticksHitHandler::PrimPhotonBatcher] Deciding if Batching Needed ...." << std::endl;
 
-       	auto sphotons = GetSphotons();
+       	auto& sphotons_ref = GetSphotons();
 
-       	long unsigned int CollectedPhotons=sphotons.size();
-       	long unsigned int maxPhoton=SEventConfig::MaxPhoton();
+       	long unsigned int CollectedPhotons = sphotons_ref.size();
+       	long unsigned int maxPhoton = SEventConfig::MaxPhoton();
        	// Simulate in batch
-       	if(CollectedPhotons>=maxPhoton)
+       	if(CollectedPhotons >= maxPhoton)
 		{
-       		std::cout << "[OpticksHitHandler::PrimPhotonBatcher] Simulating in Batch Mode ...." << std::endl;
+       		if (fVerbose) std::cout << "[OpticksHitHandler::PrimPhotonBatcher] Simulating in Batch Mode ...." << std::endl;
        		//Simulate();
-       		for (std::size_t i =0 ; i < CollectedPhotons; i+=maxPhoton)
+       		for (std::size_t i = 0; i < CollectedPhotons; i += maxPhoton)
 			{
-				std::size_t end =std::min(i+maxPhoton,sphotons.size());
+				std::size_t end = std::min(i + maxPhoton, sphotons_ref.size());
        			std::vector<sphoton> batch(
-	   			std::make_move_iterator(sphotons.begin() + i),
-	   			std::make_move_iterator(sphotons.begin() + end));
+	   			std::make_move_iterator(sphotons_ref.begin() + i),
+	   			std::make_move_iterator(sphotons_ref.begin() + end));
 				PrepPrimPhotons(batch);
 				Simulate(eventID);
 			}
 		}else
 		{
-			std::cout << "[OpticksHitHandler::PrimPhotonBatcher] Simulating Photons at Once ...." << std::endl;
-			PrepPrimPhotons(sphotons);
+			if (fVerbose) std::cout << "[OpticksHitHandler::PrimPhotonBatcher] Simulating Photons at Once ...." << std::endl;
+			PrepPrimPhotons(sphotons_ref);
        		Simulate(eventID);
 		}
+		// Clear photons after batching complete
+		ClearPrimPhotons();
 	}
 
 	// initiate simulation
@@ -126,8 +154,8 @@ void OpticksHitHandler::Simulate(int eventID)
 
        	G4CXOpticks * g4xc=G4CXOpticks::Get();
        	//Event id needed in here
-       	std::cout << " [OpticksHitHandler::Simulate]: Simulating Photons Within GPU for EventID " << eventID << " ...."  << std::endl;
-		std::cout << " [OpticksHitHandler::Simulate]: Photons Collected = " << GetSphotons().size() <<std::endl;
+       	if (fVerbose) std::cout << " [OpticksHitHandler::Simulate]: Simulating Photons Within GPU for EventID " << eventID << " ...."  << std::endl;
+		if (fVerbose) std::cout << " [OpticksHitHandler::Simulate]: Photons Collected = " << GetSphotons().size() <<std::endl;
 		g4xc->simulate(eventID,0);
        	cudaDeviceSynchronize();
 

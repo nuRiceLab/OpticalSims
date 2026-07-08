@@ -33,6 +33,8 @@
 #include "RunAction.hh"
 #include "SteppingAction.hh"
 #include "TrackingAction.hh"
+#include "DetectorConstruction.hh"
+#include "G4RunManager.hh"
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 ActionInitialization::ActionInitialization()
@@ -48,13 +50,22 @@ ActionInitialization::~ActionInitialization()
 
 void ActionInitialization::BuildForMaster() const
 {
-
+    SetUserAction(new RunAction);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void ActionInitialization::Build() const
 {
+    if (!anaHelper)
+        anaHelper = std::make_unique<AnalysisManagerHelper>();
+
+    auto det = static_cast<const DetectorConstruction*>(
+      G4RunManager::GetRunManager()->GetUserDetectorConstruction()
+    );
+    // Set DetectorIds;
+    anaHelper->SetDetectIds(det->fDetectIds);
+
     SetUserAction(new PrimaryGeneratorAction);
     SetUserAction(new RunAction);
     EventAction* eventAction = new EventAction;

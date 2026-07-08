@@ -42,17 +42,22 @@ class OpticksHitHandler {
         void AddHits();
         void SaveHits();
         std::vector<sphoton>& GetSphotons();
-        void PrepPrimPhotons(std::vector<sphoton> sphts);
-        void setPrimPhotons(std::vector<sphoton> sphts);
+        void PrepPrimPhotons(const std::vector<sphoton>& sphts);
+        void setPrimPhotons(std::vector<sphoton>&& sphts);
+        void ClearPrimPhotons();
+        void ClearAllBuffers();
         void PrimPhotonBatcher(int eventID);
         void Simulate(int eventID);
-
+        void setVerbose(G4bool verbose){fVerbose=verbose;};
     private:
         OpticksHitHandler(){};
         static OpticksHitHandler * instance;
         static G4Mutex mtx;
         std::vector<sphoton> sphotons,sphits;
         std::vector<OpticksHit> hits;
+        G4bool fVerbose;
+
+
 };
 
 

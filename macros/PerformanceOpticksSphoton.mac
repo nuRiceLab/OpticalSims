@@ -11,10 +11,11 @@
 /run/initialize
 
 # can be csv, root or hdf5
-/RunAction/output/file Performance_G4.root
+/RunAction/output/file Performance_Opticks_Sphoton.root
 
 # PrimaryGenerationAction
 /PrimaryGenerationAction/input/type Performance # GPS, Performance, or use ROOT
+/PrimaryGenerationAction/input/GPUPhotonType Sphoton # Storch for GPU sampling and Sphoton for CPU sampling (one to one comparison photons produced by G4).
 
 
 /PrimaryGenerationAction/input/pos 175 0 695 # Performance # GPS, Performance, or use ROOT

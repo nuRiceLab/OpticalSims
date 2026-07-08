@@ -104,7 +104,7 @@
             <solidref ref="GlassPlate" />
             <colorref ref="red" />
             <auxiliary auxtype="Solid" auxvalue="True" />
-            <auxiliary auxtype="SensDet" auxvalue="PhotonSD" />
+            <auxiliary auxtype="SensDet" auxvalue="PhotonDetector" />
             <auxiliary auxtype="Surface" auxvalue="Obj"/>
         </volume>
         <volume name="Obj">

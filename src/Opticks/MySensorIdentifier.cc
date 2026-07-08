@@ -12,35 +12,30 @@ MySensorIdentifier::MySensorIdentifier(std::map<G4String, G4int> &ids) : fDetect
 MySensorIdentifier::~MySensorIdentifier() {}
 int MySensorIdentifier::getInstanceIdentity(const G4VPhysicalVolume* pv ) const {
     // For instanced geometry, just return the copy number
-     // Not using
+
+    if(fDetectIds.size()!=0){
+        auto it =fDetectIds.find(pv->GetName());
+        if(it != fDetectIds.end()){
+            // Return the build detector id or just generate one
+            std::cout << "Instance ID Found detector ID for " << pv->GetName() << ": " << it->second << std::endl;
+            return (it->second > 0) ? it->second : pv->GetCopyNo();
+        }
+        return -1;
+    }
+    std::cout <<fDetectIds.size() <<std::endl;
+    G4cout << " Could not find any detector IDs" << G4endl;
+    //assert(false);
     return -1;
 
 }
 
 int MySensorIdentifier::getGlobalIdentity(const G4VPhysicalVolume *pv, const G4VPhysicalVolume *ppv) {
-    /*
-    // Example: encode parent copyNo and child copyNo
-    int parent = ppv ? ppv->GetCopyNo() : 0;
-    int child  = pv->GetCopyNo();
-    return parent * 10000 + child;
-    */
 
-    //G4LogicalVolume *lv = pv->GetLogicalVolume();
-    //std::cout << "Testing_GlobalIdentiy " << std::endl;
-    /*std::string_view name = std::string_view (pv->GetName().c_str(),pv->GetName().size());
-    std::vector<std::string_view> spfirst=Split(name,'_');
-    std::vector<std::string_view> spsecond=Split(spfirst[1],'-');
-    int first,second,third,sid=0;
-
-    first=std::stoi(std::string(spsecond[2]));
-    second=std::stoi(std::string(spsecond[1]));
-    third=std::stoi(std::string(spsecond[0]));
-    sid=third*(10*4)+second*4+first;
-    */
     if(fDetectIds.size()!=0){
         auto it =fDetectIds.find(pv->GetName());
         if(it != fDetectIds.end()){
             // Return the build detector id or just generate one
+            //std::cout << "Global ID Found detector ID for " << pv->GetName() << ": " << it->second << std::endl;
             return (it->second > 0) ? it->second : ids++;
         }
         return -1;

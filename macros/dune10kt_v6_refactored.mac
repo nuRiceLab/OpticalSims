@@ -6,6 +6,10 @@
 /tracking/verbose 0
 /control/verbose 0
 /run/verbose 0
+
+/run/numberOfThreads 1
+/run/initialize
+
 # can be csv, root or hdf5
 #/RunAction/output/file dune10kt_v6_refactored.root
 /RunAction/output/file dune10kt_v6_refactored_e_3GeV.root
@@ -17,4 +21,5 @@
 /gps/ang/type iso
 #/gps/position 0 0 0
 /gps/position 200 300 1000
+
 /run/beamOn 10

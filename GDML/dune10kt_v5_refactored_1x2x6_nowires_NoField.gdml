@@ -114,6 +114,7 @@
   <material name="SILICON_Si" formula="SILICON_Si">
    <D value="2.3300" unit="g/cm3"/>
    <fraction n="1.0000" ref="silicon"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="epoxy_resin" formula="C38H40O6Br4">
@@ -122,6 +123,7 @@
    <composite n="40" ref="hydrogen"/>
    <composite n="6" ref="oxygen"/>
    <composite n="4" ref="bromine"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="SiO2" formula="SiO2">
@@ -134,12 +136,14 @@
    <D value="3.97" unit="g/cm3"/>
    <composite n="2" ref="aluminum"/>
    <composite n="3" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="Fe2O3" formula="Fe2O3">
    <D value="5.24" unit="g/cm3"/>
    <composite n="2" ref="iron"/>
    <composite n="3" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="CaO" formula="CaO">
@@ -159,24 +163,28 @@
    <D value="3.58" unit="g/cm3"/>
    <composite n="1" ref="magnesium"/>
    <composite n="1" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="Na2O" formula="Na2O">
    <D value="2.27" unit="g/cm3"/>
    <composite n="2" ref="sodium"/>
    <composite n="1" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="TiO2" formula="TiO2">
    <D value="4.23" unit="g/cm3"/>
    <composite n="1" ref="titanium"/>
    <composite n="2" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="FeO" formula="FeO">
    <D value="5.745" unit="g/cm3"/>
    <composite n="1" ref="iron"/>
    <composite n="1" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="CO2" formula="CO2">
@@ -204,6 +212,7 @@
     <fraction n="0.0053" ref="Na2O"/>
     <fraction n="0.00070" ref="P2O5"/>
     <fraction n="0.0771" ref="oxygen"/>
+    <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material formula="Air" name="Air">
@@ -230,6 +239,7 @@
    <D value="0.09" unit="g/cm3"/>
    <fraction n="0.95" ref="Air"/>
    <fraction n="0.05" ref="fibrous_glass"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <!-- USE THIS NOW for FD and protoDUNEs - Juergen Reichenbacher (6/13/2023) -->
@@ -256,12 +266,14 @@
    <composite n="16" ref="hydrogen"/>
    <composite n="2" ref="nitrogen"/>
    <composite n="4" ref="oxygen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="FR4">
    <D value="1.98281" unit="g/cm3"/>
    <fraction n="0.47" ref="epoxy_resin"/>
    <fraction n="0.53" ref="fibrous_glass"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="STEEL_STAINLESS_Fe7Cr2Ni" formula="STEEL_STAINLESS_Fe7Cr2Ni">
@@ -270,12 +282,15 @@
    <fraction n="0.1792" ref="chromium"/>
    <fraction n="0.7298" ref="iron"/>
    <fraction n="0.0900" ref="nickel"/>
+   <!-- <property name="RINDEX" ref="RINDEXLAR"/> -->
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="Copper_Beryllium_alloy25" formula="Copper_Beryllium_alloy25">
    <D value="8.26" unit="g/cm3"/>
    <fraction n="0.981" ref="copper"/>
    <fraction n="0.019" ref="beryllium"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="LAr" formula="LAr">
@@ -298,8 +313,8 @@
        <property name="SCINTILLATIONCOMPONENT2" ref="SCINTLAR"/>
        <property name="SCINTILLATIONTIMECONSTANT1" ref="FTC"/>
        <property name="SCINTILLATIONTIMECONSTANT2" ref="STC"/>
-       <property name="SCINTILLATIONYIELD1" ref="YR"/>
-       <property name="SCINTILLATIONYIELD2" ref="YR2"/>
+       <property name="SCINTILLATIONYIELD1" ref="YR2"/>
+       <property name="SCINTILLATIONYIELD2" ref="YR"/>
   </material>
 
   <material name="ArGas" formula="ArGas">
@@ -313,7 +328,7 @@
    <fraction n="0.3954" ref="oxygen"/>
    <fraction n="0.2990" ref="carbon"/>
    <fraction n="0.0251" ref="hydrogen"/>
-   <!-- <property name="REFLECTIVITY" ref="D_RF"/> -->
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material formula=" " name="Granite">
@@ -324,6 +339,7 @@
    <fraction n="0.049" ref="aluminum"/>
    <fraction n="0.019" ref="iron"/>
    <fraction n="0.015" ref="potassium"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material formula=" " name="ShotRock">
@@ -334,6 +350,7 @@
    <fraction n="0.049" ref="aluminum"/>
    <fraction n="0.019" ref="iron"/>
    <fraction n="0.015" ref="potassium"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material formula=" " name="Dirt">
@@ -344,6 +361,7 @@
    <fraction n="0.049" ref="aluminum"/>
    <fraction n="0.019" ref="iron"/>
    <fraction n="0.015" ref="potassium"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material formula=" " name="Concrete">
@@ -354,6 +372,7 @@
    <fraction n="0.015" ref="sodium"/>
    <fraction n="0.020" ref="iron"/>
    <fraction n="0.040" ref="aluminum"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material formula="H2O" name="Water">
@@ -365,6 +384,7 @@
   <material formula="Ti" name="Titanium">
    <D value="4.506" unit="g/cm3"/>
    <fraction n="1." ref="titanium"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="TPB" formula="TPB">
@@ -381,21 +401,11 @@
    <fraction n="0.034" ref="MgO"/>
    <fraction n="0.010" ref="Na2O"/>
    <fraction n="0.013" ref="TiO2"/>
+   <!-- <property name="RINDEX" ref="RINDEXLAR"/> -->
    <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
-  <material name="ArapucaWindowProperties">
-     <D value="2.74351" unit="g/cm3"/>
-     <fraction n="0.600" ref="SiO2"/>
-     <fraction n="0.118" ref="Al2O3"/>
-     <fraction n="0.001" ref="Fe2O3"/>
-     <fraction n="0.224" ref="CaO"/>
-     <fraction n="0.034" ref="MgO"/>
-     <fraction n="0.010" ref="Na2O"/>
-     <fraction n="0.013" ref="TiO2"/>
-     <property name="REFLECTIVITY" ref="D_RF"/>
-     <property name="EFFICIENCY" ref="D_EF"/>
-  </material>
+
 
   <material name="Acrylic">
    <D value="1.19" unit="g/cm3"/>
@@ -403,8 +413,6 @@
    <fraction n="0.320" ref="oxygen"/>
    <fraction n="0.080" ref="hydrogen"/>
   </material>
-
-
 
   <material name="NiGas1atm80K">
    <D value="0.0039" unit="g/cm3"/>
@@ -456,12 +464,14 @@
    <fraction n="0.07" ref="CaO"/>
    <fraction n="0.03" ref="MgO"/>
    <fraction n="0.16" ref="Na2O"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
   <material name="Polystyrene">
    <D value="1.06" unit="g/cm3"/>
    <composite n="8" ref="carbon"/>
    <composite n="8" ref="hydrogen"/>
+   <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
 
@@ -474,8 +484,33 @@
    <property name="REFLECTIVITY" ref="D_RF"/>
   </material>
 
+  <material name="ArapucaWindowProperties">
+     <D value="1.19" unit="g/cm3"/>
+     <fraction n="1.00" ref="Acrylic"/>
+     <property name="REFLECTIVITY" ref="D_RF"/>
+     <property name="EFFICIENCY" ref="D_EF"/>
+   </material>
 </materials>
 <solids>
+    <!-- 3. DEFINE THE OPTICAL SURFACE PROPERTIES -->
+
+    <opticalsurface name="SteelOpticalSurface" model="unified" finish="polished" type="dielectric_metal" value="1.0">
+       <property name="REFLECTIVITY" ref="SteelReflectivity"/>
+    </opticalsurface>
+
+    <opticalsurface name="AluminumOpticalSurface" model="unified" type="dielectric_metal" finish="polished">
+      <property name="REFLECTIVITY" ref="AluminumReflectivity"/>
+    </opticalsurface>
+
+    <!-- G10 Surface -->
+    <opticalsurface name="G10OpticalSurface" model="unified" type="dielectric_metal" finish="polished">
+      <property name="REFLECTIVITY" ref="G10Reflectivity"/>
+    </opticalsurface>
+
+    <opticalsurface name="ArapucaOpticalSurface" model="unified" type="dielectric_metal" finish="polished">
+     <property name="REFLECTIVITY" ref="D_RF"/>
+     <property name="EFFICIENCY" ref="D_EF"/>
+    </opticalsurface>
     <box name="Inner" lunit="cm"
       x="360.843"
       y="607.82875"
@@ -837,3379 +872,3379 @@
       <solidref ref="Cathode" />
     </volume>
    <volume name="volOpDetSensitive_0-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_0-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_1-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_2-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_3-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_4-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_5-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_6-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_7-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_8-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_9-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_10-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-0-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-0-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-0-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-0-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-1-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-1-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-1-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-1-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-2-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-2-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-2-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-2-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-3-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-3-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-3-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-3-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-4-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-4-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-4-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-4-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-5-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-5-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-5-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-5-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-6-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-6-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-6-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-6-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-7-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-7-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-7-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-7-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-8-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-8-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-8-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-8-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-9-0">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-9-1">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-9-2">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volOpDetSensitive_11-9-3">
-     <materialref ref="Glass"/>
+     <materialref ref="Acrylic"/>
      <solidref ref="ArapucaAcceptanceWindow"/>
      <auxiliary auxtype="SensDet" auxvalue="PhotonDetector"/>
      <auxiliary auxtype="Solid" auxvalue="True"/>
-     <auxiliary auxtype="Surface" auxvalue="volCryostat"/>
+     <auxiliary auxtype="Surface" auxvalue="ArapucaOpticalSurface"/>
      <colorref ref="green"/>
    </volume>
    <volume name="volArapuca_0-0">

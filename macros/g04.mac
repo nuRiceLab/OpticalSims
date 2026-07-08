@@ -6,14 +6,22 @@
 /tracking/verbose 0
 /control/verbose 0
 /run/verbose 0
+
+/run/numberOfThreads 1
+/run/initialize
+
 # can be csv, root or hdf5
 /RunAction/output/file dune10kt_v5_refactored_1x2x6_e_3GeV.root
 
 # GPS Particle Generation
 /gps/particle e-
-/gps/energy 3 GeV
+/gps/energy 100 MeV
 /gps/ang/type iso
 #/gps/direction 0 0 -1
 #/gps/position 0 0 0
-/gps/position 200 300 1000
-/run/beamOn 10
+#/gps/position 200 300 1000
+/gps/position -314 72 290
+/run/numberOfThreads 1
+/run/initialize
+
+/run/beamOn 1

@@ -4948,8 +4948,8 @@
          <property name="SCINTILLATIONCOMPONENT2" ref="SCINTLAR"/>
          <property name="SCINTILLATIONTIMECONSTANT1" ref="FTC"/>
          <property name="SCINTILLATIONTIMECONSTANT2" ref="STC"/>
-         <property name="SCINTILLATIONYIELD1" ref="YR"/>
-         <property name="SCINTILLATIONYIELD2" ref="YR2"/>
+         <property name="SCINTILLATIONYIELD1" ref="YR2"/>
+         <property name="SCINTILLATIONYIELD2" ref="YR"/>
     </material>
     <material name="ArGas" formula="">
       <D value="0.00166"/>
@@ -5103,18 +5103,12 @@
       <fraction ref="chromium" n="0.003"/>
       <fraction ref="carbon" n="0.002"/>
     </material>
-     <material name="ArapucaWindowProperties">
-         <D value="2.74351" unit="g/cm3"/>
-         <fraction n="0.600" ref="SiO2"/>
-         <fraction n="0.118" ref="Al2O3"/>
-         <fraction n="0.001" ref="Fe2O3"/>
-         <fraction n="0.224" ref="CaO"/>
-         <fraction n="0.034" ref="MgO"/>
-         <fraction n="0.010" ref="Na2O"/>
-         <fraction n="0.013" ref="TiO2"/>
-         <property name="REFLECTIVITY" ref="D_RF"/>
-         <property name="EFFICIENCY" ref="D_EF"/>
-      </material>
+    <material name="ArapucaWindowProperties">
+      <D value="1.19" unit="g/cm3"/>
+      <fraction n="1.00" ref="Acrylic"/>
+      <property name="REFLECTIVITY" ref="D_RF"/>
+      <property name="EFFICIENCY" ref="D_EF"/>
+    </material>
   </materials>
   <solids>
     <torus name="FieldShaperCorner" lunit="cm" aunit="radian" rmin="0.5" rmax="2.285" rtor="2.3" startphi="0.0" deltaphi="1.5707963267948966"/>

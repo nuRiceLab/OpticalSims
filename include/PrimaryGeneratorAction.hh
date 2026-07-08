@@ -37,7 +37,7 @@
 #include "G4GeneralParticleSource.hh"
 #include "G4GenericMessenger.hh"
 #include "globals.hh"
-
+#include "AnalysisManagerHelper.hh"
 #include "include/config.h"
 #ifdef With_Opticks
 #include "sphoton.h"
@@ -58,18 +58,21 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
    ~PrimaryGeneratorAction();
     struct PrimaryPhoton
     {
-       G4double x,y,z,t,e;
+       G4double e;
        G4double mx,my,mz;
        G4double px,py,pz;
 
     };
     void GeneratePrimaries(G4Event* anEvent) override;
     void GeneratePrimaryLinearly(G4Event * anEvent);
-    void SinglePhotonGenerator(G4Event* anEvent, PrimaryPhoton &pht);
+    void SinglePhotonGenerator(G4PrimaryVertex *vertex, PrimaryPhoton &pht);
     std::vector<G4double> linspace(G4double start, G4double end, G4int num,G4int factor);
    G4double EnergyToWavelength(G4double energy);
+   G4double EnergySigmaToWavelengthSigma(G4double meanEnergy, G4double sigmaEnergy);
    #ifdef With_Opticks
     void setPhotons(std::vector<sphoton> sphotons);
+    void GenStorchPrimaries(unsigned long long N);
+    void GenSphotonsPrimary(PrimaryPhoton &pht);
    #endif
   private:
 
@@ -82,12 +85,16 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     G4double fMom;
     G4double fSigmaMom;
     G4ThreeVector fPhotonAmount;
+    G4bool fVerbose;
+
     #ifdef With_Opticks
     std::vector<sphoton> sphotons;
+
     #endif
 
 
    G4bool simPhotonCPU;
+   G4String fGPUPhotonType;
 
 
 };
