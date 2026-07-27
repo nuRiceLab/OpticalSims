@@ -76,7 +76,6 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   fmsg->DeclareProperty("repeats",fAmount,"Amount of particles to produce or the amount of repeats for the linearly spaced energies primary photons");
   fmsg->DeclareProperty("verbose",fVerbose,"turn on / off verbose output");
   fmsg->DeclareProperty("GPUPhotonType",fGPUPhotonType,"Photon Sampling GPU: Storch, CPU: Sphoton");
-
   simPhotonCPU = true;
 
   anaHelper->Reset();
@@ -380,9 +379,8 @@ void PrimaryGeneratorAction::GeneratePrimaryLinearly(G4Event * anEvent)
 #ifdef With_Opticks
 
 	if (fGPUPhotonType=="Storch") GenStorchPrimaries(N);
-
-	if (SEventConfig::IntegrationMode()==1 && (fGPUPhotonType=="Storch")) return ;
 	else sphotons.reserve(N);
+
 
 #endif
 
@@ -391,15 +389,24 @@ void PrimaryGeneratorAction::GeneratePrimaryLinearly(G4Event * anEvent)
 	if (nthreads>1)
 	{
 
+
 		static std::atomic<unsigned long long> gSeq{0};
 		unsigned long long seq = gSeq.fetch_add(1);
 
 		unsigned long long repsPerBatch = nthreads * fAmount;
 		unsigned batchIdx = seq / repsPerBatch;
 		if (batchIdx >= NPhotons.size()) batchIdx = NPhotons.size() - 1;
-		N = NPhotons[batchIdx]/nthreads;
+		//N = NPhotons[batchIdx]/nthreads;
+
+		unsigned long long total = NPhotons[batchIdx];
+		unsigned long long base  = total / nthreads;
+		unsigned long long rem   = total % nthreads;
+
+		unsigned ftid = G4Threading::G4GetThreadId();
+		N = base + (ftid < rem ? 1 : 0);
+
 		anaHelper->SetBatchID(batchIdx);
-		if (fVerbose) std::cout << "Batch " << batchIdx << " seq " << seq << " simulating " << N << " photons on thread " << G4Threading::G4GetThreadId() << std::endl;
+		if (fVerbose) std::cout <<"Event ID " <<evtID << " Batch " << batchIdx << " seq " << seq << " simulating " << N << " photons on thread " << G4Threading::G4GetThreadId()<<" G4_Sim " <<simPhotonCPU << std::endl;
 	}
 
 	G4PrimaryVertex* vertex=nullptr;
@@ -423,10 +430,10 @@ void PrimaryGeneratorAction::GeneratePrimaryLinearly(G4Event * anEvent)
 		pht.pz = pdir.z();
 		pht.e  =  G4RandGauss::shoot(fMom, fSigmaMom);
 		SinglePhotonGenerator(vertex, pht);
-
 	}
-
 	if (simPhotonCPU) anEvent->AddPrimaryVertex( vertex );
+
+
 }
 
 

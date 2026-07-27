@@ -266,26 +266,6 @@
   <material name="LAr" formula="LAr">
    <D value="1.40" unit="g/cm3"/>
    <fraction n="1.0000" ref="argon"/>
-   <property name="RINDEX" ref="LArRINDEX"/>
-   <property name="RAYLEIGH" ref="LArRAYLEIGH"/>
-   <property name="ABSLENGTH" ref="LArABSLENGTH"/>
-   <property name="REEMISSIONPROB" ref="LARREEMISSIONPROB"/> <!-- for Opticks -->
-   <property name="BIRKSCONSTANT" ref="LARBIRKSCONSTANT"/>
-   <!-- Geant4 Version lower than 11.0 -->
-   <property name="FASTCOMPONENT" ref="SCINTLAR"/>
-   <property name="SLOWCOMPONENT" ref="SCINTLAR"/>
-   <property name="SCINTILLATIONYIELD" ref="ScintYield"/>
-   <property name="RESOLUTIONSCALE" ref="RSC"/>
-   <property name="FASTTIMECONSTANT" ref="FTC" />
-   <property name="SLOWTIMECONSTANT" ref="STC" />
-   <property name="YIELDRATIO" ref="FYR" />
-   <!-- Geant4 Version higher than 11.0 -->
-   <property name="SCINTILLATIONCOMPONENT1" ref="SCINTLAR"/>
-   <property name="SCINTILLATIONCOMPONENT2" ref="SCINTLAR"/>
-   <property name="SCINTILLATIONTIMECONSTANT1" ref="FTC"/>
-   <property name="SCINTILLATIONTIMECONSTANT2" ref="STC"/>
-   <property name="SCINTILLATIONYIELD1" ref="FYR"/>
-   <property name="SCINTILLATIONYIELD2" ref="SYR"/>
   </material>
 
   <material name="ArGas" formula="ArGas">

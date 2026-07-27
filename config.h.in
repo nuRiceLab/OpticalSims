@@ -1,2 +1,3 @@
 // Macros
 #cmakedefine With_Opticks
+#cmakedefine With_DEBUG

@@ -5,7 +5,8 @@
 #include "G4Run.hh"
 #include "G4AnalysisManager.hh"
 #include "AnalysisManagerHelper.hh"
-#include "../include/AnalysisManagerHelper.hh"
+#include "include/config.h"
+
 
 
 RunAction::RunAction(): G4UserRunAction(),fmsg(nullptr),fFileName("out.root")
@@ -24,7 +25,7 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
 
     // Get the analysis manager
     auto analysisManager = G4AnalysisManager::Instance();
-    analysisManager->SetNtupleMerging(true);          // 🔴 REQUIRED for MT merging
+    analysisManager->SetNtupleMerging(true );          // 🔴 REQUIRED for MT merging
     analysisManager->SetFileName(fFileName);          // base name, no _t0 etc.
 
 
@@ -82,6 +83,28 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtupleIColumn("eventID");
     analysisManager->CreateNtupleIColumn("BatchID");
     analysisManager->FinishNtuple();
+#ifdef With_DEBUG
+    //ParticleStep
+    analysisManager->CreateNtuple("step","particle steps");
+    analysisManager->CreateNtupleIColumn("eventID");
+    analysisManager->CreateNtupleIColumn("trackID");
+    analysisManager->CreateNtupleDColumn("x");
+    analysisManager->CreateNtupleDColumn("y");
+    analysisManager->CreateNtupleDColumn("z");
+    analysisManager->CreateNtupleDColumn("t");
+    analysisManager->CreateNtupleSColumn("volume1");
+    analysisManager->CreateNtupleSColumn("volume2");
+    analysisManager->CreateNtupleIColumn("status");
+    analysisManager->CreateNtupleDColumn("mx");
+    analysisManager->CreateNtupleDColumn("my");
+    analysisManager->CreateNtupleDColumn("mz");
+    analysisManager->CreateNtupleDColumn("px");
+    analysisManager->CreateNtupleDColumn("py");
+    analysisManager->CreateNtupleDColumn("pz");
+    analysisManager->CreateNtupleDColumn("energy");
+    analysisManager->FinishNtuple();
+#endif
+
     analysisManager->OpenFile();
     startTime = chrono::high_resolution_clock::now();
     RunTime =0;
@@ -101,6 +124,5 @@ void RunAction::EndOfRunAction(const G4Run* run) {
         if (G4Threading::IsMasterThread()) cout << "Saving Events to " << analysisManager->GetFileName() <<" root file .." << G4endl;
         analysisManager->Write();
         analysisManager->CloseFile();
-        analysisManager->Clear();
     }
  }

@@ -51,8 +51,16 @@ void OpticksHitHandler::CollectHits() {
 }
 
 void OpticksHitHandler::SaveHits(){
-     auto run= G4RunManager::GetRunManager();
-     G4int eventID=run->GetCurrentEvent()->GetEventID();
+	auto run= G4RunManager::GetRunManager();
+	G4int eventID=run->GetCurrentEvent()->GetEventID();
+	if (hits.empty())
+	 {
+		 if (fVerbose) std::cout << "[OpticksHitHandler::SaveHits] No hits to save for this event." << std::endl;
+	 	return;
+	 }
+
+
+
      G4AnalysisManager * analysisManager= G4AnalysisManager::Instance();
      for (auto it : hits){
          analysisManager->FillNtupleIColumn(1,0,eventID);

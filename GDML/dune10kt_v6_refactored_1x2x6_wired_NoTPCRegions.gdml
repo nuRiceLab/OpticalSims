@@ -38,10 +38,10 @@
     <matrix name="LARBIRKSCONSTANT" coldim="1" values="0.069/cm/MeV"/>
     <matrix name="SCINTLAR" coldim="2" values="7.2*eV 0.0  7.9*eV  0.04 8.3*eV 0.12 8.6*eV 0.27 8.9*eV 0.44 9.1*eV 0.62 9.3*eV 0.80 9.6*eV 0.91 9.7*eV 0.92 9.8*eV 0.85  10*eV 0.70 10.2*eV 0.50 10.3*eV 0.31 10.6*eV 0.13 11*eV 0.04 11.6*eV 0.01 11.9*eV 0.0"/>
     <matrix name="LARREEMISSIONPROB" coldim="2" values="7.2*eV 0.0  7.9*eV 0.0 8.3*eV 0.0 8.6*eV 0.0 8.9*eV 0.0 9.1*eV 0.0 9.3*eV 0.0 9.6*eV 0.0 9.7*eV 0.0 9.8*eV 0.0  10*eV 0.0 10.2*eV 0.0 10.3*eV 0.0 10.6*eV 0.0 11*eV 0.0 11.6*eV 0.0 11.9*eV 0.0"/>
-    <matrix name="SkipBoundary" coldim="2" values="7.2*eV 1.0  7.9*eV 1.0 8.3*eV 1.0 8.6*eV 1.0 8.9*eV 1.0 9.1*eV 1.0 9.3*eV 1.0 9.6*eV 1.0 9.7*eV 1.0 9.8*eV 1.0  10*eV 1.0 10.2*eV 1.0 10.3*eV 1.0 10.6*eV 1.0 11*eV 1.0 11.6*eV 1.0 11.9*eV 1.0"/>
     <matrix name="LArRINDEX" coldim="2" values=" 1.18626*eV 1.24664 1.68626*eV 1.22050 2.18626*eV 1.22694 2.68626*eV 1.22932 3.18626*eV 1.23124 3.68626*eV 1.23322 4.18626*eV 1.23545 4.68626*eV 1.23806 5.18626*eV 1.24116 5.68626*eV 1.24489 6.18626*eV 1.24942 6.68626*eV 1.25499 7.18626*eV 1.26197 7.68626*eV 1.27090 8.18626*eV 1.28263 8.68626*eV 1.29865 9.18626*eV 1.32169 9.68626*eV 1.35747 10.1863*eV 1.42039 10.6863*eV 1.56011 11.1863*eV 2.16626"/>
     <matrix name="LArABSLENGTH" coldim="2" values="4*eV 8000*cm 5*eV 8000*cm 6*eV 8000*cm 7*eV 8000*cm 8*eV 8000*cm 9*eV 2000*cm 10*eV 2000*cm 11*eV 2000*cm"/>
     <matrix name="LArRAYLEIGH" coldim="2" values="1.18626*eV 1200800*cm 1.68626*eV 390747*cm 2.18626*eV 128633*cm 2.68626*eV 54969.1*cm 3.18626*eV 27191.8*cm 3.68626*eV 14853.7*cm 4.18626*eV 8716.9*cm 4.68626*eV 5397.42*cm 5.18626*eV 3481.37*cm 5.68626*eV 2316.51*cm 6.18626*eV 1577.63*cm 6.68626*eV 1092.02*cm 7.18626*eV 763.045*cm 7.68626*eV 534.232*cm 8.18626*eV 371.335*cm 8.68626*eV 252.942*cm 9.18626*eV 165.38*cm 9.68626*eV 99.9003*cm 10.1863*eV 51.2653*cm 10.6863*eV 17.495*cm 11.1863*eV 0.964341*cm"/>
+
     <matrix name="D_EF" coldim="2" values="7.2*eV 1 7.9*eV 1 8.3*eV 1 8.6*eV 1 8.9*eV 1 9.1*eV 1 9.3*eV 1 9.6*eV 1 9.7*eV 1 9.8*eV 1 10*eV 1 10.2*eV 1 10.3*eV 1 10.6*eV 1 11*eV 1 11.6*eV 1 11.9*eV 1" />
     <matrix name="D_RF" coldim="2" values="7.2*eV 0 7.9*eV 0 8.3*eV 0 8.6*eV 0 8.9*eV 0 9.1*eV 0 9.3*eV 0 9.6*eV 0 9.7*eV 0 9.8*eV 0 10*eV 0 10.2*eV 0 10.3*eV 0 10.6*eV 0 11*eV 0 11.6*eV 0 11.9*eV 0" />
 
@@ -268,8 +268,8 @@
    <D value="1.40" unit="g/cm3"/>
    <fraction n="1.0000" ref="argon"/>
    <property name="RINDEX" ref="LArRINDEX"/>
-   <property name="RAYLEIGH" ref="LArRAYLEIGH"/>
-   <property name="ABSLENGTH" ref="LArABSLENGTH"/>
+  <!-- <property name="RAYLEIGH" ref="LArRAYLEIGH"/> -->
+   <!-- <property name="ABSLENGTH" ref="LArABSLENGTH"/> -->
    <property name="REEMISSIONPROB" ref="LARREEMISSIONPROB"/> <!-- for Opticks -->
    <property name="BIRKSCONSTANT" ref="LARBIRKSCONSTANT"/>
    <!-- Geant4 Version lower than 11.0 -->
@@ -97827,12 +97827,14 @@
          x="-6.801" y="-3.40812500000004" z="0"/>
        <rotationref ref="rIdentity"/>
      </physvol>
+
      <physvol>
        <volumeref ref="volTPCActiveOuter"/>
        <position name="posOuterActive" unit="cm"
          x="0.714" y="-3.90500000000003" z="0"/>
        <rotationref ref="rIdentity"/>
      </physvol>
+
     </volume>
 
     <volume name="volSteelShell">
@@ -101903,7 +101905,7 @@ z="-454.975"/>
          z="-374.775"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+     <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-0" unit="cm"
@@ -101920,7 +101922,7 @@ z="-454.975"/>
         z="-454.975"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+     -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-1-0" unit="cm"
@@ -102446,7 +102448,7 @@ z="-454.975"/>
          z="-374.775"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+      <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-2" unit="cm"
@@ -102463,7 +102465,7 @@ z="-454.975"/>
         z="-454.975"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-2-0" unit="cm"
@@ -102989,7 +102991,7 @@ z="-222.585"/>
          z="-142.385"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+      <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-4" unit="cm"
@@ -103006,7 +103008,7 @@ z="-222.585"/>
         z="-222.585"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-3-0" unit="cm"
@@ -103532,7 +103534,7 @@ z="-222.585"/>
          z="-142.385"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+     <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-6" unit="cm"
@@ -103549,7 +103551,7 @@ z="-222.585"/>
         z="-222.585"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-4-0" unit="cm"
@@ -104075,7 +104077,7 @@ z="9.80500000000006"/>
          z="90.0050000000001"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+     <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-8" unit="cm"
@@ -104092,7 +104094,7 @@ z="9.80500000000006"/>
         z="9.80500000000006"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-5-0" unit="cm"
@@ -104618,7 +104620,7 @@ z="9.80500000000006"/>
          z="90.0050000000001"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+     <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-10" unit="cm"
@@ -104635,7 +104637,7 @@ z="9.80500000000006"/>
         z="9.80500000000006"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-6-0" unit="cm"
@@ -105161,7 +105163,7 @@ z="242.195"/>
          z="322.395"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+      <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-12" unit="cm"
@@ -105178,7 +105180,7 @@ z="242.195"/>
         z="242.195"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-7-0" unit="cm"
@@ -105704,7 +105706,7 @@ z="242.195"/>
          z="322.395"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+      <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-14" unit="cm"
@@ -105721,7 +105723,7 @@ z="242.195"/>
         z="242.195"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-8-0" unit="cm"
@@ -106247,7 +106249,7 @@ z="474.585"/>
          z="554.785"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+      <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-16" unit="cm"
@@ -106264,7 +106266,7 @@ z="474.585"/>
         z="474.585"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-9-0" unit="cm"
@@ -106790,7 +106792,7 @@ z="474.585"/>
          z="554.785"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+      <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-18" unit="cm"
@@ -106807,7 +106809,7 @@ z="474.585"/>
         z="474.585"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-10-0" unit="cm"
@@ -107333,7 +107335,7 @@ z="706.975"/>
          z="787.175"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+      <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-20" unit="cm"
@@ -107350,7 +107352,7 @@ z="706.975"/>
         z="706.975"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-11-0" unit="cm"
@@ -107876,7 +107878,7 @@ z="706.975"/>
          z="787.175"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+      <!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-22" unit="cm"
@@ -107893,7 +107895,7 @@ z="706.975"/>
         z="706.975"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+      -->
       <physvol>
         <volumeref ref="volCathode"/>
         <position name="posCathode-12-0" unit="cm"

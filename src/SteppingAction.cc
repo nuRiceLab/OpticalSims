@@ -7,7 +7,7 @@
 #include "SteppingAction.hh"
 #include "ArapucaHit.hh"
 #include "G4Exception.hh"
-
+#include "include/config.h"
 SteppingAction::SteppingAction():G4UserSteppingAction()
 {
     fDetectIds=anaHelper->GetDetectIds();
@@ -25,6 +25,11 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 {
     auto aTrack = step->GetTrack();
     G4ParticleDefinition* pdef = aTrack->GetDefinition();
+
+#ifdef With_DEBUG
+    // Collect the steps
+    anaHelper->SaveParticleSteps(step);
+#endif
 
     // Early exit for non-optical photons
     if (pdef != G4OpticalPhoton::Definition()) return;
@@ -69,12 +74,15 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
         anaHelper->AddG4Hits(Hit);
     }
+
+
+
 }
 
 // Helper method
 G4OpBoundaryProcess* SteppingAction::GetOpticalBoundaryProcess()
 {
-    static G4OpBoundaryProcess* boundary = nullptr;
+    G4OpBoundaryProcess* boundary = nullptr;
     if (!boundary) {
         G4ProcessVector* pv = G4OpticalPhoton::Definition()
                               ->GetProcessManager()->GetProcessList();

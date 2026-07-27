@@ -15,7 +15,7 @@
 
 class AnalysisManagerHelper;
 extern thread_local std::unique_ptr<AnalysisManagerHelper> anaHelper;
-
+class G4Step;
 class AnalysisManagerHelper
 {
     public:
@@ -38,12 +38,11 @@ class AnalysisManagerHelper
         void SaveG4HitsToFile();
         void SetDetectIds(const std::map<G4String,G4int>  &fIDs);
         void SetBatchID(G4int id){fbatchID=id;};
-        void AddG4Hits(ArapucaHit hit);
+        void AddG4Hits(ArapucaHit &hit);
         //void SetStartTime(std::chrono::high_resolution_clock::time_point time){fStartTime=time;};
         //std::chrono::high_resolution_clock::time_point GetStartTime(){return fStartTime;};
         void Reset();
-
-
+        void SaveParticleSteps(const G4Step * step);
     private:
 
         G4int G4CerenkovPhotons{0};
@@ -61,7 +60,7 @@ class AnalysisManagerHelper
 inline void AnalysisManagerHelper::SetDetectIds(const std::map<G4String, G4int> &fIDs) {
     fDetectIds=fIDs;
 }
-inline void AnalysisManagerHelper::AddG4Hits(ArapucaHit hit) {
+inline void AnalysisManagerHelper::AddG4Hits(ArapucaHit &hit) {
     ArapucaHits.push_back(hit);
 }
 

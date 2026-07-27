@@ -141916,7 +141916,7 @@ z="-2662.68"/>
          z="-2582.48"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-0" unit="cm"
@@ -141933,7 +141933,7 @@ z="-2662.68"/>
         z="-2662.68"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -142452,7 +142452,7 @@ z="-2662.68"/>
          z="-2582.48"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-2" unit="cm"
@@ -142469,7 +142469,7 @@ z="-2662.68"/>
         z="-2662.68"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -142988,7 +142988,7 @@ z="-2662.68"/>
          z="-2582.48"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-4" unit="cm"
@@ -143005,7 +143005,7 @@ z="-2662.68"/>
         z="-2662.68"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-3" unit="cm"
@@ -143514,7 +143514,7 @@ z="-2662.68"/>
          z="-2582.48"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-6" unit="cm"
@@ -143531,7 +143531,7 @@ z="-2662.68"/>
         z="-2662.68"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -144050,7 +144050,7 @@ z="-2662.68"/>
          z="-2582.48"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-8" unit="cm"
@@ -144067,7 +144067,7 @@ z="-2662.68"/>
         z="-2662.68"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -144586,7 +144586,7 @@ z="-2662.68"/>
          z="-2582.48"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-10" unit="cm"
@@ -144603,7 +144603,7 @@ z="-2662.68"/>
         z="-2662.68"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-6" unit="cm"
@@ -145112,7 +145112,7 @@ z="-2430.29"/>
          z="-2350.09"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-12" unit="cm"
@@ -145129,7 +145129,7 @@ z="-2430.29"/>
         z="-2430.29"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -145648,7 +145648,7 @@ z="-2430.29"/>
          z="-2350.09"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-14" unit="cm"
@@ -145665,7 +145665,7 @@ z="-2430.29"/>
         z="-2430.29"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -146184,7 +146184,7 @@ z="-2430.29"/>
          z="-2350.09"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-16" unit="cm"
@@ -146201,7 +146201,7 @@ z="-2430.29"/>
         z="-2430.29"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-9" unit="cm"
@@ -146710,7 +146710,7 @@ z="-2430.29"/>
          z="-2350.09"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-18" unit="cm"
@@ -146727,7 +146727,7 @@ z="-2430.29"/>
         z="-2430.29"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -147246,7 +147246,7 @@ z="-2430.29"/>
          z="-2350.09"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-20" unit="cm"
@@ -147263,7 +147263,7 @@ z="-2430.29"/>
         z="-2430.29"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -147782,7 +147782,7 @@ z="-2430.29"/>
          z="-2350.09"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-22" unit="cm"
@@ -147799,7 +147799,7 @@ z="-2430.29"/>
         z="-2430.29"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-12" unit="cm"
@@ -148308,7 +148308,7 @@ z="-2197.9"/>
          z="-2117.7"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-24" unit="cm"
@@ -148325,7 +148325,7 @@ z="-2197.9"/>
         z="-2197.9"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -148844,7 +148844,7 @@ z="-2197.9"/>
          z="-2117.7"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-26" unit="cm"
@@ -148861,7 +148861,7 @@ z="-2197.9"/>
         z="-2197.9"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -149380,7 +149380,7 @@ z="-2197.9"/>
          z="-2117.7"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-28" unit="cm"
@@ -149397,7 +149397,7 @@ z="-2197.9"/>
         z="-2197.9"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-15" unit="cm"
@@ -149906,7 +149906,7 @@ z="-2197.9"/>
          z="-2117.7"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-30" unit="cm"
@@ -149923,7 +149923,7 @@ z="-2197.9"/>
         z="-2197.9"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -150442,7 +150442,7 @@ z="-2197.9"/>
          z="-2117.7"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-32" unit="cm"
@@ -150459,7 +150459,7 @@ z="-2197.9"/>
         z="-2197.9"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -150978,7 +150978,7 @@ z="-2197.9"/>
          z="-2117.7"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-34" unit="cm"
@@ -150995,7 +150995,7 @@ z="-2197.9"/>
         z="-2197.9"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-18" unit="cm"
@@ -151504,7 +151504,7 @@ z="-1965.51"/>
          z="-1885.31"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-36" unit="cm"
@@ -151521,7 +151521,7 @@ z="-1965.51"/>
         z="-1965.51"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -152040,7 +152040,7 @@ z="-1965.51"/>
          z="-1885.31"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-38" unit="cm"
@@ -152057,7 +152057,7 @@ z="-1965.51"/>
         z="-1965.51"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -152576,7 +152576,7 @@ z="-1965.51"/>
          z="-1885.31"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-40" unit="cm"
@@ -152593,7 +152593,7 @@ z="-1965.51"/>
         z="-1965.51"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-21" unit="cm"
@@ -153102,7 +153102,7 @@ z="-1965.51"/>
          z="-1885.31"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-42" unit="cm"
@@ -153119,7 +153119,7 @@ z="-1965.51"/>
         z="-1965.51"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -153638,7 +153638,7 @@ z="-1965.51"/>
          z="-1885.31"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-44" unit="cm"
@@ -153655,7 +153655,7 @@ z="-1965.51"/>
         z="-1965.51"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -154174,7 +154174,7 @@ z="-1965.51"/>
          z="-1885.31"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-46" unit="cm"
@@ -154191,7 +154191,7 @@ z="-1965.51"/>
         z="-1965.51"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-24" unit="cm"
@@ -154700,7 +154700,7 @@ z="-1733.12"/>
          z="-1652.92"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-48" unit="cm"
@@ -154717,7 +154717,7 @@ z="-1733.12"/>
         z="-1733.12"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -155236,7 +155236,7 @@ z="-1733.12"/>
          z="-1652.92"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-50" unit="cm"
@@ -155253,7 +155253,7 @@ z="-1733.12"/>
         z="-1733.12"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -155772,7 +155772,7 @@ z="-1733.12"/>
          z="-1652.92"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-52" unit="cm"
@@ -155789,7 +155789,7 @@ z="-1733.12"/>
         z="-1733.12"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-27" unit="cm"
@@ -156298,7 +156298,7 @@ z="-1733.12"/>
          z="-1652.92"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-54" unit="cm"
@@ -156315,7 +156315,7 @@ z="-1733.12"/>
         z="-1733.12"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -156834,7 +156834,7 @@ z="-1733.12"/>
          z="-1652.92"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-56" unit="cm"
@@ -156851,7 +156851,7 @@ z="-1733.12"/>
         z="-1733.12"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -157370,7 +157370,7 @@ z="-1733.12"/>
          z="-1652.92"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-58" unit="cm"
@@ -157387,7 +157387,7 @@ z="-1733.12"/>
         z="-1733.12"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-30" unit="cm"
@@ -157896,7 +157896,7 @@ z="-1500.73"/>
          z="-1420.53"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-60" unit="cm"
@@ -157913,7 +157913,7 @@ z="-1500.73"/>
         z="-1500.73"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -158432,7 +158432,7 @@ z="-1500.73"/>
          z="-1420.53"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-62" unit="cm"
@@ -158449,7 +158449,7 @@ z="-1500.73"/>
         z="-1500.73"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -158968,7 +158968,7 @@ z="-1500.73"/>
          z="-1420.53"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-64" unit="cm"
@@ -158985,7 +158985,7 @@ z="-1500.73"/>
         z="-1500.73"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-33" unit="cm"
@@ -159494,7 +159494,7 @@ z="-1500.73"/>
          z="-1420.53"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-66" unit="cm"
@@ -159511,7 +159511,7 @@ z="-1500.73"/>
         z="-1500.73"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -160030,7 +160030,7 @@ z="-1500.73"/>
          z="-1420.53"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-68" unit="cm"
@@ -160047,7 +160047,7 @@ z="-1500.73"/>
         z="-1500.73"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -160566,7 +160566,7 @@ z="-1500.73"/>
          z="-1420.53"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-70" unit="cm"
@@ -160583,7 +160583,7 @@ z="-1500.73"/>
         z="-1500.73"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-36" unit="cm"
@@ -161092,7 +161092,7 @@ z="-1268.34"/>
          z="-1188.14"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-72" unit="cm"
@@ -161109,7 +161109,7 @@ z="-1268.34"/>
         z="-1268.34"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -161628,7 +161628,7 @@ z="-1268.34"/>
          z="-1188.14"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-74" unit="cm"
@@ -161645,7 +161645,7 @@ z="-1268.34"/>
         z="-1268.34"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -162164,7 +162164,7 @@ z="-1268.34"/>
          z="-1188.14"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-76" unit="cm"
@@ -162181,7 +162181,7 @@ z="-1268.34"/>
         z="-1268.34"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-39" unit="cm"
@@ -162690,7 +162690,7 @@ z="-1268.34"/>
          z="-1188.14"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-78" unit="cm"
@@ -162707,7 +162707,7 @@ z="-1268.34"/>
         z="-1268.34"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -163226,7 +163226,7 @@ z="-1268.34"/>
          z="-1188.14"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-80" unit="cm"
@@ -163243,7 +163243,7 @@ z="-1268.34"/>
         z="-1268.34"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -163762,7 +163762,7 @@ z="-1268.34"/>
          z="-1188.14"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-82" unit="cm"
@@ -163779,7 +163779,7 @@ z="-1268.34"/>
         z="-1268.34"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-42" unit="cm"
@@ -164288,7 +164288,7 @@ z="-1035.95"/>
          z="-955.75"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-84" unit="cm"
@@ -164305,7 +164305,7 @@ z="-1035.95"/>
         z="-1035.95"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -164824,7 +164824,7 @@ z="-1035.95"/>
          z="-955.75"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-86" unit="cm"
@@ -164841,7 +164841,7 @@ z="-1035.95"/>
         z="-1035.95"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -165360,7 +165360,7 @@ z="-1035.95"/>
          z="-955.75"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-88" unit="cm"
@@ -165377,7 +165377,7 @@ z="-1035.95"/>
         z="-1035.95"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-45" unit="cm"
@@ -165886,7 +165886,7 @@ z="-1035.95"/>
          z="-955.75"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-90" unit="cm"
@@ -165903,7 +165903,7 @@ z="-1035.95"/>
         z="-1035.95"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -166422,7 +166422,7 @@ z="-1035.95"/>
          z="-955.75"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-92" unit="cm"
@@ -166439,7 +166439,7 @@ z="-1035.95"/>
         z="-1035.95"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -166958,7 +166958,7 @@ z="-1035.95"/>
          z="-955.75"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-94" unit="cm"
@@ -166975,7 +166975,7 @@ z="-1035.95"/>
         z="-1035.95"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-48" unit="cm"
@@ -167484,7 +167484,7 @@ z="-803.56"/>
          z="-723.36"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-96" unit="cm"
@@ -167501,7 +167501,7 @@ z="-803.56"/>
         z="-803.56"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -168020,7 +168020,7 @@ z="-803.56"/>
          z="-723.36"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-98" unit="cm"
@@ -168037,7 +168037,7 @@ z="-803.56"/>
         z="-803.56"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -168556,7 +168556,7 @@ z="-803.56"/>
          z="-723.36"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-100" unit="cm"
@@ -168573,7 +168573,7 @@ z="-803.56"/>
         z="-803.56"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-51" unit="cm"
@@ -169082,7 +169082,7 @@ z="-803.56"/>
          z="-723.36"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-102" unit="cm"
@@ -169099,7 +169099,7 @@ z="-803.56"/>
         z="-803.56"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -169618,7 +169618,7 @@ z="-803.56"/>
          z="-723.36"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-104" unit="cm"
@@ -169635,7 +169635,7 @@ z="-803.56"/>
         z="-803.56"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -170154,7 +170154,7 @@ z="-803.56"/>
          z="-723.36"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-106" unit="cm"
@@ -170171,7 +170171,7 @@ z="-803.56"/>
         z="-803.56"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-54" unit="cm"
@@ -170680,7 +170680,7 @@ z="-571.17"/>
          z="-490.97"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-108" unit="cm"
@@ -170697,7 +170697,7 @@ z="-571.17"/>
         z="-571.17"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -171216,7 +171216,7 @@ z="-571.17"/>
          z="-490.97"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-110" unit="cm"
@@ -171233,7 +171233,7 @@ z="-571.17"/>
         z="-571.17"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -171752,7 +171752,7 @@ z="-571.17"/>
          z="-490.97"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-112" unit="cm"
@@ -171769,7 +171769,7 @@ z="-571.17"/>
         z="-571.17"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-57" unit="cm"
@@ -172278,7 +172278,7 @@ z="-571.17"/>
          z="-490.97"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-114" unit="cm"
@@ -172295,7 +172295,7 @@ z="-571.17"/>
         z="-571.17"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -172814,7 +172814,7 @@ z="-571.17"/>
          z="-490.97"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-116" unit="cm"
@@ -172831,7 +172831,7 @@ z="-571.17"/>
         z="-571.17"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -173350,7 +173350,7 @@ z="-571.17"/>
          z="-490.97"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-118" unit="cm"
@@ -173367,7 +173367,7 @@ z="-571.17"/>
         z="-571.17"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-60" unit="cm"
@@ -173876,7 +173876,7 @@ z="-338.78"/>
          z="-258.58"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-120" unit="cm"
@@ -173893,7 +173893,7 @@ z="-338.78"/>
         z="-338.78"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -174412,7 +174412,7 @@ z="-338.78"/>
          z="-258.58"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-122" unit="cm"
@@ -174429,7 +174429,7 @@ z="-338.78"/>
         z="-338.78"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -174948,7 +174948,7 @@ z="-338.78"/>
          z="-258.58"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-124" unit="cm"
@@ -174965,7 +174965,7 @@ z="-338.78"/>
         z="-338.78"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-63" unit="cm"
@@ -175474,7 +175474,7 @@ z="-338.78"/>
          z="-258.58"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-126" unit="cm"
@@ -175491,7 +175491,7 @@ z="-338.78"/>
         z="-338.78"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -176010,7 +176010,7 @@ z="-338.78"/>
          z="-258.58"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-128" unit="cm"
@@ -176027,7 +176027,7 @@ z="-338.78"/>
         z="-338.78"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -176546,7 +176546,7 @@ z="-338.78"/>
          z="-258.58"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-130" unit="cm"
@@ -176563,7 +176563,7 @@ z="-338.78"/>
         z="-338.78"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-66" unit="cm"
@@ -177072,7 +177072,7 @@ z="-106.39"/>
          z="-26.1899999999999"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-132" unit="cm"
@@ -177089,7 +177089,7 @@ z="-106.39"/>
         z="-106.39"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -177608,7 +177608,7 @@ z="-106.39"/>
          z="-26.1899999999999"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-134" unit="cm"
@@ -177625,7 +177625,7 @@ z="-106.39"/>
         z="-106.39"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -178144,7 +178144,7 @@ z="-106.39"/>
          z="-26.1899999999999"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-136" unit="cm"
@@ -178161,7 +178161,7 @@ z="-106.39"/>
         z="-106.39"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-69" unit="cm"
@@ -178670,7 +178670,7 @@ z="-106.39"/>
          z="-26.1899999999999"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-138" unit="cm"
@@ -178687,7 +178687,7 @@ z="-106.39"/>
         z="-106.39"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -179206,7 +179206,7 @@ z="-106.39"/>
          z="-26.1899999999999"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-140" unit="cm"
@@ -179223,7 +179223,7 @@ z="-106.39"/>
         z="-106.39"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -179742,7 +179742,7 @@ z="-106.39"/>
          z="-26.1899999999999"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-142" unit="cm"
@@ -179759,7 +179759,7 @@ z="-106.39"/>
         z="-106.39"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-72" unit="cm"
@@ -180268,7 +180268,7 @@ z="126"/>
          z="206.2"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-144" unit="cm"
@@ -180285,7 +180285,7 @@ z="126"/>
         z="126"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -180804,7 +180804,7 @@ z="126"/>
          z="206.2"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-146" unit="cm"
@@ -180821,7 +180821,7 @@ z="126"/>
         z="126"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -181340,7 +181340,7 @@ z="126"/>
          z="206.2"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-148" unit="cm"
@@ -181357,7 +181357,7 @@ z="126"/>
         z="126"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-75" unit="cm"
@@ -181866,7 +181866,7 @@ z="126"/>
          z="206.2"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-150" unit="cm"
@@ -181883,7 +181883,7 @@ z="126"/>
         z="126"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -182402,7 +182402,7 @@ z="126"/>
          z="206.2"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-152" unit="cm"
@@ -182419,7 +182419,7 @@ z="126"/>
         z="126"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -182938,7 +182938,7 @@ z="126"/>
          z="206.2"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-154" unit="cm"
@@ -182955,7 +182955,7 @@ z="126"/>
         z="126"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-78" unit="cm"
@@ -183464,7 +183464,7 @@ z="358.39"/>
          z="438.59"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-156" unit="cm"
@@ -183481,7 +183481,7 @@ z="358.39"/>
         z="358.39"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -184000,7 +184000,7 @@ z="358.39"/>
          z="438.59"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-158" unit="cm"
@@ -184017,7 +184017,7 @@ z="358.39"/>
         z="358.39"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -184536,7 +184536,7 @@ z="358.39"/>
          z="438.59"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-160" unit="cm"
@@ -184553,7 +184553,7 @@ z="358.39"/>
         z="358.39"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-81" unit="cm"
@@ -185062,7 +185062,7 @@ z="358.39"/>
          z="438.59"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-162" unit="cm"
@@ -185079,7 +185079,7 @@ z="358.39"/>
         z="358.39"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -185598,7 +185598,7 @@ z="358.39"/>
          z="438.59"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-164" unit="cm"
@@ -185615,7 +185615,7 @@ z="358.39"/>
         z="358.39"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -186134,7 +186134,7 @@ z="358.39"/>
          z="438.59"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-166" unit="cm"
@@ -186151,7 +186151,7 @@ z="358.39"/>
         z="358.39"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-84" unit="cm"
@@ -186660,7 +186660,7 @@ z="590.78"/>
          z="670.98"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-168" unit="cm"
@@ -186677,7 +186677,7 @@ z="590.78"/>
         z="590.78"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -187196,7 +187196,7 @@ z="590.78"/>
          z="670.98"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-170" unit="cm"
@@ -187213,7 +187213,7 @@ z="590.78"/>
         z="590.78"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -187732,7 +187732,7 @@ z="590.78"/>
          z="670.98"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-172" unit="cm"
@@ -187749,7 +187749,7 @@ z="590.78"/>
         z="590.78"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-87" unit="cm"
@@ -188258,7 +188258,7 @@ z="590.78"/>
          z="670.98"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-174" unit="cm"
@@ -188275,7 +188275,7 @@ z="590.78"/>
         z="590.78"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -188794,7 +188794,7 @@ z="590.78"/>
          z="670.98"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-176" unit="cm"
@@ -188811,7 +188811,7 @@ z="590.78"/>
         z="590.78"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -189330,7 +189330,7 @@ z="590.78"/>
          z="670.98"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-178" unit="cm"
@@ -189347,7 +189347,7 @@ z="590.78"/>
         z="590.78"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-90" unit="cm"
@@ -189856,7 +189856,7 @@ z="823.170000000001"/>
          z="903.370000000001"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-180" unit="cm"
@@ -189873,7 +189873,7 @@ z="823.170000000001"/>
         z="823.170000000001"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -190392,7 +190392,7 @@ z="823.170000000001"/>
          z="903.370000000001"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-182" unit="cm"
@@ -190409,7 +190409,7 @@ z="823.170000000001"/>
         z="823.170000000001"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -190928,7 +190928,7 @@ z="823.170000000001"/>
          z="903.370000000001"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-184" unit="cm"
@@ -190945,7 +190945,7 @@ z="823.170000000001"/>
         z="823.170000000001"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-93" unit="cm"
@@ -191454,7 +191454,7 @@ z="823.170000000001"/>
          z="903.370000000001"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-186" unit="cm"
@@ -191471,7 +191471,7 @@ z="823.170000000001"/>
         z="823.170000000001"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -191990,7 +191990,7 @@ z="823.170000000001"/>
          z="903.370000000001"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-188" unit="cm"
@@ -192007,7 +192007,7 @@ z="823.170000000001"/>
         z="823.170000000001"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -192526,7 +192526,7 @@ z="823.170000000001"/>
          z="903.370000000001"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-190" unit="cm"
@@ -192543,7 +192543,7 @@ z="823.170000000001"/>
         z="823.170000000001"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-96" unit="cm"
@@ -193052,7 +193052,7 @@ z="1055.56"/>
          z="1135.76"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-192" unit="cm"
@@ -193069,7 +193069,7 @@ z="1055.56"/>
         z="1055.56"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -193588,7 +193588,7 @@ z="1055.56"/>
          z="1135.76"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-194" unit="cm"
@@ -193605,7 +193605,7 @@ z="1055.56"/>
         z="1055.56"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -194124,7 +194124,7 @@ z="1055.56"/>
          z="1135.76"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-196" unit="cm"
@@ -194141,7 +194141,7 @@ z="1055.56"/>
         z="1055.56"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-99" unit="cm"
@@ -194650,7 +194650,7 @@ z="1055.56"/>
          z="1135.76"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-198" unit="cm"
@@ -194667,7 +194667,7 @@ z="1055.56"/>
         z="1055.56"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -195186,7 +195186,7 @@ z="1055.56"/>
          z="1135.76"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-200" unit="cm"
@@ -195203,7 +195203,7 @@ z="1055.56"/>
         z="1055.56"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -195722,7 +195722,7 @@ z="1055.56"/>
          z="1135.76"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-202" unit="cm"
@@ -195739,7 +195739,7 @@ z="1055.56"/>
         z="1055.56"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-102" unit="cm"
@@ -196248,7 +196248,7 @@ z="1287.95"/>
          z="1368.15"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-204" unit="cm"
@@ -196265,7 +196265,7 @@ z="1287.95"/>
         z="1287.95"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -196784,7 +196784,7 @@ z="1287.95"/>
          z="1368.15"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-206" unit="cm"
@@ -196801,7 +196801,7 @@ z="1287.95"/>
         z="1287.95"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -197320,7 +197320,7 @@ z="1287.95"/>
          z="1368.15"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-208" unit="cm"
@@ -197337,7 +197337,7 @@ z="1287.95"/>
         z="1287.95"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-105" unit="cm"
@@ -197846,7 +197846,7 @@ z="1287.95"/>
          z="1368.15"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-210" unit="cm"
@@ -197863,7 +197863,7 @@ z="1287.95"/>
         z="1287.95"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -198382,7 +198382,7 @@ z="1287.95"/>
          z="1368.15"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-212" unit="cm"
@@ -198399,7 +198399,7 @@ z="1287.95"/>
         z="1287.95"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -198918,7 +198918,7 @@ z="1287.95"/>
          z="1368.15"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-214" unit="cm"
@@ -198935,7 +198935,7 @@ z="1287.95"/>
         z="1287.95"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-108" unit="cm"
@@ -199444,7 +199444,7 @@ z="1520.34"/>
          z="1600.54"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-216" unit="cm"
@@ -199461,7 +199461,7 @@ z="1520.34"/>
         z="1520.34"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -199980,7 +199980,7 @@ z="1520.34"/>
          z="1600.54"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-218" unit="cm"
@@ -199997,7 +199997,7 @@ z="1520.34"/>
         z="1520.34"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -200516,7 +200516,7 @@ z="1520.34"/>
          z="1600.54"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-220" unit="cm"
@@ -200533,7 +200533,7 @@ z="1520.34"/>
         z="1520.34"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-111" unit="cm"
@@ -201042,7 +201042,7 @@ z="1520.34"/>
          z="1600.54"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-222" unit="cm"
@@ -201059,7 +201059,7 @@ z="1520.34"/>
         z="1520.34"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -201578,7 +201578,7 @@ z="1520.34"/>
          z="1600.54"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-224" unit="cm"
@@ -201595,7 +201595,7 @@ z="1520.34"/>
         z="1520.34"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -202114,7 +202114,7 @@ z="1520.34"/>
          z="1600.54"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-226" unit="cm"
@@ -202131,7 +202131,7 @@ z="1520.34"/>
         z="1520.34"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-114" unit="cm"
@@ -202640,7 +202640,7 @@ z="1752.73"/>
          z="1832.93"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-228" unit="cm"
@@ -202657,7 +202657,7 @@ z="1752.73"/>
         z="1752.73"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -203176,7 +203176,7 @@ z="1752.73"/>
          z="1832.93"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-230" unit="cm"
@@ -203193,7 +203193,7 @@ z="1752.73"/>
         z="1752.73"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -203712,7 +203712,7 @@ z="1752.73"/>
          z="1832.93"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-232" unit="cm"
@@ -203729,7 +203729,7 @@ z="1752.73"/>
         z="1752.73"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-117" unit="cm"
@@ -204238,7 +204238,7 @@ z="1752.73"/>
          z="1832.93"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-234" unit="cm"
@@ -204255,7 +204255,7 @@ z="1752.73"/>
         z="1752.73"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -204774,7 +204774,7 @@ z="1752.73"/>
          z="1832.93"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-236" unit="cm"
@@ -204791,7 +204791,7 @@ z="1752.73"/>
         z="1752.73"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -205310,7 +205310,7 @@ z="1752.73"/>
          z="1832.93"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-238" unit="cm"
@@ -205327,7 +205327,7 @@ z="1752.73"/>
         z="1752.73"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-120" unit="cm"
@@ -205836,7 +205836,7 @@ z="1985.12"/>
          z="2065.32"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-240" unit="cm"
@@ -205853,7 +205853,7 @@ z="1985.12"/>
         z="1985.12"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -206372,7 +206372,7 @@ z="1985.12"/>
          z="2065.32"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-242" unit="cm"
@@ -206389,7 +206389,7 @@ z="1985.12"/>
         z="1985.12"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -206908,7 +206908,7 @@ z="1985.12"/>
          z="2065.32"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-244" unit="cm"
@@ -206925,7 +206925,7 @@ z="1985.12"/>
         z="1985.12"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-123" unit="cm"
@@ -207434,7 +207434,7 @@ z="1985.12"/>
          z="2065.32"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-246" unit="cm"
@@ -207451,7 +207451,7 @@ z="1985.12"/>
         z="1985.12"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -207970,7 +207970,7 @@ z="1985.12"/>
          z="2065.32"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-248" unit="cm"
@@ -207987,7 +207987,7 @@ z="1985.12"/>
         z="1985.12"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -208506,7 +208506,7 @@ z="1985.12"/>
          z="2065.32"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-250" unit="cm"
@@ -208523,7 +208523,7 @@ z="1985.12"/>
         z="1985.12"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-126" unit="cm"
@@ -209032,7 +209032,7 @@ z="2217.51"/>
          z="2297.71"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-252" unit="cm"
@@ -209049,7 +209049,7 @@ z="2217.51"/>
         z="2217.51"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -209568,7 +209568,7 @@ z="2217.51"/>
          z="2297.71"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-254" unit="cm"
@@ -209585,7 +209585,7 @@ z="2217.51"/>
         z="2217.51"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -210104,7 +210104,7 @@ z="2217.51"/>
          z="2297.71"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-256" unit="cm"
@@ -210121,7 +210121,7 @@ z="2217.51"/>
         z="2217.51"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-129" unit="cm"
@@ -210630,7 +210630,7 @@ z="2217.51"/>
          z="2297.71"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-258" unit="cm"
@@ -210647,7 +210647,7 @@ z="2217.51"/>
         z="2217.51"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -211166,7 +211166,7 @@ z="2217.51"/>
          z="2297.71"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-260" unit="cm"
@@ -211183,7 +211183,7 @@ z="2217.51"/>
         z="2217.51"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -211702,7 +211702,7 @@ z="2217.51"/>
          z="2297.71"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-262" unit="cm"
@@ -211719,7 +211719,7 @@ z="2217.51"/>
         z="2217.51"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-132" unit="cm"
@@ -212228,7 +212228,7 @@ z="2449.9"/>
          z="2530.1"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-264" unit="cm"
@@ -212245,7 +212245,7 @@ z="2449.9"/>
         z="2449.9"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -212764,7 +212764,7 @@ z="2449.9"/>
          z="2530.1"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-266" unit="cm"
@@ -212781,7 +212781,7 @@ z="2449.9"/>
         z="2449.9"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -213300,7 +213300,7 @@ z="2449.9"/>
          z="2530.1"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-268" unit="cm"
@@ -213317,7 +213317,7 @@ z="2449.9"/>
         z="2449.9"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-135" unit="cm"
@@ -213826,7 +213826,7 @@ z="2449.9"/>
          z="2530.1"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-270" unit="cm"
@@ -213843,7 +213843,7 @@ z="2449.9"/>
         z="2449.9"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -214362,7 +214362,7 @@ z="2449.9"/>
          z="2530.1"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-272" unit="cm"
@@ -214379,7 +214379,7 @@ z="2449.9"/>
         z="2449.9"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -214898,7 +214898,7 @@ z="2449.9"/>
          z="2530.1"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-274" unit="cm"
@@ -214915,7 +214915,7 @@ z="2449.9"/>
         z="2449.9"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-138" unit="cm"
@@ -215424,7 +215424,7 @@ z="2682.29"/>
          z="2762.49"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-276" unit="cm"
@@ -215441,7 +215441,7 @@ z="2682.29"/>
         z="2682.29"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -215960,7 +215960,7 @@ z="2682.29"/>
          z="2762.49"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-278" unit="cm"
@@ -215977,7 +215977,7 @@ z="2682.29"/>
         z="2682.29"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -216496,7 +216496,7 @@ z="2682.29"/>
          z="2762.49"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-280" unit="cm"
@@ -216513,7 +216513,7 @@ z="2682.29"/>
         z="2682.29"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-141" unit="cm"
@@ -217022,7 +217022,7 @@ z="2682.29"/>
          z="2762.49"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-282" unit="cm"
@@ -217039,7 +217039,7 @@ z="2682.29"/>
         z="2682.29"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -217558,7 +217558,7 @@ z="2682.29"/>
          z="2762.49"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-284" unit="cm"
@@ -217575,7 +217575,7 @@ z="2682.29"/>
         z="2682.29"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -218094,7 +218094,7 @@ z="2682.29"/>
          z="2762.49"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-286" unit="cm"
@@ -218111,7 +218111,7 @@ z="2682.29"/>
         z="2682.29"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-144" unit="cm"
@@ -218620,7 +218620,7 @@ z="2914.68"/>
          z="2994.88"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-288" unit="cm"
@@ -218637,7 +218637,7 @@ z="2914.68"/>
         z="2914.68"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -219156,7 +219156,7 @@ z="2914.68"/>
          z="2994.88"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-290" unit="cm"
@@ -219173,7 +219173,7 @@ z="2914.68"/>
         z="2914.68"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -219692,7 +219692,7 @@ z="2914.68"/>
          z="2994.88"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-292" unit="cm"
@@ -219709,7 +219709,7 @@ z="2914.68"/>
         z="2914.68"/>
         <rotationref ref="rPlus180AboutX"/>
       </physvol>
-
+-->
       <physvol>
         <volumeref ref="volAPAFrameYSide"/>
         <position name="posAPAFrameYSideNeg-147" unit="cm"
@@ -220218,7 +220218,7 @@ z="2914.68"/>
          z="2994.88"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCOuter"/>
         <position name="posTPC-294" unit="cm"
@@ -220235,7 +220235,7 @@ z="2914.68"/>
         z="2914.68"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -220754,7 +220754,7 @@ z="2914.68"/>
          z="2994.88"/>
        <rotationref ref="rIdentity"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-296" unit="cm"
@@ -220771,7 +220771,7 @@ z="2914.68"/>
         z="2914.68"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
 
       <physvol>
         <volumeref ref="volCathode"/>
@@ -221290,7 +221290,7 @@ z="2914.68"/>
          z="2994.88"/>
        <rotationref ref="rPlus180AboutY"/>
      </physvol>
-
+<!--
       <physvol>
         <volumeref ref="volTPCInner0"/>
         <position name="posTPC-298" unit="cm"
@@ -221307,7 +221307,7 @@ z="2914.68"/>
         z="2914.68"/>
         <rotationref ref="rIdentity"/>
       </physvol>
-
+-->
     </volume>
 
     <volume name="volFoamPadding">

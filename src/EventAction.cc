@@ -17,44 +17,51 @@
 #include "include/config.h"
 
 #ifdef With_Opticks
-    #include "SEvt.hh"
-    #include "G4CXOpticks.hh"
-    #include "Opticks/OpticksHitHandler.hh"
-namespace {G4Mutex opticks_mt=G4MUTEX_INITIALIZER;}
+#include "SEvt.hh"
+#include "G4CXOpticks.hh"
+#include "Opticks/OpticksHitHandler.hh"
+namespace
+{
+    G4Mutex opticks_mt = G4MUTEX_INITIALIZER;
+}
 #endif
 
-EventAction::EventAction(): G4UserEventAction() {}
-EventAction::~EventAction(){}
-
-void EventAction::BeginOfEventAction(const G4Event* event) {
-
-     cout << "Begin event " << event->GetEventID() << endl;
-     startTime=std::chrono::high_resolution_clock::now();
+EventAction::EventAction() : G4UserEventAction()
+{
 }
+
+EventAction::~EventAction()
+{
+}
+
+void EventAction::BeginOfEventAction(const G4Event* event)
+{
+    cout << "Begin event " << event->GetEventID() << endl;
+    startTime = std::chrono::high_resolution_clock::now();
+}
+
 void EventAction::EndOfEventAction(const G4Event* event)
 {
-
-    G4int evtID=event->GetEventID();
+    G4int evtID = event->GetEventID();
     //auto analysisManager = G4AnalysisManager::Instance();
-
 
 
 #ifdef With_Opticks
     // Force Single Thread
     G4AutoLock lock(&opticks_mt);
-    OpticksHitHandler *hitHandler = OpticksHitHandler::getInstance();
+    OpticksHitHandler* hitHandler = OpticksHitHandler::getInstance();
 
     // Adding here the photon production
     int numSPhotons = hitHandler->GetSphotons().size();
 
     // Simulate the Primary photons in GPU
-    if(numSPhotons>0) hitHandler->PrimPhotonBatcher(evtID);
+    if (numSPhotons > 0) hitHandler->PrimPhotonBatcher(evtID);
 
     // Get event id and number of gensteps
-    G4int ngenstep=SEvt::GetNumGenstepFromGenstep(0);
+    G4int ngenstep = SEvt::GetNumGenstepFromGenstep(0);
 
 
-    if (ngenstep>0)
+    if (ngenstep > 0)
     {
         std::cout << "Number of GenStep: " << ngenstep << std::endl;
         std::cout << "Number of Photons: " << SEvt::GetNumPhotonCollected(0) << std::endl;
@@ -66,12 +73,10 @@ void EventAction::EndOfEventAction(const G4Event* event)
     auto EventTime = chrono::duration_cast<chrono::duration<double>>(duration).count();
 
 
-
     // Save Opticks Hits
 #ifdef With_Opticks
     hitHandler->SaveHits();
 #endif
-
 
 
     // Save Photon Computation Time
@@ -83,5 +88,5 @@ void EventAction::EndOfEventAction(const G4Event* event)
     /////// GEANT4 HITS ///////
     anaHelper->SaveG4HitsToFile();
     anaHelper->Reset();
-    G4cout << "Event " <<  evtID <<", End Time " << EventTime << " seconds" << G4endl;
+    G4cout << "Event " << evtID << ", End Time " << EventTime << " seconds" << G4endl;
 }

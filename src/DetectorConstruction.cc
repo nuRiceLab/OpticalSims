@@ -26,7 +26,7 @@
 //
 /// \file DetectorConstruction.cc
 /// \brief Implementation of the DetectorConstruction class
- 
+
 #include "DetectorConstruction.hh"
 #include "G4VisAttributes.hh"
 #include <G4Color.hh>
@@ -170,11 +170,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
           }
           else
           {
-              // === SKIN SURFACE ===
-              G4String surfaceName = volName + "_SkinSurface";
-              new G4LogicalSkinSurface(surfaceName, (*iter).first, surface);
-
-              G4cout << "Attached SkinSurface to volume: " << volName << G4endl;
+                  // === SKIN SURFACE ===
+                  G4String surfaceName = volName + "_SkinSurface";
+                  new G4LogicalSkinSurface(surfaceName, (*iter).first, surface);
+                  G4cout << "Attached SkinSurface to volume: " << volName << G4endl;
           }
 
           count++;

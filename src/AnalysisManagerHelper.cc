@@ -4,11 +4,13 @@
 
 
 #include "AnalysisManagerHelper.hh"
-#include "../include/AnalysisManagerHelper.hh"
-
 #include "G4AnalysisManager.hh"
 #include "G4RunManager.hh"
-
+#include "G4Threading.hh"
+#include "G4AutoLock.hh"
+namespace {
+    G4Mutex FileMutex = G4MUTEX_INITIALIZER;
+}
 thread_local std::unique_ptr<AnalysisManagerHelper> anaHelper = nullptr;
 AnalysisManagerHelper::AnalysisManagerHelper()
 {
@@ -75,6 +77,7 @@ void AnalysisManagerHelper::Reset()
 }
 void AnalysisManagerHelper::SavePhotonInfotoFile()
 {
+    G4AutoLock lock(&FileMutex);
     G4AnalysisManager * AnaMngr = G4AnalysisManager::Instance();
     auto run= G4RunManager::GetRunManager();
     G4int eventID=run->GetCurrentEvent()->GetEventID();
@@ -90,6 +93,7 @@ void AnalysisManagerHelper::SavePhotonInfotoFile()
 
 void AnalysisManagerHelper::SaveG4HitsToFile()
 {
+    G4AutoLock lock(&FileMutex);
     G4AnalysisManager * AnaMngr = G4AnalysisManager::Instance();
     auto run= G4RunManager::GetRunManager();
     for (auto hit : ArapucaHits)
@@ -105,6 +109,34 @@ void AnalysisManagerHelper::SaveG4HitsToFile()
         AnaMngr->FillNtupleIColumn(2,8,hit.GetPid());
         AnaMngr->AddNtupleRow(2);
     }
+    //std::cout << "G4Sim Event ID "<< run->GetCurrentEvent()->GetEventID() << " Saved " << ArapucaHits.size() << " hits to file" << std::endl;
     ArapucaHits.clear();
     ArapucaHits.shrink_to_fit();
+}
+
+
+void AnalysisManagerHelper::SaveParticleSteps(const G4Step * step)
+{
+    G4AutoLock lock(&FileMutex);
+    G4AnalysisManager * AnaMngr = G4AnalysisManager::Instance();
+    auto run= G4RunManager::GetRunManager();
+    G4int eventID=run->GetCurrentEvent()->GetEventID();
+    int id=4;
+    AnaMngr->FillNtupleIColumn(id,0,eventID);
+    AnaMngr->FillNtupleIColumn(id,1,step->GetTrack()->GetTrackID());
+    AnaMngr->FillNtupleDColumn(id,2,step->GetTrack()->GetPosition().getX());
+    AnaMngr->FillNtupleDColumn(id,3,step->GetTrack()->GetPosition().getY());
+    AnaMngr->FillNtupleDColumn(id,4,step->GetTrack()->GetPosition().getZ());
+    AnaMngr->FillNtupleDColumn(id,5,step->GetTrack()->GetGlobalTime());
+    AnaMngr->FillNtupleSColumn(id,6,step->GetPreStepPoint()->GetPhysicalVolume()->GetName());
+    AnaMngr->FillNtupleSColumn(id,7,step->GetPostStepPoint()->GetPhysicalVolume()->GetName());
+    AnaMngr->FillNtupleIColumn(id,8,step->GetTrack()->GetTrackStatus());
+    AnaMngr->FillNtupleDColumn(id,9,step->GetTrack()->GetMomentumDirection().getX());
+    AnaMngr->FillNtupleDColumn(id,10,step->GetTrack()->GetMomentumDirection().getY());
+    AnaMngr->FillNtupleDColumn(id,11,step->GetTrack()->GetMomentumDirection().getZ());
+    AnaMngr->FillNtupleDColumn(id,12,step->GetTrack()->GetPolarization().getX());
+    AnaMngr->FillNtupleDColumn(id,13,step->GetTrack()->GetPolarization().getY());
+    AnaMngr->FillNtupleDColumn(id,14,step->GetTrack()->GetPolarization().getZ());
+    AnaMngr->FillNtupleDColumn(id,15,step->GetTrack()->GetKineticEnergy());
+    AnaMngr->AddNtupleRow(id);
 }
