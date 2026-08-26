@@ -21,7 +21,6 @@
 #/gps/position 0 0 0
 #/gps/position 200 300 1000
 /gps/position -314 72 290
-/run/numberOfThreads 1
-/run/initialize
+
 
 /run/beamOn 1
