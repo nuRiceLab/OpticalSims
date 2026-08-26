@@ -17,8 +17,7 @@
 /gps/ang/type iso
 /gps/energy 3 GeV
 /gps/position 0 200 650
-/run/numberOfThreads 1
-/run/initialize
+
 
 
 /run/beamOn 1
