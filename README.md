@@ -18,6 +18,7 @@ The workflow enables **fast optical photon propagation on GPUs** while retaining
 
 ---
 ## Installation Using Rice Opticks container
+More information about Rice Opticks container can be found at https://github.com/nuRiceLab/riceopticks-container
 ```bash
 # Large image — point the cache somewhere with room. HPC home dirs usually
 # do not have it.
