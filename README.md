@@ -17,7 +17,7 @@ The workflow enables **fast optical photon propagation on GPUs** while retaining
 - **ROOT (for output handling and visualization)**
 
 ---
-## Installation Using Rice Opticks conatiner
+## Installation Using Rice Opticks container
 ```bash
 # Large image — point the cache somewhere with room. HPC home dirs usually
 # do not have it.
@@ -30,7 +30,7 @@ apptainer shell --nv --bind /cvmfs riceopticks_v1.0r.sif
 source /opt/opticks-dev-env.sh
 git clone https://github.com/nuRiceLab/OpticalSims
 cd OpticalSims
-source onfigure.sh 
+source configure.sh 
 make -j2 
 ```
 ## 🛠️Manual Installation
