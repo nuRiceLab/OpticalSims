@@ -61,3 +61,13 @@ Then execute:
 ```
 ./gdml_det GDML/dune10kt_v5_refactored_1x2x6_nowires_NoField.gdml macros/g04.mac
 ```
+## Citation
+@misc{parmaksiz2026acceleratingopticalphotonsimulation,
+      title={Accelerating Optical Photon Simulation in DUNE with Opticks}, 
+      author={Ilker Parmaksiz and Aaron Higuera and Laura Paulucci and Viktor Pec and Estanislao Forino},
+      year={2026},
+      eprint={2608.27306},
+      archivePrefix={arXiv},
+      primaryClass={hep-ex},
+      url={https://arxiv.org/abs/2608.27306}, 
+}
