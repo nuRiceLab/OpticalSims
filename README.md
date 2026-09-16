@@ -22,9 +22,7 @@ More information about Rice Opticks container can be found at https://github.com
 ```bash
 # Large image — point the cache somewhere with room. HPC home dirs usually
 # do not have it.
-export APPTAINER_CACHEDIR=/scratch/$USER/.apptainer
-export APPTAINER_TMPDIR=/scratch/$USER/.apptainer/tmp
-
+mkdir -p cache/.apptainer/tmp
 apptainer pull riceopticks-v1.0r.sif oras://ghcr.io/nuricelab/riceopticks:v1.0r
 
 apptainer shell --nv --bind /cvmfs riceopticks_v1.0r.sif
