@@ -113,15 +113,7 @@ int main(int argc,char **argv)
   // Physics list
   G4VModularPhysicsList* physics_list = new PhysicsList();
 
-  #ifdef With_Opticks
-    std::cout << "Defining Opticks Physics List" << std::endl;
-    physics_list->RegisterPhysics(new G4OpticalPhysicsOpticks());
-  #else
-    //physics_list->RegisterPhysics(new G4OpticalPhysics());
-    physics_list->RegisterPhysics(new G4OpticalPhysicsOpticks());
-
-  #endif
-
+   physics_list->RegisterPhysics(new G4OpticalPhysicsOpticks());
    runManager->SetUserInitialization(new DetectorConstruction(parser));
    runManager->SetUserInitialization(physics_list);
    // User action initialization
