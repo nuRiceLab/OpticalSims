@@ -16,7 +16,7 @@ else()
 endif()
 
 option (With_Opticks OFF)
-
+option (With_Simphony OFF)
 option (With_DEBUG OFF)
 
 if(With_Opticks)
@@ -36,6 +36,12 @@ if(With_Opticks)
   find_package(U4 REQUIRED CONFIG)
 endif ()
 
+
+if(With_Simphony)
+  message(STATUS "WITH_SIMPHONY is set ON")
+  find_package(simphony REQUIRED)
+  find_package(glm REQUIRED)
+endif ()
 #----------------------------------------------------------------------------
 # Setup Geant4 include directories and compile definitions
 #
@@ -64,7 +70,16 @@ target_link_libraries(gdml_det ${Geant4_LIBRARIES} )
 
 # Link Opticks Libraries
 if (With_Opticks)
+  option (With_Simphony OFF)
   target_link_libraries(gdml_det Opticks::G4CX Opticks::U4)
+  target_sources(gdml_det PRIVATE ${SRCS} ${OpSRCS})
+endif ()
+if (With_Simphony)
+  option (With_Opticks OFF)
+  target_link_libraries(gdml_det  simphony::simphony_argparse
+          simphony::G4CX
+          simphony::SysRap
+          simphony::U4)
   target_sources(gdml_det PRIVATE ${SRCS} ${OpSRCS})
 endif ()
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
