@@ -56,8 +56,10 @@
 #include "G4OpticalPhysicsOpticks.hh"
 
 #ifdef With_Opticks
+#if defined(G4UI_USE_QT) || defined(G4VIS_USE_QT)
 #include <QString>
 #include <QtGlobal>
+#endif
 #include "SEventConfig.hh"
 #include "OPTICKS_LOG.hh"
 #include <cuda_runtime.h>
