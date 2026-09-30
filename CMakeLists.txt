@@ -21,7 +21,7 @@ option (With_DEBUG OFF)
 
 if(With_Opticks)
   message(STATUS "WITH_OPTICKS is set ON")
-  list(APPEND CMAKE_MODULE_PATH "$ENV{OPTICKS_HOME}/cmake/Modules")
+  list(APPEND CMAKE_MODULE_PATH "$ENV{OPTICKS_PREFIX}/cmake/Modules")
   #list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake/Modules")
   set(OPTICKS_PREFIX "$ENV{OPTICKS_PREFIX}")
   ### we need to Make sure this OPTICKS_PREFIX matches with the one on OpticksBuildOptions
