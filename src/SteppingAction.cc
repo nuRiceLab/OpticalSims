@@ -53,8 +53,10 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
             // add more if needed
         }
         const G4StepPoint* postPoint = step->GetPostStepPoint();
-        G4String volName = postPoint->GetPhysicalVolume()->GetName();
+	if (postPoint->GetStepStatus() != fGeomBoundary) return;   // stale status -> ignore (extra guard)
 
+        G4String volName = postPoint->GetPhysicalVolume()->GetName();
+        
         auto it = fDetectIds.find(volName);
         if (it == fDetectIds.end()) return;
 
