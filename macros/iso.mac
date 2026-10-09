@@ -8,6 +8,9 @@
 /run/verbose 0
 /run/numberOfThreads 1
 /run/initialize
+# Enable or disable (True/False) scintillation and Cherenkov optical photon propagation in Geant4.
+#/process/optical/scintillation/setStackPhotons false
+#/process/optical/cerenkov/setStackPhotons false
 /RunAction/output/file out.root
 
 # GPS Particle Generation

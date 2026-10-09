@@ -102,20 +102,7 @@ void DetectorConstruction::GetOpticalSurfaceFast() {
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
   auto phyStore = G4PhysicalVolumeStore::GetInstance();
-  //ArapucaSurface
-  //G4OpticalSurface * ArapucaSurface= new G4OpticalSurface("ArapucaSurface",unified,polished,dielectric_metal);
 
-  //Making sure we have the material
-  //G4Material * ArapucaWindowMaterial=fGetMaterial("ArapucaWindowProperties");
-  //G4MaterialPropertiesTable * Arapuca_mpt=nullptr;
-
-
- /* if (Arapuca_mpt==nullptr)
-  {
-    Arapuca_mpt=ArapucaWindowMaterial->GetMaterialPropertiesTable();
-    ArapucaSurface->SetMaterialPropertiesTable(Arapuca_mpt);
-  }
-*/
     // Get The optical surfaces from the G4SurfacePropertyTable and cache them ( should be defined in GDML).
     GetOpticalSurfaceFast();
 
@@ -199,9 +186,9 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
               }
 
       }
-      else if((*vit).type == "Solid")
+      /*else if((*vit).type == "Solid")
       {
-        /*
+
             if((*vit).value == "True")
             {
               G4VisAttributes* visatt = new G4VisAttributes(
@@ -212,8 +199,8 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
               ((*iter).first)->SetVisAttributes(visatt);
 
               //((*iter).first)->SetUserLimits(limits);
-         }*/
-       }
+         }
+       }*/
     }
       //aTrackerSD->SetDetectIds(&fDetectIds);
   }

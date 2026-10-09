@@ -27,7 +27,9 @@ if [ -z ${SKIPAHEAD+x} ]; then
 	sleep 2
 fi
 export OPTICKS_EVENT_SKIPAHEAD=$OPTICKS_MAX_PHOTON
-
+## For Disabling the Cerenkov and Scintilation in Opticks.
+#export U4__CollectGenstep_G4Cerenkov_modified_DISABLE=1
+#export U4__CollectGenstep_DsG4Scintillation_r4695_DISABLE=1
 ### --- Curand File Generation is no longer needed by latests version of opticks ---
 # Lets Check if Curand file present if not then create it 
 ##
@@ -68,8 +70,11 @@ export OPTICKS_EVENT_SKIPAHEAD=$OPTICKS_MAX_PHOTON
 #export ShimG4OpAbsorption=INFO
 #export G4CXOpticks__simulate_saveEvent=0
 export G4CXOpticks__setGeometry_saveGeometry=$HOME/.opticks/GEOM/$GEOM
-export G4CXOpticks__saveGeometry_saveGGeo=0
-export GGeo__postDirectTranslation_save=0
+#export G4CXOpticks__saveGeometry_saveGGeo=0
+#export GGeo__postDirectTranslation_save=0
+## For Loading geometry rather than translating 
+#export ${GEOM}_CFBaseFromGEOM=$HOME/.opticks/GEOM/$GEOM
+#unset G4CXOpticks__setGeometry_saveGeometry
 #export IDPath=$G4CXOpticks__setGeometry_saveGeometry
 #export PIDX=100
 #export CFBASE=$HOME/.opticks/GEOM/$GEOM

@@ -27,7 +27,9 @@ if [ -z ${SKIPAHEAD+x} ]; then
 	sleep 2
 fi
 export OPTICKS_EVENT_SKIPAHEAD=$OPTICKS_MAX_PHOTON
-
+## For Disabling the Cerenkov and Scintilation in Opticks.
+#export U4__CollectGenstep_G4Cerenkov_modified_DISABLE=1
+#export U4__CollectGenstep_DsG4Scintillation_r4695_DISABLE=1
 ### --- Curand File Generation is no longer needed by latests version of opticks ---
 # Lets Check if Curand file present if not then create it 
 ##

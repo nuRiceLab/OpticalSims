@@ -310,8 +310,7 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
   // CPU Only, IntegrationMode == 2
   // CPU and GPU Together, Integration Mode == 3
   // turning off Cerenkov
-  aParticleChange.SetNumberOfSecondaries(0);
-  return pParticleChange;
+
 
   #ifdef With_Opticks
     if((SEventConfig::IntegrationMode()==1) || (SEventConfig::IntegrationMode()==3 && (fNumPhotons>0)) ){
