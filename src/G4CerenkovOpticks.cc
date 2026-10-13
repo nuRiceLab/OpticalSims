@@ -59,6 +59,9 @@
 
 #include "G4CerenkovOpticks.hh"
 
+#include <cstdlib>
+#include <string>
+
 #include "G4ios.hh"
 #include "G4LossTableManager.hh"
 #include "G4Material.hh"
@@ -309,9 +312,23 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
   // GPU Only, IntegrationMode == 1
   // CPU Only, IntegrationMode == 2
   // CPU and GPU Together, Integration Mode == 3
-  // turning off Cerenkov
-  aParticleChange.SetNumberOfSecondaries(0);
-  return pParticleChange;
+  //
+  // Cerenkov used to be switched off unconditionally here (LAr studies only
+  // want scintillation). It is now OFF by default and switched ON with
+  //     export G4CerenkovOpticks__ENABLE=1
+  // e.g. for water-Cherenkov geometries such as GDML/SK_LUCiD_opticks.gdml.
+  static const bool cerenkovEnabled = []() {
+      const char* v = std::getenv("G4CerenkovOpticks__ENABLE");
+      const bool on = v && (std::string(v) == "1" || std::string(v) == "true" || std::string(v) == "TRUE");
+      G4cout << "G4CerenkovOpticks: Cerenkov photon production "
+             << (on ? "ENABLED" : "DISABLED (set G4CerenkovOpticks__ENABLE=1 to enable)") << G4endl;
+      return on;
+  }();
+  if(!cerenkovEnabled)
+  {
+    aParticleChange.SetNumberOfSecondaries(0);
+    return pParticleChange;
+  }
 
   #ifdef With_Opticks
     if((SEventConfig::IntegrationMode()==1) || (SEventConfig::IntegrationMode()==3 && (fNumPhotons>0)) ){
