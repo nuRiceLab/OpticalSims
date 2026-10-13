@@ -211,3 +211,12 @@ If you use this work, please cite:
       url={https://arxiv.org/abs/2608.27306},
 }
 ```
+## 📄 License
+
+Copyright 2026 nuRiceLab, Rice University
+
+OpticalSims is licensed under the [Apache License, Version 2.0](LICENSE).
+You may use, modify and redistribute it under the terms of that license.
+Unless required by applicable law or agreed to in writing, it is distributed
+on an "AS IS" basis, without warranties or conditions of any kind.:
+If you use OpticalSims in your research, please cite it as shown in [Citation](#citation).
