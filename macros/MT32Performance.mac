@@ -1,0 +1,32 @@
+###################################################
+# Batch running of events
+###################################################
+
+# verbosity
+/tracking/verbose 0
+/control/verbose 0
+/run/verbose 0
+
+/run/numberOfThreads 32
+/run/initialize
+
+# can be csv, root or hdf5
+/RunAction/output/file MT32Performance_G4_profiling_wires_.root
+
+# PrimaryGenerationAction
+/PrimaryGenerationAction/input/type Performance # GPS, Performance, or use ROOT
+/PrimaryGenerationAction/input/verbose false
+/PrimaryGenerationAction/input/pos 175 0 695 # Performance # GPS, Performance, or use ROOT
+#/PrimaryGenerationAction/input/pos 200 0 600  # Performance # GPS, Performance, or use ROOT
+
+# Produce scintilation photons with a gaussian distribution.
+/PrimaryGenerationAction/input/momentum 9.7 eV  ## The mean momentum of Scintilation Photons.
+/PrimaryGenerationAction/input/sigma_momentum 0.1 eV  ## sigma value for the momentum .
+
+/PrimaryGenerationAction/input/repeats 1  ## How many times to repeat the same event (for performance testing)
+/PrimaryGenerationAction/input/PhLinAmount 0.25 25 30  ## linearly spaced energies from 0.25 to 25 MeV, 15 points.
+/run/beamOn 960 # Number of total events to run. Should be repeats * number of energy points * num of threads. As an example, 2 repeats * 15 energies * 4 = 120 events.
+#/PrimaryGenerationAction/input/PhLinAmount 0.25 180 15  ## linearly spaced energies from 0.25 to 25 MeV, 15 points.
+#/run/beamOn 60 # Number of total events to run. Should be repeats * number of energy points * num of threads. As an example, 2 repeats * 15 energies * 4 = 120 events.
+
+

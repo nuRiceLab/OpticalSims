@@ -309,7 +309,7 @@ G4VParticleChange* G4CerenkovOpticks::PostStepDoIt(const G4Track& aTrack,
   // GPU Only, IntegrationMode == 1
   // CPU Only, IntegrationMode == 2
   // CPU and GPU Together, Integration Mode == 3
-  // turning off Cerenkov
+
 
 
   #ifdef With_Opticks
