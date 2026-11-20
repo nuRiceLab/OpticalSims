@@ -37,14 +37,17 @@ void RunAction::BeginOfRunAction(const G4Run* run) {
     analysisManager->CreateNtupleSColumn("name");
     analysisManager->CreateNtupleIColumn("pdg");
     analysisManager->CreateNtupleDColumn("energy");
-    analysisManager->CreateNtupleDColumn("ix");
+    analysisManager->CreateNtupleDColumn("ix");   // vertex of the parent particle (x,y,z,t)
     analysisManager->CreateNtupleDColumn("iy");
     analysisManager->CreateNtupleDColumn("iz");
     analysisManager->CreateNtupleDColumn("it");
-    analysisManager->CreateNtupleDColumn("mx");
+    analysisManager->CreateNtupleDColumn("mx");   // direction (unit vector)
     analysisManager->CreateNtupleDColumn("my");
     analysisManager->CreateNtupleDColumn("mz");
     analysisManager->CreateNtupleIColumn("evtID");
+    analysisManager->CreateNtupleDColumn("px");   // momentum [MeV]
+    analysisManager->CreateNtupleDColumn("py");
+    analysisManager->CreateNtupleDColumn("pz");
     analysisManager->FinishNtuple();
 
     //Opticks Hits

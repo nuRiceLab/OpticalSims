@@ -42,6 +42,7 @@
 #include "G4GenericMessenger.hh"
 #include "G4OpticalPhoton.hh"
 #include "G4PrimaryParticle.hh"
+#include "G4PrimaryVertex.hh"
 #include "G4PhysicalConstants.hh"
 #include "G4RandomTools.hh"
 #include "TFile.h"
@@ -130,18 +131,35 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   if (finitParticleType=="GPS"){
 	auto analysisManager =  G4AnalysisManager::Instance();
     fParticleGun->GeneratePrimaryVertex(anEvent);
-    analysisManager->FillNtupleSColumn(0,0,fParticleGun->GetParticleDefinition()->GetParticleName());
-    analysisManager->FillNtupleIColumn(0,1,fParticleGun->GetParticleDefinition()->GetParticleDefinitionID());
-    analysisManager->FillNtupleDColumn(0,2,fParticleGun->GetParticleEnergy());
-    analysisManager->FillNtupleDColumn(0,3,fParticleGun->GetParticlePosition().x());
-    analysisManager->FillNtupleDColumn(0,4,fParticleGun->GetParticlePosition().y());
-    analysisManager->FillNtupleDColumn(0,5,fParticleGun->GetParticlePosition().z());
-    analysisManager->FillNtupleDColumn(0,6,fParticleGun->GetParticleTime());
-    analysisManager->FillNtupleDColumn(0,7,fParticleGun->GetParticleMomentumDirection().x());
-    analysisManager->FillNtupleDColumn(0,8,fParticleGun->GetParticleMomentumDirection().y());
-    analysisManager->FillNtupleDColumn(0,9,fParticleGun->GetParticleMomentumDirection().z());
-    analysisManager->FillNtupleIColumn(0,10,anEvent->GetEventID());
-    analysisManager->AddNtupleRow(0);
+
+    // Record the primaries exactly as they were put into the event
+    // One row per primary particle. Units: mm, ns, MeV.
+    for (G4int iv = 0; iv < anEvent->GetNumberOfPrimaryVertex(); ++iv)
+    {
+      G4PrimaryVertex* vtx = anEvent->GetPrimaryVertex(iv);
+      for (G4int ip = 0; ip < vtx->GetNumberOfParticle(); ++ip)
+      {
+        G4PrimaryParticle* prim = vtx->GetPrimary(ip);
+        const G4ParticleDefinition* def = prim->GetG4code();
+        const G4ThreeVector dir = prim->GetMomentumDirection();
+        const G4ThreeVector mom = prim->GetMomentum();
+        analysisManager->FillNtupleSColumn(0,0, def ? def->GetParticleName() : G4String("unknown"));
+        analysisManager->FillNtupleIColumn(0,1, prim->GetPDGcode());
+        analysisManager->FillNtupleDColumn(0,2, prim->GetKineticEnergy());
+        analysisManager->FillNtupleDColumn(0,3, vtx->GetX0());
+        analysisManager->FillNtupleDColumn(0,4, vtx->GetY0());
+        analysisManager->FillNtupleDColumn(0,5, vtx->GetZ0());
+        analysisManager->FillNtupleDColumn(0,6, vtx->GetT0());
+        analysisManager->FillNtupleDColumn(0,7, dir.x());
+        analysisManager->FillNtupleDColumn(0,8, dir.y());
+        analysisManager->FillNtupleDColumn(0,9, dir.z());
+        analysisManager->FillNtupleIColumn(0,10, anEvent->GetEventID());
+        analysisManager->FillNtupleDColumn(0,11, mom.x());
+        analysisManager->FillNtupleDColumn(0,12, mom.y());
+        analysisManager->FillNtupleDColumn(0,13, mom.z());
+        analysisManager->AddNtupleRow(0);
+      }
+    }
 
 
     if((fParticleGun->GetParticleDefinition()->GetParticleName()!="opticalphoton")) return;
